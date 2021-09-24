@@ -6,7 +6,6 @@ module.exports = {
     proxy: {
       "^/api/": { target: config.serverApi },
     },
-    port: config.port,
     disableHostCheck: true,
   },
 
