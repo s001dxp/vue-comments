@@ -154,6 +154,7 @@ export default CommentsForm;
     outline: 0
     outline-offset: 0
     font-family: inherit
+    overflow: visible
     @media (max-width: $point-sm)
       min-height: 70px
     &::placeholder

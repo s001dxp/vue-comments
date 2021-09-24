@@ -1,11 +1,12 @@
 {
   "name": "vue-comments",
   "version": "1.0.0",
-  "description": "A comments component for Vue.js / Nuxt.js",
+  "description": "A comments component for Vue.js 3 / Nuxt.js",
   "author": "Evgeniy Saschenko <evgeniy.saschenko@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
+    "start": "NODE_ENV=production vue-cli-service serve ",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",

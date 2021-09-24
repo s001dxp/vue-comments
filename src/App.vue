@@ -60,7 +60,7 @@ export default {
     };
   },
   async created() {
-    let response = await fetch("http://localhost:8080/api/comments/?parentId=0&quantityCurrent=0", {
+    let response = await fetch("/api/comments/?parentId=0&quantityCurrent=0", {
       headers: { Cookie: $cookies.get("user") },
     });
     let comments = await response.json();

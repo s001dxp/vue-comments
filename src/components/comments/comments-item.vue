@@ -131,7 +131,7 @@ include /src/assets/pug/index.pug
           +b.comments-spiner(v-if="mapItems[comment.parentId].isProcessing")
             +e.element
 
-      +e.panel-form-add(v-if="isFormShow")
+      +e.panel-form-add(v-show="isFormShow")
         comments-form(:comment="comment", :userNameAnswer="comment.userName", :isEdited="isEdited")
       // panel-bottom в режиме редактирования
       +e.panel-bottom--edited(v-if="isEdited")
@@ -160,12 +160,19 @@ export default CommentsItem;
 @import "./variables.sass"
 .comments-item
   &--delete
+    // Скрываем частями чтобы оставалась кнопка "Show more"
     .comments-item
       &__col-avatar,
       &__panel-bottom,
       &__content,
-      &__row-comment
+      &__col-avatar,
+      &__content,
+      &__text-box,
+      &__panel-bottom
         display: none
+    // Скрываем вложенный item чтобы не отображалась вложенная кнопка "Show more"
+    .comments-item
+      display: none
   &__answer-to
     font-size: 12px
     color: $blue

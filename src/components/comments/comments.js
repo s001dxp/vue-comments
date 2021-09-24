@@ -52,6 +52,8 @@ export default {
         top: 0,
         left: 0,
       },
+      // Указывает на то что документ скролится - для блокироки случайных нажатий на мобильном
+      isScrollDocument: false,
       // Контекст текущей формы - для того чтобы добавлять смайлы
       contextCommentsForm: null,
       optionsInit: {
@@ -249,6 +251,7 @@ export default {
     };
   },
   mounted() {
+    // Скрываем смайлы при клике по другому элементу
     this.listeners["touchstart"] = (event) => {
       if (
         !event.target.closest("[data-vue-comments-form-emoji-btn]") &&
@@ -258,11 +261,36 @@ export default {
       }
     };
 
-    // Скрываем смайлы при клике
+    // Событие указывает на то что пользователь не скролит документ
+    this.listeners["touchend"] = () => {
+      if (isTouchDevice()) {
+        this.isScrollDocument = false;
+      }
+    };
+
+    this.listeners["touchcancel"] = () => {
+      if (isTouchDevice()) {
+        this.isScrollDocument = false;
+      }
+    };
+
+    // Блокируем случайные нажатия при скроле (например чтобы юзер случайно не поставил лайк)
+    this.listeners["scroll"] = () => {
+      if (isTouchDevice()) {
+        this.isScrollDocument = true;
+      }
+    };
+
     document.addEventListener("touchstart", this.listeners["touchstart"]);
+    document.addEventListener("touchend", this.listeners["touchend"]);
+    document.addEventListener("touchcancel", this.listeners["touchcancel"]);
+    document.addEventListener("scroll", this.listeners["scroll"]);
   },
   beforeUnmount() {
     document.removeEventListener("touchstart", this.listeners["touchstart"]);
+    document.removeEventListener("touchend", this.listeners["touchcancel"]);
+    document.removeEventListener("touchcancel", this.listeners["touchcancel"]);
+    document.removeEventListener("scroll", this.listeners["scroll"]);
   },
   created() {
     this.initData(this.commentsData);

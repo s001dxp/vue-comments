@@ -45,18 +45,19 @@ export default {
     isEdited: {
       immediate: true,
       handler() {
-        this.init();
+        // При редактировании
+        if (this.isEdited) {
+          this.files = this.createFileList(this.comment.files);
+          this.text = this.comment.text;
+        } else {
+          // Если нажать кнопку отмена
+          this.files = [];
+          this.text = "";
+        }
       },
     },
   },
   methods: {
-    init() {
-      if (this.isEdited) {
-        // При редактировании
-        this.files = this.createFileList(this.comment.files);
-        this.text = this.comment.text;
-      }
-    },
     // Создание превью файла
     createFilePreview(files) {
       this.error = "";

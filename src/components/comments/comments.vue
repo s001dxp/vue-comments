@@ -1,6 +1,6 @@
 <template lang="pug">
 include /src/assets/pug/index.pug
-+b.comments(data-vue-comments)
++b.comments(data-vue-comments, :class="{ 'comments--lock': isScrollDocument }")
   // Emoji
   transition(name="fade")
     +e.emoji-list(
@@ -39,6 +39,15 @@ export default Comments;
   border: 1px solid $gray-border
   font-size: 14px
   position: relative
+  &--lock
+    &::before
+      content: ""
+      position: absolute
+      z-index: 2
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
   &__panel-form-add
     margin-bottom: 5px
   &__list
