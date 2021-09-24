@@ -1,0 +1,18 @@
+{
+  "eslint.validate": ["vue", "javascript"],
+  // Расшырение для форматирования
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
+  // Форматировать при сохранении
+  "editor.formatOnSave": true,
+  // Размер отступа
+  "editor.tabSize": 2,
+  // Использовать пробелы
+  "editor.insertSpaces": true,
+  "vetur.format.defaultFormatter.js": "none",
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur",
+  },
+}
