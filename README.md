@@ -35,13 +35,13 @@ npm run dev
 
 #### Other
 | Parameter | Type | Default | Description |
-| --- | :---: | :---: | --- |
+| --- | :---: | --- | --- |
 | parentIdStart | `Number` / `String` | 0 | The identifier of the first ancestor |
 | emojiLilst | `Array` / `String` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
 
 #### Files
 | Parameter | Type | Default | Description |
-| --- | :---: | :---: | --- |
+| --- | :---: | --- | --- |
 | filesMaxCount | `Number` | Infinity | Maximum number of files to upload (нужно реализовать) |
 | validExtensions | `Array` | ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"] | Allowed file extensions |
 | isScrollToComment | `Boolean` | true | Scroll to added comment |
@@ -56,7 +56,7 @@ npm run dev
 
 #### Translation
 | Parameter | Type | Default | Description |
-| --- | :---: | :---: | --- |
+| --- | :---: | --- | --- |
 | translation.btnAnswer | `String` | Answer | Answer button |
 | translation.btnЕxpand | `String` | More | Expand text button |
 | translation.btnCollapse | `String` | Collapse | Collapse button |
@@ -83,5 +83,5 @@ npm run dev
 
 #### Data Api
 | Parameter | Type | Default | Description |
-| --- | :---: | :---: | --- |
-| dataApi.vote | `Object` | send: function <br> url: "/" <br> params.method: "POST" <br> typeData: "" | Like / Dislike |
+| --- | :---: | --- | --- |
+| dataApi.vote | `Object` | send: function <br> url: "/" <br> params.method: "POST" <br> typeData: "form-data" | Like / Dislike |
