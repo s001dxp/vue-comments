@@ -37,7 +37,17 @@ npm run dev
 | Parameter | Type | Default | Description |
 | --- | :---: | --- | --- |
 | parentIdStart | `Number` / `String` | 0 | The identifier of the first ancestor |
-| emojiLilst | `Array` / `String` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
+| emojiLilst | `Array` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
+| formAddShowAlways | `Boolean` | true | Using this parameter, you can show or hide the form for adding a comment. This may be needed if you do not want to show the form when the user is not logged in. |
+| btnAnswerShowAlways | `Boolean` | true | Use this option to show or hide the Reply to Comment button. This may be needed if you do not want to show the button when the user is not logged in. |
+| imgDefaultUser | `String` | image user | Default user avatar. |
+
+#### Current user
+| Parameter | Type | Default | Description |
+| --- | :---: | --- | --- |
+| name | `String` | User Name | User name |
+| img | `String` | image user | User avatar |
+| auth | `Boolean` | false | This parameter allows you to add comments if set to "true" |
 
 #### Files
 | Parameter | Type | Default | Description |
