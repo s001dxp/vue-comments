@@ -54,6 +54,10 @@ npm run dev
 | --- | :---: | --- | --- |
 | filesMaxCount | `Number` | Infinity | Maximum number of files to upload (нужно реализовать) |
 | validExtensions | `Array` | ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"] | Allowed file extensions |
+
+#### Comments
+| Parameter | Type | Default | Description |
+| --- | :---: | --- | --- |
 | isScrollToComment | `Boolean` | true | Scroll to added comment |
 | text.minLength | `Number` | 0 | Minimum text length (не реализовано) |
 | text.maxLength | `Number` | 0 | Maximum text length (не реализовано) |
