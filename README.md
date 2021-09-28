@@ -33,13 +33,10 @@ npm run dev
 ## Options
 | Parameter | Type | Default | Description |
 | --- | :---: | :---: | --- |
-<!--Файлы-->
 | filesMaxCount | `Number` | Infinity | Maximum number of files to upload (нужно реализовать) |
 | validExtensions | `Array` | ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"] | Allowed file extensions |
-<!--Остальное-->
 | **parentIdStart** | `Number` / `String` | 0 | The identifier of the first ancestor |
 | emojiLilst | `Array` / `String` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
-<!--Комментарии-->
 | isScrollToComment | `Boolean` | true | Scroll to added comment |
 | text.minLength | `Number` | 0 | Minimum text length (не реализовано) |
 | text.maxLength | `Number` | 0 | Maximum text length (не реализовано) |
@@ -49,7 +46,6 @@ npm run dev
 | list.secondShowStart | `Number` | 1 | **On first boot** The number of comments in the nested list before "Show more" appears |
 | list.mainShow | `Number` | 5 | **Сlick "Show more"** The number of comments that are displayed in the main list when you click on the button "Show more" |
 | list.secondShow | `Number` | 3 | **Сlick "Show more"** The number of comments that are displayed in the second list when you click on the button "Show more" |
-<!--Переводы-->
 | translation.btnAnswer | `String` | Answer | Answer button |
 | translation.btnЕxpand | `String` | More | Expand text button |
 | translation.btnCollapse | `String` | Collapse | Collapse button |
