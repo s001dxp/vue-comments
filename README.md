@@ -98,9 +98,11 @@ npm run dev
 
 `send: function` - this function is used to send data to the server, it uses the "fetch" method, if you need to use another method, the "send" function can be replaced with your own, but it must accept and return data as the code below does: 
 
-```send: ({ url, params }) => {
+```
+send: ({ url, params }) => {
   return fetch(url, params).then((response) => {
     if (!response.ok) throw new Error(response);
     return response.json();
   });
-},```
+}
+```
