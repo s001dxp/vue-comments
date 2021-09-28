@@ -92,9 +92,12 @@ npm run dev
 
 ##### Note
 
+
+`url` - url of the server that processes the request
+
 `typeData` - Indicates how to prepare data for sending to the server. The options could be like this `json`, `query`, `form-data`
 
-`params` - Additional headers can be added here
+`params` - The method of sending is specified here, you can also add additional headers
 
 `send: function` - this function is used to send data to the server, it uses the "fetch" method, if you need to use another method, the "send" function can be replaced with your own, but it must accept and return data as the code below does: 
 
