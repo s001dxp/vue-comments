@@ -32,9 +32,9 @@ npm run dev
 ## Example Back-End
 
 - От бекенда нам необходимо получить 2 объекта `items` и `mapItems`:
-**items - список комментаририев
-#### Названия полей
+#### items - список комментаририев
 | Parameter | Type | Value | Description |
+| --- | :---: | :---: | --- |
 | answerQuantity | Number | 0 | Количество ответов на комментарий (удалить?) |
 | dateCreate | Number | timestamp | дата создания |
 | dislike | Number | <= 0 | количество дизлайков |
