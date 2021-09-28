@@ -31,13 +31,49 @@ npm run dev
 
 ## Example Back-End
 
-- От бекенда нам необходимо получить 2 объекта `items` и `mapItems`:
+- От бекенда нам необходимо получить 2 объекта `items` и `mapItems` - где ключами являются id комментариев:
 
 #### items - список комментаририев
+```
+  {
+    1549 : {
+      dateCreate: 1632329876,
+      dateUpdate: 1632329889,
+      dislike: 0,
+      like: 0,
+      voteValue: 0
+      files: [],
+      id: 1549,
+      isManageDelete: false,
+      isManageEdit: false,
+      parentId: 0,
+      text: "text 😇😇😇😇",
+      userImg: "",
+      userName: "Jhon",
+    },
+    1550 : {
+      dateCreate: 1632329876,
+      dateUpdate: 1632329889,
+      dislike: 2,
+      like: 0,
+      voteValue: -1,
+      files: ["http://localhost:8888/images/comments/1581_0.jpg"],
+      id: 1550,
+      isManageDelete: false,
+      isManageEdit: false,
+      parentId: 1549,
+      text: "text text",
+      userImg: "",
+      userName: "Ivan",
+    }
+  }
+```
+
+
 | Parameter | Type | Value | Description |
 | --- | :---: | :---: | --- |
-| answerQuantity | `Number` | 0 | Количество ответов на комментарий (удалить?) |
 | dateCreate | `Number` | timestamp | дата создания |
+| dateUpdate | `Number` | 0 / timestamp | дата редактирования |
 | dislike | `Number` | <= 0 | количество дизлайков |
 | like | `Number` | <= 0 | количество лайков |
 | voteValue | `Number` | 0 - не голосовал, <br> 1 - like, <br> -1 - dislike | пользователь поставил лайк, дизлайк или  не голосовал |
