@@ -84,4 +84,4 @@ npm run dev
 #### Data Api
 | Parameter | Type | Default | Description |
 | --- | :---: | --- | --- |
-| dataApi.vote | `Object` | send: function <br> url: "/" <br> params.method: "POST" <br> typeData: "form-data" | Like / Dislike |
+| dataApi.vote | `Object` | send: **function** <br> url: **"/"** <br> params.method: **"POST"** <br> typeData: **"form-data"** | Like / Dislike |
