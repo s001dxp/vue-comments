@@ -31,11 +31,9 @@ npm run dev
 
 
 ## Options
-
 | Parameter | Type | Default | Description |
 | --- | :---: | :---: | --- |
 <!--Файлы-->
-in "mapItems" - from which the list is built |
 | filesMaxCount | `Number` | Infinity | Maximum number of files to upload (нужно реализовать) |
 | validExtensions | `Array` | ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"] | Allowed file extensions |
 <!--Остальное-->
