@@ -85,3 +85,7 @@ npm run dev
 | Parameter | Type | Default | Description |
 | --- | :---: | --- | --- |
 | dataApi.vote | `Object` | send: **function** <br> url: **"/"** <br> params.method: **"POST"** <br> typeData: **"form-data"** | Like / Dislike |
+| dataApi.commentsListGet | `Object` | send: **function** <br> url: **"/"** <br> params.method: **"GET"** <br> typeData: **"query"** | Get a list of comments |
+| dataApi.commentAdd | `Object` | send: **function** <br> url: **"/"** <br> params.method: **"POST"** <br> typeData: **"form-data"** | Add a comment |
+| dataApi.commentEdit | `Object` | send: **function** <br> url: **"/"** <br> params.method: **"PUT"** <br> typeData: **"form-data"** | Edit a comment |
+| dataApi.commentDelete | `Object` | send: **function** <br> url: **"/"** <br> params.method: **"DELETE"** <br> typeData: **"form-data"** | Delete a comment |
