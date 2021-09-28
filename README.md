@@ -36,7 +36,7 @@ npm run dev
 #### Other
 | Parameter | Type | Default | Description |
 | --- | :---: | :---: | --- |
-| **parentIdStart** | `Number` / `String` | 0 | The identifier of the first ancestor |
+| parentIdStart | `Number` / `String` | 0 | The identifier of the first ancestor |
 | emojiLilst | `Array` / `String` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
 
 #### Files
@@ -73,10 +73,20 @@ npm run dev
 | translation.formPlaceholder | `String` | Add a comment | Placeholder form |
 | translation.btnСancelEditing | `String` | Сancel editing | Answer button |
 | translation.formAnswerTo | `String` | Answer to | Phrase in the form when replying to a comment |
-| translation.messageFileParams | `String` | Maximum file size 2 Mb, supported extentions 'jpg', 'png', 'jpeg', 'jpeg', 'vue' | Information about the maximum file size and supported extensions |
+| translation.messageFileParams | `String` | Maximum file size 2 Mb, supported extentions "jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp" | Information about the maximum file size and supported extensions |
 | translation.errorFormSend | `String` | Error sending form |  |
 | translation.errorVoteSend | `String` | Error sending vote |  |
 | translation.errorUnexpected | `String` | Unexpected error |  |
 | translation.errorGetComments | `String` | Error get comments |  |
 | translation.errorFileExtension | `String` | Error file extension |  |
 | translation.errorFileSize | `String` | Error file size |  |
+
+#### Data Api
+| Parameter | Type | Default | Description |
+| --- | :---: | :---: | --- |
+| dataApi.vote | `Object` | `{
+            send: function,
+            url: "/",
+            params.method: "POST",
+            typeData: "",
+          }`  | Like / Dislike |
