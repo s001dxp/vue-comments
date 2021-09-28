@@ -121,7 +121,7 @@ export default {
           dateEditedText: "Edited:",
           // Кнопка отменть редактирование
           btnСancelEditing: "Сancel editing",
-          // Кнопка отменть редактирование
+          // Кнопка показать больше
           btnMore: "Show more",
           // Кнопка показать ответы
           btnMoreAnswers: "Show answers",
