@@ -1,29 +1,29 @@
 # vue-comments
 
+> Компонент древовидных комментариев для Vue.js 3  **[Demo](https://vue-comments.herokuapp.com/)** (Alpha)
+
+**Возможности**
+- Добавление / редактирование / удаление комментариев 
+- Добавление файлов, если файлов больше одного - просмотр в виде галлереи
+- Смайлики
+- Преобразование http / https в гиперссылку
+- Подгрузка комментариев
+- Возможность ограничить отобржение текста по количеству сторк / символов
+- Лайки / дизлайки
+- Адаптация под мобильные устройства
+
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn dev
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for demo
 ```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
+npm run build
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

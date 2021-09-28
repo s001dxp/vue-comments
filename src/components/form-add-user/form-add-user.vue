@@ -17,7 +17,7 @@ include /src/assets/pug/index.pug
 </template>
 
 <script>
-import $cookies from 'vue-cookies';
+import $cookies from "vue-cookies";
 
 export default {
   name: "FormAddUser",
@@ -40,7 +40,8 @@ export default {
         this.isShowForm = false;
         this.userName = user.name;
         this.message = `Вы вошли как ${this.userName}`;
-        this.$root.$emit("set-curent-user", user);
+        user.auth = true;
+        this.$emit("user-auth", user);
       } else {
         this.isShowForm = true;
       }
@@ -79,12 +80,14 @@ export default {
     },
     // Выход
     exit() {
-      localStorage.removeItem("user");
+      $cookies.remove("user");
       this.isShowForm = true;
       this.userName = "";
       this.error = "";
       this.message = "";
-      this.$root.$emit("set-curent-user", {});
+      this.$emit("user-auth", {
+        auth: false,
+      });
     },
   },
 };

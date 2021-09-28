@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "start": "NODE_ENV=production vue-cli-service serve --port 80",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",

@@ -292,17 +292,21 @@ export default {
     document.removeEventListener("touchcancel", this.listeners["touchcancel"]);
     document.removeEventListener("scroll", this.listeners["scroll"]);
   },
-  created() {
-    this.initData(this.commentsData);
-    this.initOptions(this.options);
 
-    // Для обновлений из вне компонента
-    this.listeners["run-init-data"] = (items) => {
-      this.initData(items);
-    };
-    this.listeners["run-init-options"] = (options) => {
-      this.initOptions(options);
-    };
+  watch: {
+    commentsData: {
+      immediate: true,
+      handler() {
+        this.initData(this.commentsData);
+      },
+    },
+    options: {
+      deep: true,
+      immediate: true,
+      handler() {
+        this.initOptions(this.options);
+      },
+    },
   },
 
   methods: {
@@ -350,6 +354,12 @@ export default {
       };
 
       deepExtend(this.optionsInit, options);
+
+      // Если пользователь разлогинился - ставим дефолтный аватар
+      if (options.user && !options.user.auth) {
+        this.optionsInit.user.img = this.optionsInit.imgDefaultUser;
+        console.log(this.optionsInit.user.img);
+      }
       this.optionsInit.validExtensions = createValidExtensions();
     },
     // Добавить пункты в карту

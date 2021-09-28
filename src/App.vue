@@ -2,15 +2,12 @@
 include /src/assets/pug/index.pug
 
 +b.page_index
-  form-add-user
+  form-add-user(@user-auth="userAuth($event)")
   comments(
     v-if="isReady",
     :options="options",
     ref="comments",
     :commentsData="comments",
-    @message-user-no-auth="messageUserNoAuth($event)",
-    @message-add-comment-to-list="messageAddCommentToList($event)",
-    @message-comment-vote="messageCommentVote($event)",
     @message-comment="messageComment($event)"
   )
 </template>
@@ -33,9 +30,6 @@ export default {
       options: {
         text: {
           briefMaxLine: 2,
-        },
-        user: {
-          auth: true,
         },
         dataApi: {
           vote: {
@@ -66,29 +60,20 @@ export default {
     let comments = await response.json();
     this.comments = comments;
     this.isReady = true;
-    this.init();
   },
   methods: {
-    init() {
-      // Устанавливаем пользователя
-      this.listeners["set-curent-user"] = ({ name, img }) => {
-        Object.assign(this.options.user, {
+    // Авторизация пользователя
+    userAuth(data) {
+      let { name = "", img = "", auth = false } = data;
+      Object.assign(this.options, {
+        user: {
           name,
           img,
-        });
-        this.$refs.comments.$emit("run-init-options", this.options);
-      };
-      // this.$root.$on("set-curent-user", this.listeners["set-curent-user"]);
+          auth,
+        },
+      });
     },
-    // Cообщение о том что юзер не авторизован
-    messageUserNoAuth(data) {
-      console.log(data);
-    },
-    // Cообщение о добавлении нового комментария
-    messageAddCommentToList(data) {
-      console.log(data);
-    },
-
+    // Cообщение при действиях в комментариях
     messageComment(data) {
       console.log(data);
     },

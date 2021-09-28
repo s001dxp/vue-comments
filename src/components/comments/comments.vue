@@ -55,7 +55,7 @@ export default Comments;
 
   &__emoji-list
     width: 200px
-    height: 70px
+    height: 110px
     position: fixed
     background-color: #fff
     padding: 5px
@@ -85,7 +85,9 @@ export default Comments;
       position: absolute
       top: -17px
       right: 28px
-
+    &-item
+      margin: 2px 3px
+      display: inline-flex
   *
     box-sizing: border-box
 
