@@ -59,16 +59,26 @@ export default {
       optionsInit: {
         // Нндификатор первого предка в "mapItems" - с которого начнёт строится список
         parentIdStart: 0,
-        // Максимальное количество файлов *
-        filesMaxCount: 0,
+        // Максимальное количество файлов * (Реализовать)
+        filesMaxCount: Infinity,
+        // Максимальный размер файла
+        fileMaxSize: 2097152,
+        // Допустимые расшырения файлов - передвать как массив
+        validExtensions: {
+          default: ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"],
+          items: {},
+          str: "",
+        },
+        // Расшырения рактинок (нужны для превью чтобы понимать где картинка, а где файл)
+        imgExtensions,
         // emoji
         emojiLilst,
         // Проскролить к добавленному комментарию
         isScrollToComment: true,
         text: {
-          // Минимальная длина текста при вводе *
+          // Минимальная длина текста *
           minLength: 0,
-          // Максимальная длина текста при вводе *
+          // Максимальная длина текста *
           maxLength: 0,
           // Длина текста после которой добавляется кнопка "Еще"
           briefMaxLength: 150,
@@ -91,7 +101,7 @@ export default {
           btnЕxpand: "More",
           // Кнопка свернуть текст
           btnCollapse: "Collapse",
-          // Плейсхолдер формы
+          // Кнопка скачать файл
           btnFileDownload: "Download",
           // Плейсхолдер формы
           formPlaceholder: "Add a comment",
@@ -216,17 +226,8 @@ export default {
         formAddShowAlways: true,
         // Отображать кнопку "Ответить" - если пользователь не авторизован
         btnAnswerShowAlways: true,
-        // Допустимые расшырения файлов - передвать как массив
-        validExtensions: {
-          default: ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"],
-          items: {},
-          str: "",
-        },
-        fileMaxSize: 2097152,
         // Аватар по умолчанию
         imgDefaultUser,
-        // Расшырения рактинок (нужны для превью чтобы понимать где картинка, а где файл)
-        imgExtensions,
         // Действие преред удалением комментария - после вызова resolve(), комментарий будет удалён
         deleteCommentBefore: () => {
           return new Promise((resolve, reject) => {

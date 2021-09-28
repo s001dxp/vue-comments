@@ -29,76 +29,49 @@ npm run dev
 
 ##### 2. Скачать репозиторий [Back-End](https://github.com/EvgeniySaschenko/comments-api-server) и выполнить команды из описания:
 
-## Example Back-End
 
-- От бекенда нам необходимо получить 2 объекта `items` и `mapItems` - где ключами являются id комментариев:
-
-#### items - список комментаририев
-```
-  {
-    1549 : {
-      dateCreate: 1632329876,
-      dateUpdate: 1632329889,
-      dislike: 0,
-      like: 0,
-      voteValue: 0
-      files: [],
-      id: 1549,
-      isManageDelete: false,
-      isManageEdit: false,
-      parentId: 0,
-      text: "text 😇😇😇😇",
-      userImg: "",
-      userName: "Jhon",
-    },
-    1550 : {
-      dateCreate: 1632329876,
-      dateUpdate: 1632329889,
-      dislike: 2,
-      like: 0,
-      voteValue: -1,
-      files: ["http://localhost:8888/images/comments/1581_0.jpg"],
-      id: 1550,
-      isManageDelete: false,
-      isManageEdit: false,
-      parentId: 1549,
-      text: "text text",
-      userImg: "",
-      userName: "Ivan",
-    }
-  }
-```
-
-
-| Parameter | Type | Value | Description |
-| --- | :---: | :---: | --- |
-| dateCreate | `Number` | timestamp | дата создания |
-| dateUpdate | `Number` | 0 / timestamp | дата редактирования |
-| dislike | `Number` | <= 0 | количество дизлайков |
-| like | `Number` | <= 0 | количество лайков |
-| voteValue | `Number` | 0 - не голосовал, <br> 1 - like, <br> -1 - dislike | пользователь поставил лайк, дизлайк или  не голосовал |
-| files | `Array` | [] - нет файлов,<br> ["ссылка на файл 1", "ссылка на файл 2"] - есть файлы | список файлов |
-| id | `Number` / `String` | Number / String |  уникальный индификатор комментирия |
-| isManageDelete | `Boolean` | true / false | указывает на то что данный пользователь имеет право удалить комментирий |
-| isManageEdit | `Boolean` | true / false | указывает на то что данный пользователь имеет право редактировать комментирий |
-| parentId | `Number` / `String` | Number / String | индификатор предка (id комментария на который ответили) |
-| text | `String` | String | текст комментария |
-| userImg | `String` | String | изображение автора комментария |
-| userName | `String` | String | имя автора комментария |
-
-#### mapItems - описывает иерархию дерева (вложенность и последовательность) и количество комменрариев
-
-**mapItems - описывает иерархию дерева (вложенность и последовательность) и количество комменрариев
-
-```json
-{
-
-}
-```
-
-## Опции
+## Options
 
 | Parameter | Type | Default | Description |
 | --- | :---: | :---: | --- |
-| Parameter | Type | Default | Description |
-
+<!--Файлы-->
+in "mapItems" - from which the list is built |
+| filesMaxCount | `Number` | Infinity | Maximum number of files to upload (нужно реализовать) |
+| validExtensions | `Array` | ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"] | Allowed file extensions |
+<!--Остальное-->
+| **parentIdStart** | `Number` / `String` | 0 | The identifier of the first ancestor |
+| emojiLilst | `Array` / `String` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
+<!--Комментарии-->
+| isScrollToComment | `Boolean` | true | Scroll to added comment |
+| text.minLength | `Number` | 0 | Minimum text length (не реализовано) |
+| text.maxLength | `Number` | 0 | Maximum text length (не реализовано) |
+| text.briefMaxLength | `Number` | 150 | Maximum length of preview text (after which the "More" button is added) |
+| text.briefMaxLine | `Number` / `String` | 4 | Maximum number of lines of preview text (after which the "More" button is added).The values "none" and "number greater than 0" |
+| list.mainShowStart | `Number` | 5 | **On first boot** The number of comments in the main list before "Show more" |
+| list.secondShowStart | `Number` | 1 | **On first boot** The number of comments in the nested list before "Show more" appears |
+| list.mainShow | `Number` | 5 | **Сlick "Show more"** The number of comments that are displayed in the main list when you click on the button "Show more" |
+| list.secondShow | `Number` | 3 | **Сlick "Show more"** The number of comments that are displayed in the second list when you click on the button "Show more" |
+<!--Переводы-->
+| translation.btnAnswer | `String` | Answer | Answer button |
+| translation.btnЕxpand | `String` | More | Expand text button |
+| translation.btnCollapse | `String` | Collapse | Collapse button |
+| translation.btnFileDownload | `String` | Download | File download button |
+| translation.fileDelete | `String` | Delete | File delete button |
+| translation.fileRestore | `String` | Restore | File restore button |
+| translation.dateToday | `String` | Today | Text of today's date "Today" |
+| translation.dateYesterday | `String` | Yesterday | Yesterday's date text "Yesterday" |
+| translation.dateEditedText | `String` | Edited | Text before editing date |
+| translation.settingsDelete | `String` | Delete | Delete setting text |
+| translation.settingsEdit | `String` | Edit | Edit setting text |
+| translation.btnMore | `String` | Show more | Button "Show more" comments |
+| translation.btnMoreAnswers | `String` | Show answers | Button "Show answers" comments |
+| translation.formPlaceholder | `String` | Add a comment | Placeholder form |
+| translation.btnСancelEditing | `String` | Сancel editing | Answer button |
+| translation.formAnswerTo | `String` | Answer to | Phrase in the form when replying to a comment |
+| translation.messageFileParams | `String` | Maximum file size 2 Mb, supported extentions 'jpg', 'png', 'jpeg', 'jpeg', 'vue' | Information about the maximum file size and supported extensions |
+| translation.errorFormSend | `String` | Error sending form |  |
+| translation.errorVoteSend | `String` | Error sending vote |  |
+| translation.errorUnexpected | `String` | Unexpected error |  |
+| translation.errorGetComments | `String` | Error get comments |  |
+| translation.errorFileExtension | `String` | Error file extension |  |
+| translation.errorFileSize | `String` | Error file size |  |
