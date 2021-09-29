@@ -1,9 +1,12 @@
 {
-  "name": "vue-comments",
-  "version": "1.0.0",
-  "description": "A comments component for Vue.js 3 / Nuxt.js",
+  "name": "@saschenko/vue-comments",
+  "version": "0.1.0",
+  "description": "A comments component for Vue.js 3",
   "author": "Evgeniy Saschenko <evgeniy.saschenko@gmail.com>",
   "private": true,
+  "repository": "https://github.com/EvgeniySaschenko/vue-comments",
+  "homepage": "https://vue-comments.herokuapp.com/",
+  "main": "dist/vue-comments.umd.min.js",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -14,7 +17,6 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "is-touch-device": "^1.0.1",
-    "svg-sprite-loader": "^6.0.9",
     "vue": "^3.0.0",
     "vue-cookies": "^1.7.4",
     "vue-router": "^4.0.0-0",
@@ -86,13 +88,11 @@
     }
   },
   "keywords": [
-    "vue",
-    "component",
     "comments",
     "vue-comments",
     "discussion",
-    "nuxt",
-    "vue 3"
+    "vue comments",
+    "vue"
   ],
   "license": "MIT"
 }
