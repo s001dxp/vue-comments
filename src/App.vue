@@ -30,6 +30,7 @@ export default {
       options: {
         text: {
           briefMaxLine: 2,
+          maxLength: 15,
         },
         dataApi: {
           vote: {
@@ -49,6 +50,7 @@ export default {
           },
         },
         validExtensions: ["jpg", "png", "jpeg", "jpeg", "vue"],
+        filesMaxCount: 2,
       },
       listeners: {},
     };

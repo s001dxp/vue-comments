@@ -80,6 +80,8 @@ npm run dev
           errorGetComments: "Error get comments",
           errorFileExtension: "Error file extension",
           errorFileSize: "Error file size",
+          errorFileMaxCount: "Error file limit exceeded",
+          errorTextLength: "The length of the text must be between 0 and 1000 characters",
         },
 
         dataApi: {
@@ -189,8 +191,8 @@ npm run dev
 | Parameter | Type | Default | Description |
 | --- | :---: | --- | --- |
 | isScrollToComment | `Boolean` | true | Scroll to added comment |
-| text.minLength | `Number` | 0 | Minimum text length (не реализовано) |
-| text.maxLength | `Number` | 0 | Maximum text length (не реализовано) |
+| text.minLength | `Number` | 0 | Minimum text length |
+| text.maxLength | `Number` | 1000 | Maximum text length |
 | text.briefMaxLength | `Number` | 150 | Maximum length of preview text (after which the "More" button is added) |
 | text.briefMaxLine | `Number` / `String` | 4 | Maximum number of lines of preview text (after which the "More" button is added).The values "none" and "number greater than 0" |
 | list.mainShowStart | `Number` | 5 | **On first boot** The number of comments in the main list before "Show more" |
@@ -226,6 +228,9 @@ npm run dev
 | translation.errorGetComments | `String` | Error get comments |  |
 | translation.errorFileExtension | `String` | Error file extension |  |
 | translation.errorFileSize | `String` | Error file size |  |
+| translation.errorFileMaxCount | `String` | Error file limit exceeded |  |
+| translation.errorTextLength | `String` | The length of the text must be between 0 and 1000 characters |  |
+
 
 #### Data Api
 | Parameter | Type | Default | Description |

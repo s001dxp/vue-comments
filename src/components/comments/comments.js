@@ -59,7 +59,7 @@ export default {
       optionsInit: {
         // Нндификатор первого предка в "mapItems" - с которого начнёт строится список
         parentIdStart: 0,
-        // Максимальное количество файлов * (Реализовать)
+        // Максимальное количество файлов
         filesMaxCount: Infinity,
         // Максимальный размер файла
         fileMaxSize: 2097152,
@@ -137,6 +137,8 @@ export default {
           errorGetComments: "Error get comments",
           errorFileExtension: "Error file extension",
           errorFileSize: "Error file size",
+          errorFileMaxCount: "Error file limit exceeded",
+          errorTextLength: "The length of the text must be between 0 and 1000 characters",
         },
 
         dataApi: {

@@ -138,25 +138,40 @@ export default {
     },
     // Отправить сообщение на сервер
     sendComment() {
-      let text = this.text.trim();
+      let { user, filesMaxCount, translation, text } = this.options;
+      let textContent = this.text.trim();
       let isFiles = false;
+      let coutFiles = 0;
       if (this.files.length) {
         for (let file of this.files) {
           // Проверяем наличие файлов
           if (!file.isDelete) {
+            coutFiles++;
             isFiles = true;
           }
         }
       }
 
-      if ((!isFiles && !text) || !this.options.user.auth) return;
+      // Если количество файлов превышает допустимое, возвращаем ошибку
+      if (coutFiles > filesMaxCount) {
+        this.error = translation.errorFileMaxCount;
+        return;
+      }
+
+      // Если длина текста не соответсвует условию, возвращаем ошибку
+      if (textContent.length < text.minLength || textContent.length > text.maxLength) {
+        this.error = translation.errorTextLength;
+        return;
+      }
+
+      if ((!isFiles && !textContent) || !user.auth) return;
 
       this.isFormSending = true;
       this.error = "";
       if (!this.isEdited) {
-        this.addComment(text);
+        this.addComment(textContent);
       } else {
-        this.editComment(text);
+        this.editComment(textContent);
       }
     },
     // Добавить комментарий
