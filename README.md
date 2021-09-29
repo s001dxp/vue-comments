@@ -32,11 +32,148 @@ npm run dev
 
 ## Options
 
-#### Example
+### Example
 
 ```js
+      options: {
+        parentIdStart: 0,
+        filesMaxCount: Infinity,
+        fileMaxSize: 2097152,
+        validExtensions: {
+          default: ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"],
+          items: {},
+          str: "",
+        },
+        emojiLilst: ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"],
+        isScrollToComment: true,
+        text: {
+          minLength: 0,
+          maxLength: 0,
+          briefMaxLength: 150,
+          briefMaxLine: 4,
+        },
+        list: {
+          mainShowStart: 5,
+          secondShowStart: 1,
+          mainShow: 5,
+          secondShow: 3,
+        },
+        translation: {
+          btnAnswer: "Answer",
+          btnЕxpand: "More",
+          btnCollapse: "Collapse",
+          btnFileDownload: "Download",
+          formPlaceholder: "Add a comment",
+          fileDelete: "Delete",
+          fileRestore: "Restore",
+          dateToday: "Today",
+          dateYesterday: "Yesterday",
+          settingsDelete: "Delete",
+          settingsEdit: "Edit",
+          dateEditedText: "Edited:",
+          btnСancelEditing: "Сancel editing",
+          btnMore: "Show more",
+          btnMoreAnswers: "Show answers",
+          formAnswerTo: "Answer to",
+          messageFileParams:
+            "Maximum file size 2 Mb, supported extentions: jpg, png, jpeg, jpeg, gif, svg, wbpp",
+          errorFormSend: "Error sending form",
+          errorVoteSend: "Error sending vote",
+          errorUnexpected: "Unexpected error",
+          errorGetComments: "Error get comments",
+          errorFileExtension: "Error file extension",
+          errorFileSize: "Error file size",
+        },
 
+        dataApi: {
+          vote: {
+            send: ({ url, params }) => {
+              return fetch(url, params).then((response) => {
+                if (!response.ok) throw new Error(response);
+                return response.json();
+              });
+            },
+            url: "/",
+            params: {
+              method: "POST",
+            },
+            typeData: "",
+          },
+          commentsListGet: {
+            send: ({ url, params }) => {
+              return fetch(url, params).then((response) => {
+                if (!response.ok) throw new Error(response);
+                return response.json();
+              });
+            },
+            url: "/",
+            params: {
+              method: "GET",
+            },
+            typeData: "query",
+          },
+          commentAdd: {
+            send: ({ url, params }) => {
+              return fetch(url, params).then((response) => {
+                if (!response.ok) throw new Error(response);
+                return response.json();
+              });
+            },
+            url: "/",
+            params: {
+              method: "POST",
+            },
+            typeData: "",
+          },
+          commentEdit: {
+            send: ({ url, params }) => {
+              return fetch(url, params).then((response) => {
+                if (!response.ok) throw new Error(response);
+                return response.json();
+              });
+            },
+            url: "/",
+            params: {
+              method: "PUT",
+            },
+            typeData: "",
+          },
+          commentDelete: {
+            send: ({ url, params }) => {
+              return fetch(url, params).then((response) => {
+                if (!response.ok) throw new Error(response);
+                return response.json();
+              });
+            },
+            url: "/",
+            params: {
+              method: "DELETE",
+            },
+            typeData: "",
+          },
+        },
+        user: {
+          name: "User Name",
+          img: imgDefaultUser,
+          auth: false,
+        },
+        formAddShowAlways: true,
+        btnAnswerShowAlways: true,
+        imgDefaultUser,
+        deleteCommentBefore: () => {
+          return new Promise((resolve, reject) => {
+            resolve();
+          });
+        },
+        deleteCommentAfter: () => {
+          return new Promise((resolve, reject) => {
+            resolve();
+          });
+        },
+      }
 ```
+
+### Description
 
 #### Current user
 | Parameter | Type | Default | Description |
@@ -85,7 +222,7 @@ npm run dev
 | translation.formPlaceholder | `String` | Add a comment | Placeholder form |
 | translation.btnСancelEditing | `String` | Сancel editing | Answer button |
 | translation.formAnswerTo | `String` | Answer to | Phrase in the form when replying to a comment |
-| translation.messageFileParams | `String` | Maximum file size 2 Mb, supported extentions "jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp" | Information about the maximum file size and supported extensions |
+| translation.messageFileParams | `String` | Maximum file size 2 Mb, supported extentions: jpg, png, jpeg, jpeg, gif, svg, wbpp | Information about the maximum file size and supported extensions |
 | translation.errorFormSend | `String` | Error sending form |  |
 | translation.errorVoteSend | `String` | Error sending vote |  |
 | translation.errorUnexpected | `String` | Unexpected error |  |

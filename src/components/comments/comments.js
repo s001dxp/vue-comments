@@ -129,7 +129,7 @@ export default {
           formAnswerTo: "Answer to",
           // Сообщение о максимальном размере файлв и поддержываемых расшырениях
           messageFileParams:
-            "Maximum file size 2 Mb, supported extentions 'jpg', 'png', 'jpeg', 'jpeg', 'vue'",
+            "Maximum file size 2 Mb, supported extentions: jpg, png, jpeg, jpeg, gif, svg, wbpp",
           // Ошибки
           errorFormSend: "Error sending form",
           errorVoteSend: "Error sending vote",
