@@ -2,7 +2,6 @@ import CommentsForm from "./comments-form.vue";
 import CommentsItem from "./comments-item.vue";
 import iconFile from "./img/icon-file.svg";
 import regExp from "./reg-exp.js";
-import SymbolSvgIcons from "./img/svg-icons.svg";
 
 export default {
   name: "CommentsItem",
@@ -81,7 +80,6 @@ export default {
       // Показать список настроек: Редактировать / удалить
       isShowSettings: false,
       error: "",
-      SymbolSvgIcons,
     };
   },
   created() {

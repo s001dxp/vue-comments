@@ -15,7 +15,7 @@ include /src/assets/pug/index.pug
             span {{ comment.userName }}
             +e.SPAN.answer-to(v-if="userNameAnswer") 
               +e.SVG.answer-to-icon
-                use(:xlink:href="`${SymbolSvgIcons}#icon-share`")
+                use(:xlink:href="`#vue-comments-symbol-icon-share`")
               +e.answer-to-user(@click="scrollToComment(comment.parentId)") @{{ userNameAnswer }}
 
           // settings
@@ -24,19 +24,19 @@ include /src/assets/pug/index.pug
             @click="toggleSettings()"
           )
             +e.SVG.btn-settings-icon
-              use(:xlink:href="`${SymbolSvgIcons}#icon-settings`")
+              use(:xlink:href="`#vue-comments-symbol-icon-settings`")
             +e.settings(v-if="isShowSettings", @mouseleave="toggleSettings()")
               +b.comments-spiner(v-if="isDeleteSending")
                 +e.element
               +e.settings-closed(@mouseup="toggleSettings()")
                 svg
-                  use(:xlink:href="`${SymbolSvgIcons}#icon-closed`")
+                  use(:xlink:href="`#vue-comments-symbol-icon-closed`")
               +e.settings-item(
                 v-if="comment.isManageEdit",
                 @click="toggleSettings(), toggleEdited(true), toggleForm(true)"
               )
                 +e.SVG.settings-icon
-                  use(:xlink:href="`${SymbolSvgIcons}#icon-edit`")
+                  use(:xlink:href="`#vue-comments-symbol-icon-edit`")
                 span {{ options.translation.settingsEdit }}
               br
               +e.settings-item(
@@ -44,13 +44,13 @@ include /src/assets/pug/index.pug
                 @click="deleteMessage(comment)"
               )
                 +e.SVG.settings-icon
-                  use(:xlink:href="`${SymbolSvgIcons}#icon-delete`")
+                  use(:xlink:href="`#vue-comments-symbol-icon-delete`")
                 span {{ options.translation.settingsDelete }}
 
         +e.file-gallery(v-if="files.length", :class="{ active: isOpenGallery }")
           // closed
           +e.SVG.file-gallery-closed(v-if="isOpenGallery", @click="hideGallery()")
-            use(:xlink:href="`${SymbolSvgIcons}#icon-closed`")
+            use(:xlink:href="`#vue-comments-symbol-icon-closed`")
           // download
           +e.file-gallery-box-img
             img.comments-item__file-gallery(
@@ -65,11 +65,11 @@ include /src/assets/pug/index.pug
               @click="leafSlide(-1)"
             )
               svg
-                use(:xlink:href="`${SymbolSvgIcons}#icon-arrow-left`")
+                use(:xlink:href="`#vue-comments-symbol-icon-arrow-left`")
             // next
             +e.file-gallery-arrow--next(v-if="files.length > 1", @click="leafSlide(1)")
               svg
-                use(:xlink:href="`${SymbolSvgIcons}#icon-arrow-right`")
+                use(:xlink:href="`#vue-comments-symbol-icon-arrow-right`")
             +e.A.file-gallery-download(
               download,
               v-if="files[slideNum].type === 'icon'",
@@ -111,14 +111,14 @@ include /src/assets/pug/index.pug
                 @click="sendVote(1, comment)",
                 :class="{ active: comment.voteValue == 1 }"
               )
-                use(:xlink:href="`${SymbolSvgIcons}#icon-like`")
+                use(:xlink:href="`#vue-comments-symbol-icon-like`")
               +e.vote-count {{ comment.like }}
             +e.vote-item
               +e.SVG.vote-btn(
                 @click="sendVote(-1, comment)",
                 :class="{ active: comment.voteValue == -1 }"
               )
-                use(:xlink:href="`${SymbolSvgIcons}#icon-dislike`")
+                use(:xlink:href="`#vue-comments-symbol-icon-dislike`")
               +e.vote-count {{ comment.dislike }}
 
       // btn-more - кнопка показать еще

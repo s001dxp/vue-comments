@@ -15,6 +15,17 @@ module.exports = {
     module: {
       rules: [
         {
+          test: /\.svg$/i,
+          use: [
+            {
+              loader: "raw-loader",
+              options: {
+                esModule: false,
+              },
+            },
+          ],
+        },
+        {
           test: /\.pug$/,
           loader: "pug-plain-loader",
           options: {

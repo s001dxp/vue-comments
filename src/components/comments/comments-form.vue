@@ -41,7 +41,7 @@ include /src/assets/pug/index.pug
       +e.textarea-panel
         +e.LABEL.textarea-panel-upload-file(@change="createFilePreview($refs.files.files)")
           +e.SVG.textarea-panel-icon
-            use(:xlink:href="`${SymbolSvgIcons}#icon-image`")
+            use(:xlink:href="`#vue-comments-symbol-icon-image`")
           +e.INPUT.textarea-panel-upload-file-input(
             type="file",
             ref="files",
@@ -55,11 +55,11 @@ include /src/assets/pug/index.pug
           @mouseleave="toggleEmojiList(null, $event, false)"
         )
           +e.SVG.textarea-panel-icon
-            use(:xlink:href="`${SymbolSvgIcons}#icon-smile`")
+            use(:xlink:href="`#vue-comments-symbol-icon-smile`")
     +e.message-file-params(v-if="options.translation.messageFileParams") {{ options.translation.messageFileParams }}
   +e.col-btn-send
     +e.SVG.btn-send(@click="sendComment()")
-      use(:xlink:href="`${SymbolSvgIcons}#icon-send`")
+      use(:xlink:href="`#vue-comments-symbol-icon-send`")
 </template>
 
 <script>

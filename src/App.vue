@@ -10,6 +10,14 @@ include /src/assets/pug/index.pug
     :commentsData="comments",
     @message-comment="messageComment($event)"
   )
+
+  comments(
+    v-if="isReady",
+    :options="options",
+    ref="comments",
+    :commentsData="comments",
+    @message-comment="messageComment($event)"
+  )
 </template>
 
 <script>

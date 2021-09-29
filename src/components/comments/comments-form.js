@@ -1,5 +1,4 @@
-import iconFile from "raw-loader!./img/icon-file.svg";
-import SymbolSvgIcons from "raw-loader!./img/svg-icons.svg";
+import iconFile from "./img/icon-file.svg";
 
 export default {
   name: "CommentsForm",
@@ -38,7 +37,6 @@ export default {
       error: "",
       // Указывает на то что в данный момент выполняется отправка формы
       isFormSending: false,
-      SymbolSvgIcons,
     };
   },
   watch: {

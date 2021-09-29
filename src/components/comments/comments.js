@@ -1,5 +1,6 @@
 import CommentsItem from "./comments-item.vue";
 import CommentsForm from "./comments-form.vue";
+import CommentsSvgIcons from "./comments-svg-icons.vue";
 import imgDefaultUser from "./img/default-user.png";
 import imgExtensions from "./data/img-extensions.json";
 import emojiLilst from "./data/emoji.json";
@@ -10,6 +11,7 @@ export default {
   components: {
     CommentsItem,
     CommentsForm,
+    CommentsSvgIcons,
   },
   provide() {
     return {
