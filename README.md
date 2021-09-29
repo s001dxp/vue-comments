@@ -32,15 +32,11 @@ npm run dev
 
 ## Options
 
+#### Example
 
-#### Other
-| Parameter | Type | Default | Description |
-| --- | :---: | --- | --- |
-| parentIdStart | `Number` / `String` | 0 | The identifier of the first ancestor |
-| emojiLilst | `Array` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
-| formAddShowAlways | `Boolean` | true | Using this parameter, you can show or hide the form for adding a comment. This may be needed if you do not want to show the form when the user is not logged in. |
-| btnAnswerShowAlways | `Boolean` | true | Use this option to show or hide the Reply to Comment button. This may be needed if you do not want to show the button when the user is not logged in. |
-| imgDefaultUser | `String` | image user | Default user avatar. |
+```js
+
+```
 
 #### Current user
 | Parameter | Type | Default | Description |
@@ -67,6 +63,11 @@ npm run dev
 | list.secondShowStart | `Number` | 1 | **On first boot** The number of comments in the nested list before "Show more" appears |
 | list.mainShow | `Number` | 5 | **Сlick "Show more"** The number of comments that are displayed in the main list when you click on the button "Show more" |
 | list.secondShow | `Number` | 3 | **Сlick "Show more"** The number of comments that are displayed in the second list when you click on the button "Show more" |
+| deleteCommentBefore | `Function` | ```() => {
+          return new Promise((resolve, reject) => {
+            resolve();
+          });
+        }``` | You can describe here the action that must be performed before deleting a comment. If resolve () is called, the comment will be removed, unless reject () the comment is removed. |
 
 #### Translation
 | Parameter | Type | Default | Description |
@@ -123,3 +124,12 @@ send: ({ url, params }) => {
   });
 }
 ```
+
+#### Other
+| Parameter | Type | Default | Description |
+| --- | :---: | --- | --- |
+| parentIdStart | `Number` / `String` | 0 | The identifier of the first ancestor |
+| emojiLilst | `Array` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
+| formAddShowAlways | `Boolean` | true | Using this parameter, you can show or hide the form for adding a comment. This may be needed if you do not want to show the form when the user is not logged in. |
+| btnAnswerShowAlways | `Boolean` | true | Use this option to show or hide the Reply to Comment button. This may be needed if you do not want to show the button when the user is not logged in. |
+| imgDefaultUser | `String` | image user | Default user avatar. |
