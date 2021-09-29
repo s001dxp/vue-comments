@@ -63,7 +63,8 @@ npm run dev
 | list.secondShowStart | `Number` | 1 | **On first boot** The number of comments in the nested list before "Show more" appears |
 | list.mainShow | `Number` | 5 | **Сlick "Show more"** The number of comments that are displayed in the main list when you click on the button "Show more" |
 | list.secondShow | `Number` | 3 | **Сlick "Show more"** The number of comments that are displayed in the second list when you click on the button "Show more" |
-| deleteCommentBefore | `Function` | `() => { return new Promise((resolve, reject) => { resolve }` | You can describe here the action that must be performed before deleting a comment. If resolve () is called, the comment will be removed, unless reject () the comment is removed. |
+| deleteCommentBefore | `Function` | `() => <br>{ return new Promise((resolve, reject) => { resolve }` | You can describe here the action that must be performed before deleting a comment. If `resolve()` is called, the comment will be removed, unless `reject()` the comment is removed. |
+| deleteCommentAfter | `Function` | `() => <br>{ return new Promise((resolve, reject) => { resolve }` | You can describe here the action that must be performed after deleting a comment. If resolve() is called, the action will be committed, If reject() is called, the action will not be performed. |
 
 #### Translation
 | Parameter | Type | Default | Description |
