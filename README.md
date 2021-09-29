@@ -64,8 +64,7 @@ npm run dev
 | list.mainShow | `Number` | 5 | **Сlick "Show more"** The number of comments that are displayed in the main list when you click on the button "Show more" |
 | list.secondShow | `Number` | 3 | **Сlick "Show more"** The number of comments that are displayed in the second list when you click on the button "Show more" |
 | deleteCommentBefore | `Function` | ```js 
-() => { return new Promise((resolve, reject) => { resolve }
-``` | You can describe here the action that must be performed before deleting a comment. If resolve () is called, the comment will be removed, unless reject () the comment is removed. |
+() => { return new Promise((resolve, reject) => { resolve } ``` | You can describe here the action that must be performed before deleting a comment. If resolve () is called, the comment will be removed, unless reject () the comment is removed. |
 
 #### Translation
 | Parameter | Type | Default | Description |
