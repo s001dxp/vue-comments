@@ -59,7 +59,7 @@ include /src/assets/pug/index.pug
     +e.message-file-params(v-if="options.translation.messageFileParams") {{ options.translation.messageFileParams }}
   +e.col-btn-send
     +e.SVG.btn-send(@click="sendComment()")
-      use(:xlink:href="`${require('./img/svg-icons.svg')}#icon-send`")
+      use(:xlink:href="`${SymbolSvgIcons}#icon-send`")
 </template>
 
 <script>

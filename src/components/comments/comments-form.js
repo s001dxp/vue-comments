@@ -1,5 +1,5 @@
-import iconFile from "./img/icon-file.svg";
-import SymbolSvgIcons from "./img/svg-icons.svg";
+import iconFile from "raw-loader!./img/icon-file.svg";
+import SymbolSvgIcons from "raw-loader!./img/svg-icons.svg";
 
 export default {
   name: "CommentsForm",
