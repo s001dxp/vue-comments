@@ -45,7 +45,7 @@ npm run dev
         isScrollToComment: true,
         text: {
           minLength: 0,
-          maxLength: 0,
+          maxLength: 1000,
           briefMaxLength: 150,
           briefMaxLine: 4,
         },
