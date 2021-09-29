@@ -6,7 +6,12 @@
   "private": true,
   "repository": "https://github.com/EvgeniySaschenko/vue-comments",
   "homepage": "https://vue-comments.herokuapp.com/",
-  "main": "dist/vue-comments.umd.min.js",
+  "main": "dist/vue-comments.umd.js",
+  "module": "dist/vue-comments.esm.js",
+  "unpkg": "dist/vue-comments.min.js",
+  "browser": {
+    "./sfc": "src/components/comments/vue-comments.vue"
+  },
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
