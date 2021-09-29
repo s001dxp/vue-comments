@@ -153,12 +153,12 @@ npm run dev
         },
         user: {
           name: "User Name",
-          img: imgDefaultUser,
+          img: "/img/default-user.png",
           auth: false,
         },
         formAddShowAlways: true,
         btnAnswerShowAlways: true,
-        imgDefaultUser,
+        imgDefaultUser: "/img/default-user.png",
         deleteCommentBefore: () => {
           return new Promise((resolve, reject) => {
             resolve();
