@@ -2,18 +2,19 @@
 include /src/assets/pug/index.pug
 +b.form-add-user
   +e.form(v-if="isShowForm")
-    div Имя пользователя*
+    b User name* (without cyrillic)
     div 
       +e.INPUT.field(v-model="userName")
-    div Аватар
+    b Avatar user
     div 
       +e.INPUT.upload-file-input(type="file", ref="avatar", accept=".jpg,.png,.jpeg")
+    br
     div
-      +e.BUTTON.btn(@click="addUser()") Добавить пользователя
+      +e.BUTTON.btn(@click="addUser()") Add user
   +e.message
     +e.message {{ message }}
     +e.error {{ error }}
-    +e.BUTTON.btn.exit(@click="exit()", v-if="!isShowForm") Выйти
+    +e.BUTTON.btn.exit(@click="exit()", v-if="!isShowForm") Exit
 </template>
 
 <script>
@@ -81,13 +82,15 @@ export default {
     // Выход
     exit() {
       $cookies.remove("user");
-      this.isShowForm = true;
-      this.userName = "";
-      this.error = "";
-      this.message = "";
-      this.$emit("user-auth", {
-        auth: false,
-      });
+      // this.isShowForm = true;
+      // this.userName = "";
+      // this.error = "";
+      // this.message = "";
+      // this.$emit("user-auth", {
+      //   auth: false,
+      // });
+      // eslint-disable-next-line no-self-assign
+      window.location.href = window.location.href;
     },
   },
 };

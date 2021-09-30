@@ -358,10 +358,9 @@ export default {
 
       deepExtend(this.optionsInit, options);
 
-      // Если пользователь разлогинился - ставим дефолтный аватар
-      if (options.user && !options.user.auth) {
+      // Если пользователь разлогинился, или если пользователь авторизован но нет аватара - ставим дефолтный аватар
+      if (options.user && (!options.user.auth || (options.user.auth && !options.user.img))) {
         this.optionsInit.user.img = this.optionsInit.imgDefaultUser;
-        console.log(this.optionsInit.user.img);
       }
       this.optionsInit.validExtensions = createValidExtensions();
     },

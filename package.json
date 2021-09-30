@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "BUILD_MODE_SITE=true vue-cli-service build && node copu-dist.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name vue-comments src/lib.js"
@@ -42,6 +42,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
+    "fs-extra": "^10.0.0",
     "prettier": "^2.2.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",

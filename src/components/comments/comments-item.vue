@@ -49,12 +49,12 @@ include /src/assets/pug/index.pug
 
         +e.file-gallery(v-if="files.length", :class="{ active: isOpenGallery }")
           // closed
-          +e.SVG.file-gallery-closed(v-if="isOpenGallery", @click="hideGallery()")
+          +e.SVG.file-gallery-closed(v-if="isOpenGallery", @click="toggleGallery(false)")
             use(:xlink:href="`#vue-comments-symbol-icon-closed`")
           // download
           +e.file-gallery-box-img
             img.comments-item__file-gallery(
-              @click="showGallery()",
+              @click="toggleGallery(true)",
               :src="files[slideNum].type === 'icon' ? iconFile : files[slideNum].src",
               :alt="files[slideNum].name",
               :class="`comments-item__file-gallery-${files[slideNum].type}`"

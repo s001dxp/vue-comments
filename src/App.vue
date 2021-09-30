@@ -1,16 +1,11 @@
 <template lang="pug">
 include /src/assets/pug/index.pug
 
-+b.page_index
++b.page
+  +e.box
+    h1 VUE-COMMENTS
+    img(src="@/assets/logo.png")
   form-add-user(@user-auth="userAuth($event)")
-  comments(
-    v-if="isReady",
-    :options="options",
-    ref="comments",
-    :commentsData="comments",
-    @message-comment="messageComment($event)"
-  )
-
   comments(
     v-if="isReady",
     :options="options",
@@ -92,7 +87,12 @@ export default {
 </script>
 
 <style lang="sass">
-.page_index
+.page
   margin: 0 auto
   max-width: 700px
+  font-family: Arial, Helvetica, sans-serif
+  &__box
+    text-align: center
+    h1
+      font-weight: 700
 </style>

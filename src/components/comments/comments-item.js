@@ -317,13 +317,18 @@ export default {
         }
       }
     },
-    // Открыть галлерею
-    showGallery() {
-      this.isOpenGallery = true;
+    // Открыть / Закрыть галлерею
+    toggleGallery(isOpenGallery = !this.isOpenGallery) {
+      this.isOpenGallery = isOpenGallery;
+      this.toggleScroll(isOpenGallery);
     },
-    // Закрыть галлерею
-    hideGallery() {
-      this.isOpenGallery = false;
+    // Блокировать / разблокировать скролл
+    toggleScroll(isLock) {
+      let overflow = "auto";
+      if (isLock) {
+        overflow = "hidden";
+      }
+      document.querySelector("body").style.overflow = overflow;
     },
     // Форматировать дату
     formatDate(commentTimestamp) {
