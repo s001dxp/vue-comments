@@ -11,8 +11,6 @@
 
 **<a href="https://github.com/EvgeniySaschenko/comments-api-server">Example Back-End</a>**
 
-<br>
-
 ## Description
 <a name="description"></a>
 > The tree comment component for **Vue.js 3**  **<a href="https://vue-comments.herokuapp.com/" target="_blank">Demo</a>**  (Alpha)
