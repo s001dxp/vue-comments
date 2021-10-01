@@ -4,11 +4,12 @@
 
 <br>
 
-<a href="#component-capabilities">Component capabilities</a>
-<a href="#component-capabilities">Component capabilities</a>
+**<a href="#component-capabilities">Component capabilities</a>** | 
+**<a href="#options">Options</a>** | 
 
 
-## Component capabilities {#component-capabilities}
+## Component capabilities
+<a name="abccomponent-capabilitiesd"></a>
 - Add / edit / delete comments.
 - Adding files. If there is more than one file - view in the form of a gallery.
 - Emoji. **Unicode characters are used as emoji. The representation of the emoji depend of the system. Will be possible that the system don't have all the representations.**
@@ -36,6 +37,7 @@ npm run dev
 ##### 2. Скачать репозиторий [Back-End](https://github.com/EvgeniySaschenko/comments-api-server) и выполнить команды из описания:
 
 ## Options
+<a name="options"></a>
 
 ### Options example
 
