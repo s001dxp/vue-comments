@@ -39,6 +39,9 @@ yarn add @saschenko/vue-comments
 
 `options.user.auth` - the parameter must be "true" so that the user can leave comments / like.
 
+```js
+import Comments from '@saschenko/vue-comments';
+```
 
 ```js
 <Comments @message-comment="messageComment($event)", :options="options",  :commentsData="comments" />
