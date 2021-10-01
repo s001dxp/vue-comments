@@ -22,9 +22,13 @@
 ## Install
 <a name="install"></a>
 
+```bash
 npm install @saschenko/vue-comments --save
+```
 or
+```bash
 yarn add @saschenko/vue-comments
+```
 
 ## Usage example
 <a name="usage-example"></a>
