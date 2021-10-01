@@ -108,8 +108,7 @@ export default {
 }
 ```
 
-You can change the `options` after the component has been mounted by using `Object.assign()`. 
-#### Example:
+You can change the `options` after the component has been mounted by using `Object.assign()`:
 
 ```js
 Object.assign(this.options, {
@@ -121,7 +120,11 @@ Object.assign(this.options, {
 });
 ```
 
+If initialization data needs to be received asynchronously, use `v-if` to display the component:
 
+```js
+  <Comments v-if="isShow",  :commentsData="commentsData" />
+```
 
 
 ## Для просмотра локально надо:
