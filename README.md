@@ -13,7 +13,7 @@
 <a name="description"></a>
 > The tree comment component for **Vue.js 3** **<a href="https://vue-comments.herokuapp.com/" target="_blank">Demo</a>**.<br>
 > I draw your attention to the fact that this component is not finished yet, its functionality can be changed, removed and supplemented.<br>
-> If you see an error, or you have any suggestions for improving or adding functionality, please create <a href="https://github.com/EvgeniySaschenko/vue-comments">issues</a>
+> If you see an error, or you have any suggestions for improving or adding functionality, please create <a href="https://github.com/EvgeniySaschenko/vue-comments/issues">issues</a>
 
 - Add / edit / delete comments.
 - Adding files. If there is more than one file - view in the form of a gallery.
