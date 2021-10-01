@@ -41,7 +41,7 @@ yarn add @saschenko/vue-comments
 
 
 ```js
-<Comments @message-comment="messageComment($event)", :options="options",  :commentsData="commentsData" />
+<Comments @message-comment="messageComment($event)", :options="options",  :commentsData="comments" />
 
 export default {
   data() {
@@ -71,7 +71,7 @@ export default {
           img: "http://vue-comments.herokuapp.com/img/logo.82b9c7a5.png"
         }
       },
-      commentsData:   {
+      comments:   {
         1549 : {
           dateCreate: 1632329876,
           dateUpdate: 1632329889,
@@ -123,7 +123,24 @@ Object.assign(this.options, {
 If initialization data needs to be received asynchronously, use `v-if` to display the component:
 
 ```js
-  <Comments v-if="isShow",  :commentsData="commentsData" />
+  <Comments v-if="isShow",  :commentsData="comments" />
+
+  export default {
+    async created() {
+      let response = await fetch("/api/comments/?parentId=0&quantityCurrent=0", {
+        headers: { Cookie: 'user...' },
+      });
+      let comments = await response.json();
+      this.comments = comments;
+      this.isShow = true;
+    },
+    data() {
+      return {
+        isShow: false,
+        comments: {}
+      }
+    },
+  }
 ```
 
 
