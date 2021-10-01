@@ -9,7 +9,6 @@ include /src/assets/pug/index.pug
   comments(
     v-if="isReady",
     :options="options",
-    ref="comments",
     :commentsData="comments",
     @message-comment="messageComment($event)"
   )
