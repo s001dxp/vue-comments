@@ -1,16 +1,22 @@
 # vue-comments
 
-> Компонент древовидных комментариев для Vue.js 3  **[Demo](https://vue-comments.herokuapp.com/)** (Alpha)
+> The tree comment component for Vue.js 3  **<a href="https://vue-comments.herokuapp.com/" target="_blank">Demo</a>**  (Alpha)
 
-## Возможности
-- Добавление / редактирование / удаление комментариев 
-- Добавление файлов, если файлов больше одного - просмотр в виде галлереи
-- Смайлики
-- Преобразование http / https в гиперссылку
-- Подгрузка комментариев
-- Возможность ограничить отобржение текста по количеству сторк / символов
-- Лайки / дизлайки
-- Адаптация под мобильные устройства
+<br>
+
+<a href="#component-capabilities">Component capabilities</a>
+<a href="#component-capabilities">Component capabilities</a>
+
+
+## Component capabilities {#component-capabilities}
+- Add / edit / delete comments.
+- Adding files. If there is more than one file - view in the form of a gallery.
+- Emoji. **Unicode characters are used as emoji. The representation of the emoji depend of the system. Will be possible that the system don't have all the representations.**
+- Convert http / https to hyperlink.
+- Loading comments.
+- The ability to limit the display of text by the number of lines / characters.
+- Likes / Dislikes
+- Adaptation for mobile devices.
 
 ## Для просмотра локально надо:
 
@@ -29,7 +35,9 @@ npm run dev
 
 ##### 2. Скачать репозиторий [Back-End](https://github.com/EvgeniySaschenko/comments-api-server) и выполнить команды из описания:
 
-## Options example
+## Options
+
+### Options example
 
 ```js
       {
@@ -172,7 +180,7 @@ npm run dev
       }
 ```
 
-## Options description
+### Options description
 
 #### Current user
 | Parameter | Type | Default | Description |
