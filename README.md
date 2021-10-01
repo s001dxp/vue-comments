@@ -4,14 +4,17 @@
 **<a href="#install">Install</a>** | 
 **<a href="#usage-example">Usage example</a>** | 
 **<a href="#options">Options</a>** | 
-**<a href="#events">Events</a>** | 
+**<a href="#events">Events</a>**
 
 
 **<a href="https://github.com/EvgeniySaschenko/comments-api-server">Example Back-End server</a>**
 
 ## Description
 <a name="description"></a>
-> The tree comment component for **Vue.js 3**  **<a href="https://vue-comments.herokuapp.com/" target="_blank">Demo</a>**  (Alpha)
+> The tree comment component for **Vue.js 3**  
+> **<a href="https://vue-comments.herokuapp.com/" target="_blank">DEMO</a>**
+> I draw your attention to the fact that this component is not finished yet, its functionality can be changed, removed and supplemented.
+> If you see an error, or you have any suggestions for improving or adding functionality, please create <a href="https://github.com/EvgeniySaschenko/vue-comments">issues</a>
 
 - Add / edit / delete comments.
 - Adding files. If there is more than one file - view in the form of a gallery.
