@@ -11,9 +11,9 @@
 
 ## Description
 <a name="description"></a>
-> The tree comment component for **Vue.js 3**  
-> **<a href="https://vue-comments.herokuapp.com/" target="_blank">DEMO</a>**
-> I draw your attention to the fact that this component is not finished yet, its functionality can be changed, removed and supplemented.
+> The tree comment component for **Vue.js 3**.<br>
+> **<a href="https://vue-comments.herokuapp.com/" target="_blank">DEMO</a>**<br>
+> I draw your attention to the fact that this component is not finished yet, its functionality can be changed, removed and supplemented.<br>
 > If you see an error, or you have any suggestions for improving or adding functionality, please create <a href="https://github.com/EvgeniySaschenko/vue-comments">issues</a>
 
 - Add / edit / delete comments.
