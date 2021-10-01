@@ -2,7 +2,7 @@
 
 **<a href="#description">Description</a>** | 
 **<a href="#options">Options</a>** | 
-
+**<a href="#events">Events</a>** | 
 
 ## Description
 <a name="description"></a>
@@ -36,6 +36,8 @@ npm run dev
 
 ## Options
 <a name="options"></a>
+
+You can change the behavior of the component using the options
 
 ### Options example
 
@@ -277,3 +279,23 @@ send: ({ url, params }) => {
 | formAddShowAlways | `Boolean` | true | Using this parameter, you can show or hide the form for adding a comment. This may be needed if you do not want to show the form when the user is not logged in. |
 | btnAnswerShowAlways | `Boolean` | true | Use this option to show or hide the Reply to Comment button. This may be needed if you do not want to show the button when the user is not logged in. |
 | imgDefaultUser | `String` | image user | Default user avatar. |
+
+## Events
+<a name="events"></a>
+You can get information about what action the user has taken (for example, the user has put a like), for this you need to add a <b>message-comment</b> listener to the component
+
+#### Example
+
+```js
+  <Comments @message-comment="messageComment($event)" />
+
+  export default {
+    methods: {
+      messageComment(data) {
+        console.log(data);
+      }
+    }
+  }
+```
+
+
