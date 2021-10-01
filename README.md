@@ -1,17 +1,15 @@
 # vue-comments
 
-[![Build Status][3]][4]
-[![dependency status][5]][6]
-[![dev dependency status][7]][8]
-[![License][license-image]][license-url]
-[![Downloads][downloads-image]][downloads-url]
-
-
 **<a href="#description">Description</a>** | 
 **<a href="#install">Install</a>** | 
 **<a href="#usage-example">Usage example</a>** | 
 **<a href="#options">Options</a>** | 
 **<a href="#events">Events</a>** | 
+
+<br>
+<br>
+**<a href="https://github.com/EvgeniySaschenko/comments-api-server">Example Back-End</a>** | 
+<br>
 
 ## Description
 <a name="description"></a>
@@ -153,24 +151,6 @@ If initialization data needs to be received asynchronously, use `v-if` to displa
     },
   }
 ```
-
-
-## Для просмотра локально надо:
-
-##### 1. Скачать данный репозиторий (Front-End) и выполнить следующие команды:
-
-#### Установка
-
-```
-npm install
-```
-
-#### Запуск в режиме разработки
-```
-npm run dev
-```
-
-##### 2. Скачать репозиторий [Back-End](https://github.com/EvgeniySaschenko/comments-api-server) и выполнить команды из описания:
 
 ## Options
 <a name="options"></a>

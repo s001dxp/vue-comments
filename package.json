@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "BUILD_MODE_SITE=true vue-cli-service build && node copu-dist.js",
+    "build": "vue-cli-service build && node copu-dist.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name vue-comments src/lib.js"
