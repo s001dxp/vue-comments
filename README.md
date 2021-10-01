@@ -136,7 +136,7 @@ If initialization data needs to be received asynchronously, use `v-if` to displa
 
   export default {
     async created() {
-      let response = await fetch("/api/comments/?parentId=0&quantityCurrent=0", {
+      let response = await fetch("/api/comments/?parentId=0", {
         headers: { Cookie: 'user...' },
       });
       let comments = await response.json();
