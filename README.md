@@ -6,9 +6,11 @@
 **<a href="#options">Options</a>** | 
 **<a href="#events">Events</a>** | 
 
+
 <br>
-<br>
-**<a href="https://github.com/EvgeniySaschenko/comments-api-server">Example Back-End</a>** | 
+
+**<a href="https://github.com/EvgeniySaschenko/comments-api-server">Example Back-End</a>**
+
 <br>
 
 ## Description
