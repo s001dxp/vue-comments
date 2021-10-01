@@ -34,7 +34,9 @@ yarn add @saschenko/vue-comments
 <a name="usage-example"></a>
 
 `options` -  component settings
+
 `commentsData` - initialization data. The description of the fields can be found at this link: <a href="https://github.com/EvgeniySaschenko/comments-api-server">Back-End</a>
+
 `options.user.auth` - The parameter must be "true" so that the user can leave comments / like.
 
 
