@@ -28,8 +28,12 @@
 <a name="usage-example"></a>
 
 
+
+
 ```js
 <Comments @message-comment="messageComment($event)", :options="options",  :commentsData="commentsData" />
+
+`options.user.auth` - The parameter must be "true" so that the user can leave comments / like.
 
 export default {
   data() {
@@ -65,7 +69,7 @@ export default {
           dateUpdate: 1632329889,
           dislike: 0,
           like: 0,
-          voteValue: 0
+          voteValue: 0,
           files: [],
           id: 1549,
           isManageDelete: false,
