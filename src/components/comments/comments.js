@@ -59,6 +59,8 @@ export default {
       // Контекст текущей формы - для того чтобы добавлять смайлы
       contextCommentsForm: null,
       optionsInit: {
+        // Кастомный css класс
+        yourCssClass: "",
         // Нндификатор первого предка в "mapItems" - с которого начнёт строится список
         parentIdStart: 0,
         // Максимальное количество файлов
@@ -77,6 +79,8 @@ export default {
         emojiLilst,
         // Проскролить к добавленному комментарию
         isScrollToComment: true,
+        // Показывать кнопки для голосования
+        isShowVote: true,
         text: {
           // Минимальная длина текста *
           minLength: 0,

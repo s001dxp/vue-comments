@@ -1,6 +1,9 @@
 <template lang="pug">
 include /src/assets/pug/index.pug
-+b.comments(data-vue-comments, :class="{ 'comments--lock': isScrollDocument }")
++b.comments(
+  data-vue-comments,
+  :class="{ 'comments--lock': isScrollDocument, [optionsInit.yourCssClass]: optionsInit.yourCssClass }"
+)
   comments-svg-icons
   // Emoji
   transition(name="fade")

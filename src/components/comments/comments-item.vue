@@ -103,7 +103,7 @@ include /src/assets/pug/index.pug
               +e.element
 
           // like | dislike
-          +e.vote
+          +e.vote(v-if="options.isShowVote")
             +b.comments-spiner(v-if="isVoteSending")
               +e.element
             +e.vote-item

@@ -267,12 +267,17 @@ send: ({ url, params }) => {
 | formAddShowAlways | `Boolean` | true | Using this parameter, you can show or hide the form for adding a comment. This may be needed if you do not want to show the form when the user is not logged in. |
 | btnAnswerShowAlways | `Boolean` | true | Use this option to show or hide the Reply to Comment button. This may be needed if you do not want to show the button when the user is not logged in. |
 | imgDefaultUser | `String` | image user | Default user avatar. |
+| isShowVote | `Boolean` | true | If true, like / dislike buttons are displayed |
+| yourCssClass | `String` |  | You can add your css class to the parent tag |
+
 
 ### Options example
 
 ```js
       {
         parentIdStart: 0,
+        isShowVote: true,
+        yourCssClass: "",
         filesMaxCount: Infinity,
         fileMaxSize: 2097152,
         validExtensions: {
