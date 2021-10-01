@@ -284,18 +284,27 @@ send: ({ url, params }) => {
 <a name="events"></a>
 You can get information about what action the user has taken (for example, the user has put a like), for this you need to add a <b>message-comment</b> listener to the component
 
-#### Example
+#### Events example
 
 ```js
-  <Comments @message-comment="messageComment($event)" />
+<Comments @message-comment="messageComment($event)" />
 
-  export default {
-    methods: {
-      messageComment(data) {
-        console.log(data);
-      }
+export default {
+  methods: {
+    messageComment(data) {
+      console.log(data);
     }
   }
+}
 ```
 
+#### Events description
 
+| Type  | Description |
+| --- | --- |
+| comment-add | Adding a comment|
+| comment-edit | Editing a comment |
+| comment-delete | Deleting a comment |
+| comments-show | By pressing the button "Show more comments" |
+| vote | Like / Dislike |
+| user-no-auth | If the user is not logged in |
