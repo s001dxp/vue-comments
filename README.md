@@ -1,5 +1,12 @@
 # vue-comments
 
+[![Build Status][3]][4]
+[![dependency status][5]][6]
+[![dev dependency status][7]][8]
+[![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
+
+
 **<a href="#description">Description</a>** | 
 **<a href="#install">Install</a>** | 
 **<a href="#usage-example">Usage example</a>** | 
