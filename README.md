@@ -22,18 +22,18 @@
 ## Install
 <a name="install"></a>
 
-`npm install @saschenko/vue-comments`
+npm install @saschenko/vue-comments --save
+or
+yarn add @saschenko/vue-comments
 
 ## Usage example
 <a name="usage-example"></a>
 
-
+`options.user.auth` - The parameter must be "true" so that the user can leave comments / like.
 
 
 ```js
 <Comments @message-comment="messageComment($event)", :options="options",  :commentsData="commentsData" />
-
-`options.user.auth` - The parameter must be "true" so that the user can leave comments / like.
 
 export default {
   data() {
