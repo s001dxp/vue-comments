@@ -7,7 +7,7 @@
 ## Description
 <a name="description"></a>
 > The tree comment component for Vue.js 3  **<a href="https://vue-comments.herokuapp.com/" target="_blank">Demo</a>**  (Alpha)
-<br>
+
 - Add / edit / delete comments.
 - Adding files. If there is more than one file - view in the form of a gallery.
 - Emoji. **Unicode characters are used as emoji. The representation of the emoji depend of the system. Will be possible that the system don't have all the representations.**
