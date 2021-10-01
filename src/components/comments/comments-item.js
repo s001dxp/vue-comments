@@ -284,7 +284,7 @@ export default {
           }
         })
         .catch((error) => {
-          this.error = this.options.translation.errorFormSend;
+          this.error = this.options.translation.errorFormSend || error;
           console.error(error);
         })
         .finally(() => {

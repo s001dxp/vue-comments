@@ -133,7 +133,6 @@ export default {
           messageFileParams:
             "Maximum file size 2 Mb, supported extentions: jpg, png, jpeg, jpeg, gif, svg, wbpp",
           // Ошибки
-          errorFormSend: "Error sending form",
           errorVoteSend: "Error sending vote",
           errorUnexpected: "Unexpected error",
           errorGetComments: "Error get comments",

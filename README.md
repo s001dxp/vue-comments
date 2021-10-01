@@ -43,6 +43,7 @@ yarn add @saschenko/vue-comments
 import Comments from '@saschenko/vue-comments';
 ```
 
+
 ```js
 <Comments @message-comment="messageComment($event)", :options="options",  :commentsData="comments" />
 
@@ -219,7 +220,7 @@ You can change the behavior of the component using the options
 | translation.btnСancelEditing | `String` | Сancel editing | Answer button |
 | translation.formAnswerTo | `String` | Answer to | Phrase in the form when replying to a comment |
 | translation.messageFileParams | `String` | Maximum file size 2 Mb, supported extentions: jpg, png, jpeg, jpeg, gif, svg, wbpp | Information about the maximum file size and supported extensions |
-| translation.errorFormSend | `String` | Error sending form |  |
+| translation.errorFormSend | `String` | Error sending form | If this field is replaced with an empty string, the response from the server can be used as an error message (the response must be a string) |
 | translation.errorVoteSend | `String` | Error sending vote |  |
 | translation.errorUnexpected | `String` | Unexpected error |  |
 | translation.errorGetComments | `String` | Error get comments |  |
