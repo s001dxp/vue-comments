@@ -33,6 +33,13 @@ yarn add @saschenko/vue-comments
 ## Usage example
 <a name="usage-example"></a>
 
+`options` -  component settings
+
+<br>
+
+`commentsData` - initialization data. The description of the fields can be found at this link: <a href="https://github.com/EvgeniySaschenko/comments-api-server">Back-End</a>
+<br>
+
 `options.user.auth` - The parameter must be "true" so that the user can leave comments / like.
 
 
@@ -103,6 +110,22 @@ export default {
   },
 }
 ```
+
+You can change the `options` after the component has been mounted by using `Object.assign()`. 
+#### Example:
+
+```js
+Object.assign(this.options, {
+  user: {
+    name: "",
+    img: "",
+    auth: false,
+  }
+});
+```
+
+
+
 
 ## Для просмотра локально надо:
 
