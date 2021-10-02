@@ -5,6 +5,11 @@ include /src/assets/pug/index.pug
   +e.box
     h1 VUE-COMMENTS
     img(src="@/assets/logo.png")
+    br
+    a(href="https://github.com/EvgeniySaschenko/vue-comments", target="_blank") https://github.com/EvgeniySaschenko/vue-comments
+
+  br
+  br
   form-add-user(@user-auth="userAuth($event)")
   comments(
     v-if="isReady",

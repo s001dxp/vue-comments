@@ -104,6 +104,9 @@ export default Comments;
     width: 19px
     fill: $gray
 
+  a
+    color: $blue
+
   button,
   button:active,
   button:focus
