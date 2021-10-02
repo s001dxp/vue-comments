@@ -35,6 +35,11 @@ or
 yarn add @saschenko/vue-comments
 ```
 
+```js
+import Comments from '@saschenko/vue-comments'
+import '@saschenko/vue-comments/dist/vue-comments.css'
+```
+
 ## Usage example
 <a name="usage-example"></a>
 
@@ -43,10 +48,6 @@ yarn add @saschenko/vue-comments
 `commentsData` - initialization data. The description of the fields can be found at this link: <a target="_blank" href="https://github.com/EvgeniySaschenko/comments-api-server">Back-End</a>
 
 `options.user.auth` - the parameter must be "true" so that the user can leave comments / like.
-
-```js
-import Comments from '@saschenko/vue-comments';
-```
 
 
 ```js
