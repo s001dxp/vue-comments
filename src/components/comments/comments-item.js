@@ -21,7 +21,7 @@ export default {
   ],
   provide() {
     return {
-      hideForm: this.hideForm,
+      toggleForm: this.toggleForm,
     };
   },
   props: {
@@ -377,6 +377,15 @@ export default {
     toggleForm(isFormShow = !this.isFormShow) {
       if (this.options.user.auth) {
         this.isFormShow = isFormShow;
+        // При скрытии формы
+        if (!isFormShow) {
+          // Нужно потому что на "settings" срабатывает "click" и "mouseleave"
+          this.toggleSettings(false);
+          if (this.isEdited) {
+            this.init();
+          }
+          this.toggleEdited(false);
+        }
       } else {
         this.emitMessage({
           type: "user-no-auth",
@@ -387,18 +396,7 @@ export default {
     },
     // Отменить редактирование
     cancelEditing() {
-      this.hideForm();
-    },
-    //Скрыть форму
-    hideForm() {
-      this.toggleForm(false);
-      // Нужно потому что на "settings" срабатывает "click" и "mouseleave"
-      this.toggleSettings(false);
-      if (this.isEdited) {
-        this.init();
-      }
-
-      this.toggleEdited(false);
+      this.toggleForm();
     },
   },
 };

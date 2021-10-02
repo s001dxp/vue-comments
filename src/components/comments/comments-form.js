@@ -8,7 +8,7 @@ export default {
     "addCommentToList",
     "editCommentToList",
     "emitMessage",
-    "hideForm",
+    "toggleForm",
     "toggleEmojiList",
     "addEmoji",
   ],
@@ -49,9 +49,9 @@ export default {
           this.text = this.comment.text;
         } else {
           // Если нажать кнопку отмена
-          this.files = [];
-          this.text = "";
+          this.clearForm();
         }
+        this.error = "";
       },
     },
   },
@@ -203,8 +203,8 @@ export default {
             comment.userName = this.options.user.name;
             this.clearForm();
             this.addCommentToList(comment, insertTo);
-            if (this.hideForm) {
-              this.hideForm();
+            if (this.toggleForm) {
+              this.toggleForm();
             }
           } catch (error) {
             this.error = this.options.translation.errorUnexpected;
@@ -261,8 +261,8 @@ export default {
           try {
             this.editCommentToList(response);
             this.clearForm();
-            if (this.hideForm) {
-              this.hideForm();
+            if (this.toggleForm) {
+              this.toggleForm();
             }
           } catch (error) {
             this.error = this.options.translation.errorUnexpected;
@@ -287,6 +287,9 @@ export default {
     clearForm() {
       this.text = "";
       this.files = [];
+      if (this.$refs.files) {
+        this.$refs.files.value = "";
+      }
     },
   },
 };
