@@ -30,9 +30,6 @@ export default {
       isReady: false,
       comments: {},
       options: {
-        text: {
-          briefMaxLine: 2,
-        },
         dataApi: {
           vote: {
             url: "/api/comments/vote/",
@@ -50,7 +47,6 @@ export default {
             url: "/api/comments/",
           },
         },
-        validExtensions: ["jpg", "png", "jpeg", "jpeg", "vue"],
       },
     };
   },

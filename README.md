@@ -131,13 +131,7 @@ export default {
 You can change the `options` after the component has been mounted by using `Object.assign()`:
 
 ```js
-Object.assign(this.options, {
-  user: {
-    name: "",
-    img: "",
-    auth: false,
-  }
-});
+Object.assign(this.options, { validExtensions: ["jpg"] });
 ```
 
 If initialization data needs to be received asynchronously, use `v-if` to display the component:
@@ -278,11 +272,7 @@ send: ({ url, params }) => {
         yourCssClass: "",
         filesMaxCount: Infinity,
         fileMaxSize: 2097152,
-        validExtensions: {
-          default: ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"],
-          items: {},
-          str: "",
-        },
+        validExtensions: ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"],
         emojiLilst: ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"],
         isScrollToComment: true,
         text: {
