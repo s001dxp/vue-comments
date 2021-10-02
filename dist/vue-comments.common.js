@@ -6073,8 +6073,14 @@ function _objectSpread2(target) {
 // EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
 var runtime = __webpack_require__("96cf");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
+var es_promise = __webpack_require__("e6cf");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
 var es_array_join = __webpack_require__("a15b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
+var es_object_assign = __webpack_require__("cca6");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -6454,14 +6460,8 @@ var es_string_link = __webpack_require__("9911");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
 var es_string_replace = __webpack_require__("5319");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
-var es_promise = __webpack_require__("e6cf");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.finally.js
 var es_promise_finally = __webpack_require__("a79d");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
-var es_object_assign = __webpack_require__("cca6");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/pug-plain-loader!./node_modules/pug-plain-loader??ref--14!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/comments/comments-form.vue?vue&type=template&id=21d0781b&lang=pug
 
@@ -7567,6 +7567,8 @@ var build_default = /*#__PURE__*/__webpack_require__.n(build);
 
 
 
+
+
 /* harmony default export */ var comments = ({
   name: "Comments",
   components: {
@@ -7867,17 +7869,18 @@ var build_default = /*#__PURE__*/__webpack_require__.n(build);
     document.removeEventListener("scroll", this.listeners["scroll"]);
   },
   watch: {
-    commentsData: {
-      immediate: true,
-      handler: function handler() {
-        this.initData(this.commentsData);
-      }
-    },
     options: {
       deep: true,
       immediate: true,
       handler: function handler() {
         this.initOptions(this.options);
+      }
+    },
+    // Должен стоять 2-м - чтобы стачала обработались options
+    commentsData: {
+      immediate: true,
+      handler: function handler() {
+        this.initData(this.commentsData);
       }
     }
   },
@@ -7948,7 +7951,7 @@ var build_default = /*#__PURE__*/__webpack_require__.n(build);
         this.optionsInit.user.img = this.optionsInit.imgDefaultUser;
       }
 
-      this.optionsInit.validExtensions = createValidExtensions();
+      Object.assign(this.optionsInit.validExtensions, createValidExtensions());
     },
     // Добавить пункты в карту
     setMapItems: function setMapItems(mapItems, insertTo) {
