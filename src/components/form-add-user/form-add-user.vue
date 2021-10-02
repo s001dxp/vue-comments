@@ -2,10 +2,10 @@
 include /src/assets/pug/index.pug
 +b.form-add-user
   +e.form(v-if="isShowForm")
-    b User name* (without cyrillic)
+    b User name* (A-Z, 0-9)
     div 
       +e.INPUT.field(v-model="userName")
-    b Avatar user
+    b Avatar user (jpg, png)
     div 
       +e.INPUT.upload-file-input(type="file", ref="avatar", accept=".jpg,.png,.jpeg")
     br
@@ -40,7 +40,7 @@ export default {
       if (user) {
         this.isShowForm = false;
         this.userName = user.name;
-        this.message = `Вы вошли как ${this.userName}`;
+        this.message = `You are logged in as: ${this.userName}`;
         user.auth = true;
         this.$emit("user-auth", user);
       } else {
@@ -50,8 +50,13 @@ export default {
     // Добавить пользователя в БД
     async addUser() {
       this.userName = this.userName.trim();
+      if (!/[A-Za-z-0-9]/.test(this.userName)) {
+        this.message = "The name can contain only Latin letters and numbers";
+        return;
+      }
+
       if (!this.userName) {
-        this.message = "Введите имя пользователя";
+        this.message = "Enter your username";
         return;
       }
       let { files } = this.$refs.avatar;
