@@ -374,13 +374,22 @@ export default {
         if (!(parentId in this.mapItems)) {
           isNewList = true;
           this.mapItems[parentId] = {
+            // Выполняется запрос на сервер
             isProcessing: false,
+            // Количество потомков
             quantity: mapItems[parentId].quantity,
+            // id потомков
             items: [],
+            // id комментария в котором отображается кнопка "Показать больше"
             btnMoreNext: null,
+            // Количество отображённых потомков
             qShowBalance: 0,
             qShowNext: 0,
+            // id отображённых потомков
             show: {},
+            // id удалённых потомков (нужно при нажатии на кнопку показать больше)
+            delete: [],
+            // Указывает на то что этот комментарий удалён
             isDelete: false,
           };
         }
@@ -540,11 +549,14 @@ export default {
 
         let { mapItems, items } = await this.getComments({ firstId, lastId, parentId, insertTo });
         try {
+          // Учитывает удалённые комментарии
+          mapItems[parentId].quantity =
+            mapItems[parentId].quantity + this.mapItems[parentId].delete.length;
           // Параметр "true" указывает что нужно будет проверять сущетвует ли уже такой комментрарий
           this.setMapItems(mapItems, insertTo, true);
           this.addCommentsListToList(items);
         } catch (error) {
-          this.error = this.options.translation.errorGetComments;
+          this.error = this.optionsInit.translation.errorGetComments;
           console.error(error);
         }
       } else {
@@ -616,6 +628,7 @@ export default {
     async deleteCommentToList({ commentId, parentId }) {
       await this.optionsInit.deleteCommentBefore();
       this.mapItems[commentId].isDelete = true;
+      this.mapItems[parentId].delete.push(commentId);
       await this.optionsInit.deleteCommentAfter();
     },
     // Скролим к комментарию
