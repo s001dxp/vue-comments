@@ -50,13 +50,12 @@ import Comments from '@saschenko/vue-comments';
 
 
 ```js
-<Comments @message-comment="messageComment($event)", :options="options",  :commentsData="comments" />
+<Comments :options="options" :commentsData="comments" />
 
 export default {
   data() {
     return {
       options: {
-        parentIdStart: 1549,
         dataApi: {
           vote: {
             url: "/api/comments/vote/",
@@ -80,38 +79,50 @@ export default {
           img: "http://vue-comments.herokuapp.com/img/logo.82b9c7a5.png"
         }
       },
-      comments:   {
-        1549 : {
-          dateCreate: 1632329876,
-          dateUpdate: 1632329889,
-          dislike: 0,
-          like: 0,
-          voteValue: 0,
-          files: [],
-          id: 1549,
-          isManageDelete: false,
-          isManageEdit: false,
-          parentId: 0,
-          text: "text 😇😇😇😇",
-          userImg: "http://localhost:8888/images/users/6.jpg",
-          userName: "Jhon",
+      comments: {
+        mapItems: {
+          0: { items: [1549], quantity: 1 },
+          1549: { items: [1550], quantity: 1 },
+          1550: { items: [], quantity: 0 },
         },
-        1550 : {
-          dateCreate: 1632329876,
-          dateUpdate: 1632329889,
-          dislike: 2,
-          like: 0,
-          voteValue: -1,
-          files: ["http://localhost:8888/images/comments/1581_0.jpg"],
-          id: 1550,
-          isManageDelete: false,
-          isManageEdit: false,
-          parentId: 1549,
-          text: "text text",
-          userImg: "",
-          userName: "Ivan",
-        }
-      }
+        items: {
+          1549: {
+            dateCreate: 1632329876,
+            dateUpdate: 1632329889,
+            dislike: 0,
+            like: 0,
+            voteValue: 0,
+            files: [],
+            id: 1549,
+            isManageDelete: false,
+            isManageEdit: false,
+            parentId: 0,
+            text: "text 😇😇😇😇",
+            userImg: "http://localhost:8888/images/users/6.jpg",
+            userName: "Jhon",
+          },
+          1550: {
+            dateCreate: 1632329876,
+            dateUpdate: 1632329889,
+            dislike: 2,
+            like: 0,
+            voteValue: -1,
+            files: [
+              {
+                name: "image 1",
+                src: "http://localhost:8888/images/comments/1581_0.jpg",
+              },
+            ],
+            id: 1550,
+            isManageDelete: false,
+            isManageEdit: false,
+            parentId: 1549,
+            text: "text text",
+            userImg: "",
+            userName: "Ivan",
+          },
+        },
+      },
     }
   },
 }
@@ -132,7 +143,7 @@ Object.assign(this.options, {
 If initialization data needs to be received asynchronously, use `v-if` to display the component:
 
 ```js
-  <Comments v-if="isShow",  :commentsData="comments" />
+  <Comments v-if="isShow" :commentsData="comments" />
 
   export default {
     async created() {
@@ -249,7 +260,7 @@ send: ({ url, params }) => {
 #### Other
 | Parameter | Type | Default | Description |
 | --- | :---: | --- | --- |
-| parentIdStart | `Number` / `String` | 0 | The identifier of the first ancestor |
+| parentIdStart | `Number` / `String` | 0 | This id is for `mapItems`, it describes the first level of comments. |
 | emojiLilst | `Array` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
 | formAddShowAlways | `Boolean` | true | Using this parameter, you can show or hide the form for adding a comment. This may be needed if you do not want to show the form when the user is not logged in. |
 | btnAnswerShowAlways | `Boolean` | true | Use this option to show or hide the Reply to Comment button. This may be needed if you do not want to show the button when the user is not logged in. |

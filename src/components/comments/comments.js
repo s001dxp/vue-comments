@@ -300,17 +300,18 @@ export default {
   },
 
   watch: {
-    commentsData: {
-      immediate: true,
-      handler() {
-        this.initData(this.commentsData);
-      },
-    },
     options: {
       deep: true,
       immediate: true,
       handler() {
         this.initOptions(this.options);
+      },
+    },
+    // Должен стоять 2-м - чтобы стачала обработались options
+    commentsData: {
+      immediate: true,
+      handler() {
+        this.initData(this.commentsData);
       },
     },
   },
@@ -334,6 +335,7 @@ export default {
       // Создать объект с допустимыми расшырениями
       let createValidExtensions = () => {
         let { validExtensions } = options;
+
         let itemsValidExtensions = {};
         validExtensions = validExtensions || this.optionsInit.validExtensions.default;
 
@@ -365,7 +367,7 @@ export default {
       if (options.user && (!options.user.auth || (options.user.auth && !options.user.img))) {
         this.optionsInit.user.img = this.optionsInit.imgDefaultUser;
       }
-      this.optionsInit.validExtensions = createValidExtensions();
+      Object.assign(this.optionsInit.validExtensions, createValidExtensions());
     },
     // Добавить пункты в карту
     setMapItems(mapItems, insertTo, checkUnique = false) {

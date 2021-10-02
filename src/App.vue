@@ -32,7 +32,6 @@ export default {
       options: {
         text: {
           briefMaxLine: 2,
-          maxLength: 15,
         },
         dataApi: {
           vote: {
@@ -52,11 +51,10 @@ export default {
           },
         },
         validExtensions: ["jpg", "png", "jpeg", "jpeg", "vue"],
-        filesMaxCount: 2,
       },
-      listeners: {},
     };
   },
+
   async created() {
     let response = await fetch("/api/comments/?parentId=0", {
       headers: { Cookie: $cookies.get("user") },
