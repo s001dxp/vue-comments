@@ -51,6 +51,9 @@ import '@saschenko/vue-comments/dist/vue-comments.css'
 
 
 ```js
+import Comments from '@saschenko/vue-comments'
+import '@saschenko/vue-comments/dist/vue-comments.css'
+
 <Comments :options="options" :commentsData="comments" />
 
 export default {

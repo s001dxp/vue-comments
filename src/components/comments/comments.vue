@@ -43,6 +43,7 @@ export default Comments;
   border: 1px solid $gray-border
   font-size: 14px
   position: relative
+  text-align: left
   &--lock
     &::before
       content: ""
