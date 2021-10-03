@@ -50,7 +50,7 @@ include /src/assets/pug/index.pug
           )
         +e.textarea-panel-emoji-box(
           data-vue-comments-form-emoji-btn,
-          @touchstart="toggleEmojiList(this, $event)",
+          @touchend="toggleEmojiList(this, $event)",
           @mouseenter="toggleEmojiList(this, $event, true)",
           @mouseleave="toggleEmojiList(null, $event, false)"
         )

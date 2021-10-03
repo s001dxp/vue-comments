@@ -24,6 +24,27 @@ export default {
       toggleForm: this.toggleForm,
     };
   },
+  watch: {
+    // При изменении размеров окна
+    widthResizeWindow: {
+      handler() {
+        this.checkIsShowBntTextMore();
+      },
+    },
+    // Указывает на то отображён ли комментарий
+    isShow: {
+      handler() {
+        this.$nextTick(() => {
+          this.checkIsShowBntTextMore();
+        });
+      },
+    },
+  },
+  computed: {
+    isShow() {
+      return this.mapItems[this.comment.parentId].show[this.comment.id];
+    },
+  },
   props: {
     comments: {
       type: Object,
@@ -46,6 +67,10 @@ export default {
     userNameAnswer: {
       type: String,
       default: "",
+    },
+    widthResizeWindow: {
+      type: Number,
+      default: 0,
     },
   },
   data() {
@@ -82,18 +107,21 @@ export default {
       error: "",
     };
   },
+
   created() {
     this.init();
   },
+
   mounted() {
     this.setMapItemLinkComponent(this.comment.id, this);
+    this.checkIsShowBntTextMore();
   },
   methods: {
     init() {
       this.preparationDataFiles();
       let { text: textComment } = this.comment;
-      let { briefMaxLength, briefMaxLine } = this.options.text;
-      this.preparationText(textComment, briefMaxLength, briefMaxLine, regExp);
+      let { briefMaxLength } = this.options.text;
+      this.preparationText(textComment, briefMaxLength, regExp);
     },
     preparationDataFiles() {
       this.files = [];
@@ -110,12 +138,12 @@ export default {
       }
     },
     // Плдготовка текста
-    preparationText(text, maxLength, maxLine, regExp) {
+    preparationText(text, maxLength, regExp) {
       let listLinks = this.createTextListLinks(text, regExp.link);
       let isTextBriefLength = this.checkTextBriefMaxLength(text, maxLength);
-      let isTextBriefLine = this.checkTextBriefMaxLine(text, maxLine);
       let textBrief = this.cropText(text, maxLength);
-      this.isTextBrief = this.checkTextBriefFlag(isTextBriefLength, isTextBriefLine);
+      // isTextBrief - на этапе монтирования будет checkTextBriefMaxLine
+      this.isTextBrief = isTextBriefLength;
       this.text.all = this.convertTxtToHtml(text, listLinks, regExp.link);
       this.text.brief = this.convertTxtToHtml(textBrief, listLinks, regExp.link);
 
@@ -132,19 +160,27 @@ export default {
       if (maxLength === "none") return false;
       return text.length > maxLength;
     },
-    // Проверяем нужно ли скрывать текст по количеству перносов строк "\n"
-    checkTextBriefMaxLine(text, maxLine) {
+    // Проверяем высоту после того как элемент примоттирован
+    checkTextBriefMaxLine(maxLine, scrollHeight, clientHeight) {
       if (maxLine === "none") return false;
-      let breakResult = text.match(/\n/g);
-      if (breakResult) {
-        return breakResult.length + 1 > maxLine;
+      return scrollHeight > clientHeight;
+    },
+    // Проверка нужно ли отображать кнопку "Показать больше" для текста
+    checkIsShowBntTextMore() {
+      let { briefMaxLength, briefMaxLine } = this.options.text;
+      let { text: textComment } = this.comment;
+      let isBriefMaxLength = this.checkTextBriefMaxLength(textComment, briefMaxLength);
+      let isBriefMaxLine;
+
+      if (this.$refs.text) {
+        let { scrollHeight, clientHeight } = this.$refs.text;
+        isBriefMaxLine = this.checkTextBriefMaxLine(briefMaxLine, scrollHeight, clientHeight);
       }
-      return false;
+
+      this.isTextBrief = isBriefMaxLength || isBriefMaxLine;
+      return this.isTextBrief;
     },
-    // На основе результатов "checkTextBriefMaxLength" и "checkTextBriefMaxLine" проверяем будет ли отражатся кнопка "Еще"
-    checkTextBriefFlag(isTextBriefLength, isTextBriefLine) {
-      return isTextBriefLength || isTextBriefLine;
-    },
+
     // Создать список ссылок которые есть в тексте
     createTextListLinks(text, regExp) {
       let counerLinks = 0;
@@ -372,6 +408,9 @@ export default {
     // Переключить форму в режим для редактирования комментраия
     toggleEdited(isEdited = !this.isEdited) {
       this.isEdited = isEdited;
+      this.$nextTick(() => {
+        this.checkIsShowBntTextMore();
+      });
     },
     // Показать / скрыть форму для добавления вопрса
     toggleForm(isFormShow = !this.isFormShow) {

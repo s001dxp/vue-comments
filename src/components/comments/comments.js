@@ -5,6 +5,7 @@ import imgDefaultUser from "./img/default-user.png";
 import imgExtensions from "./data/img-extensions.json";
 import emojiLilst from "./data/emoji.json";
 import isTouchDevice from "is-touch-device";
+import debounce from "lodash.debounce";
 
 export default {
   name: "Comments",
@@ -54,6 +55,10 @@ export default {
         top: 0,
         left: 0,
       },
+      // Указывает на то что изменились размеры документа
+      widthResizeWindow: 0,
+      // Указывает на то что пользователь ведет пальцем по документу
+      isTouchmovieDocument: false,
       // Указывает на то что документ скролится - для блокироки случайных нажатий на мобильном
       isScrollDocument: false,
       // Контекст текущей формы - для того чтобы добавлять смайлы
@@ -272,32 +277,48 @@ export default {
     this.listeners["touchend"] = () => {
       if (isTouchDevice()) {
         this.isScrollDocument = false;
+        this.isTouchmovieDocument = false;
       }
     };
 
     this.listeners["touchcancel"] = () => {
       if (isTouchDevice()) {
         this.isScrollDocument = false;
+        this.isTouchmovieDocument = false;
       }
+    };
+
+    // Указывает на то что пользователь ведет пальцем по документу (нужно для определения причины скрола)
+    this.listeners["touchmove"] = () => {
+      this.isTouchmovieDocument = true;
     };
 
     // Блокируем случайные нажатия при скроле (например чтобы юзер случайно не поставил лайк)
     this.listeners["scroll"] = () => {
-      if (isTouchDevice()) {
+      if (isTouchDevice() && this.isTouchmovieDocument) {
         this.isScrollDocument = true;
       }
     };
 
+    // Проверяем документ на изменение размеров
+    this.listeners["resize"] = debounce(() => {
+      this.widthResizeWindow = window.innerWidth;
+    }, 500);
+
     document.addEventListener("touchstart", this.listeners["touchstart"]);
     document.addEventListener("touchend", this.listeners["touchend"]);
     document.addEventListener("touchcancel", this.listeners["touchcancel"]);
+    document.addEventListener("touchmove", this.listeners["touchmove"]);
     document.addEventListener("scroll", this.listeners["scroll"]);
+    window.addEventListener("resize", this.listeners["resize"]);
   },
   beforeUnmount() {
     document.removeEventListener("touchstart", this.listeners["touchstart"]);
     document.removeEventListener("touchend", this.listeners["touchcancel"]);
     document.removeEventListener("touchcancel", this.listeners["touchcancel"]);
+    document.removeEventListener("touchmove", this.listeners["touchmove"]);
     document.removeEventListener("scroll", this.listeners["scroll"]);
+    window.removeEventListener("resize", this.listeners["resize"]);
   },
 
   watch: {
@@ -715,7 +736,6 @@ export default {
         }
       } else {
         switch (event.type) {
-          case "touchstart":
           case "touchend":
             this.contextCommentsForm = context;
             this.emojiList.isShow = isShow;

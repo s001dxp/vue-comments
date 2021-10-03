@@ -26,7 +26,12 @@ include /src/assets/pug/index.pug
       v-for="(commentId, i) in mapItems[optionsInit.parentIdStart].items",
       :key="commentId"
     )
-      comments-item(:comment="comments[commentId]", :comments="comments", :mapItems="mapItems")
+      comments-item(
+        :comment="comments[commentId]",
+        :comments="comments",
+        :mapItems="mapItems",
+        :widthResizeWindow="widthResizeWindow"
+      )
 </template>
 
 <script>

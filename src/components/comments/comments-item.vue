@@ -1,12 +1,15 @@
 <template lang="pug">
 include /src/assets/pug/index.pug
 +b.comments-item(
-  v-if="mapItems[comment.parentId].show[comment.id]",
+  v-if="isShow",
   :class="{ 'comments-item--delete': mapItems[comment.id].isDelete }"
 )
   +e.row-comment
     +e.col-avatar
-      img.comments-item__avatar-img(:src="comment.userImg || options.imgDefaultUser")
+      img.comments-item__avatar-img(
+        :src="comment.userImg || options.imgDefaultUser",
+        loading="lazy"
+      )
     +e.col-content(:class="{ 'comments-item__col-content--form-show': isFormShow }")
       +e.content(v-if="!isEdited")
         +e.panel-top
@@ -54,6 +57,7 @@ include /src/assets/pug/index.pug
           // download
           +e.file-gallery-box-img
             img.comments-item__file-gallery(
+              loading="lazy",
               @click="toggleGallery(true)",
               :src="files[slideNum].type === 'icon' ? iconFile : files[slideNum].src",
               :alt="files[slideNum].name",
@@ -81,7 +85,8 @@ include /src/assets/pug/index.pug
         +e.text-box
           +e.text(
             :style="isTextBriefЕxpand ? { 'line-clamp': options.text.briefMaxLine } : {}",
-            v-html="isTextBriefЕxpand ? text.brief : text.all"
+            v-html="isTextBriefЕxpand ? text.brief : text.all",
+            ref="text"
           )
           +e.SPAN.text-more(@click="toggleTextBrief(comment.text)", v-if="isTextBrief") {{ isTextBriefЕxpand ? options.translation.btnЕxpand : options.translation.btnCollapse }}
           +e.date-update(v-if="comment.dateUpdate") <b>{{ options.translation.dateEditedText }}</b> {{ formatDate(comment.dateUpdate) }}
@@ -145,6 +150,7 @@ include /src/assets/pug/index.pug
       :userNameAnswer="comment.userName",
       :comments="comments",
       :mapItems="mapItems",
+      :widthResizeWindow="widthResizeWindow",
       v-for="answerId in mapItems[comment.id].items",
       :comment="comments[answerId]",
       :key="answerId"
@@ -244,6 +250,7 @@ export default CommentsItem;
     -webkit-box-orient: vertical
     box-orient: vertical
     &-more
+      margin-top: 5px
       display: inline-block
       margin-left: 2px
       cursor: pointer

@@ -11,6 +11,8 @@ include /src/assets/pug/index.pug
   br
   br
   form-add-user(@user-auth="userAuth($event)")
+  +e.alert Heroky sometimes clears data
+  br
   comments(
     v-if="isReady",
     :options="options",
@@ -89,6 +91,9 @@ export default {
   margin: 0 auto 100px
   max-width: 700px
   font-family: Arial, Helvetica, sans-serif
+  &__alert
+    text-align: center
+    color: orange
   &__box
     text-align: center
     h1
