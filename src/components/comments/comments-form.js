@@ -289,6 +289,7 @@ export default {
       this.files = [];
       if (this.$refs.files) {
         this.$refs.files.value = "";
+        this.$refs.text.style.height = "auto";
       }
     },
   },
