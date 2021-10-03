@@ -86,7 +86,7 @@ export default {
 
 <style lang="sass">
 .page
-  margin: 0 auto
+  margin: 0 auto 100px
   max-width: 700px
   font-family: Arial, Helvetica, sans-serif
   &__box

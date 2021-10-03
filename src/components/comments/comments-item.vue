@@ -159,6 +159,7 @@ export default CommentsItem;
 <style lang="sass">
 @import "./variables.sass"
 .comments-item
+  min-width: 280px
   &--delete
     // Скрываем частями чтобы оставалась кнопка "Show more"
     .comments-item
@@ -191,7 +192,6 @@ export default CommentsItem;
     &-comment
       display: flex
       margin-bottom: 5px
-      overflow: auto hidden
     &-answer
       margin-left: 42px
     &-btn-more
@@ -232,6 +232,8 @@ export default CommentsItem;
     &--answers
       margin: -2px 5px 0
       white-space: nowrap
+      @media (max-width: $point-sm-x)
+        font-size: 12px
   &__text
     word-break: break-all
     overflow: hidden

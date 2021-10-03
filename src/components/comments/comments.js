@@ -714,8 +714,13 @@ export default {
             break;
         }
       } else {
-        this.contextCommentsForm = context;
-        this.emojiList.isShow = isShow;
+        switch (event.type) {
+          case "touchstart":
+          case "touchend":
+            this.contextCommentsForm = context;
+            this.emojiList.isShow = isShow;
+            break;
+        }
       }
 
       this.emojiList.top = top + 34;

@@ -7,17 +7,18 @@ include /src/assets/pug/index.pug
   comments-svg-icons
   // Emoji
   transition(name="fade")
-    +e.emoji-list(
+    +e.emoji(
       @mouseleave="toggleEmojiList(null, $event, false)",
       data-vue-comments-emoji-list,
       v-if="emojiList.isShow",
       :style="{ top: `${emojiList.top}px`, left: `${emojiList.left}px` }"
     )
-      +e.SPAN.emoji-list-item(
-        v-for="(item, index) in optionsInit.emojiLilst",
-        @click="addEmoji(item)",
-        :key="index"
-      ) {{ item }}
+      +e.emoji-list
+        +e.SPAN.emoji-list-item(
+          v-for="(item, index) in optionsInit.emojiLilst",
+          @click="addEmoji(item)",
+          :key="index"
+        ) {{ item }}
   +e.panel-form-add
     comments-form(v-if="optionsInit.formAddShowAlways || optionsInit.user.auth")
   +e.list(v-if="mapItems[optionsInit.parentIdStart]")
@@ -57,18 +58,23 @@ export default Comments;
     margin-bottom: 5px
   &__list
     overflow-x: auto
-
-  &__emoji-list
+  &__emoji
     width: 200px
-    height: 110px
+    box-shadow: 0 0 5px rgba(0,0,0,0.5)
+    border-radius: 5px
     position: fixed
     background-color: #fff
     padding: 5px
-    line-height: 1.5
-    cursor: pointer
-    box-shadow: 0 0 5px rgba(0,0,0,0.5)
-    border-radius: 5px
     z-index: 1
+    font-size: 18px
+    &-list
+      line-height: 1.5
+      overflow-y: auto
+      height: 110px
+      &-item
+        margin: 0 2px
+        display: inline-flex
+        cursor: pointer
     &::before
       content: ""
       width: 0
@@ -90,9 +96,6 @@ export default Comments;
       position: absolute
       top: -17px
       right: 28px
-    &-item
-      margin: 2px 3px
-      display: inline-flex
   *
     box-sizing: border-box
 
