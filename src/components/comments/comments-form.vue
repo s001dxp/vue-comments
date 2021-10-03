@@ -133,7 +133,7 @@ export default CommentsForm;
         position: relative
         margin-right: 5px
         @media (max-width: $point-sm)
-          margin-top: 5px
+          margin-top: 10px
       &-upload-file
         display: flex
         margin-right: 5px
