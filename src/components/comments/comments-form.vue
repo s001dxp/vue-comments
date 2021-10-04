@@ -33,8 +33,8 @@ include /src/assets/pug/index.pug
               +e.file-preview-text(v-if="!options.imgExtensions[file.extension]") {{ file.name }}
         // Поле для текста
         +e.TEXTAREA.message(
-          @input="setPosCursor()",
-          @click="setPosCursor()",
+          @input="getPosCursor()",
+          @click="getPosCursor()",
           :placeholder="options.translation.formPlaceholder",
           ref="text",
           v-model="text"

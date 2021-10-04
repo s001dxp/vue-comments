@@ -299,7 +299,7 @@ export default {
         this.$refs.text.style.height = "auto";
       }
     },
-    // Установить позицию курсора (нужно для вставки emoji)
+    // Получить позицию курсора (нужно для вставки emoji)
     getPosCursor() {
       this.posCursor = this.$refs.text.selectionEnd;
     },
