@@ -748,7 +748,10 @@ export default {
     },
     // Добаввить Emoji в текстовое поле
     addEmoji(emoji) {
-      this.contextCommentsForm.text = this.contextCommentsForm.text + emoji;
+      let { text, posCursor } = this.contextCommentsForm;
+      this.contextCommentsForm.text =
+        text.slice(0, posCursor) + emoji + text.slice(posCursor, text.length);
+      this.contextCommentsForm.posCursor = posCursor + emoji.length;
     },
   },
 };

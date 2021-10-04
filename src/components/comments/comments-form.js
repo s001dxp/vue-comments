@@ -37,6 +37,8 @@ export default {
       error: "",
       // Указывает на то что в данный момент выполняется отправка формы
       isFormSending: false,
+      // Позиция курсора
+      posCursor: 0,
     };
   },
   watch: {
@@ -54,6 +56,11 @@ export default {
         this.error = "";
       },
     },
+    // text: {
+    //   handler() {
+    //     this.setPosCursor();
+    //   },
+    // },
   },
   methods: {
     // Создание превью файла
@@ -291,6 +298,10 @@ export default {
         this.$refs.files.value = "";
         this.$refs.text.style.height = "auto";
       }
+    },
+    // Установить позицию курсора (нужно для вставки emoji)
+    getPosCursor() {
+      this.posCursor = this.$refs.text.selectionEnd;
     },
   },
 };
