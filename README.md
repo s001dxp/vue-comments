@@ -49,14 +49,21 @@ import '@saschenko/vue-comments/dist/vue-comments.css'
 
 `options.user.auth` - the parameter must be "true" so that the user can leave comments / like.
 
+```html
+<template>
+  <Comments :options="options" :commentsData="comments" />
+</template>
+```
 
-```js
+```html
+<script>
 import Comments from '@saschenko/vue-comments'
 import '@saschenko/vue-comments/dist/vue-comments.css'
 
-<Comments :options="options" :commentsData="comments" />
-
 export default {
+  components: {
+    Comments
+  },
   data() {
     return {
       options: {
@@ -130,6 +137,7 @@ export default {
     }
   },
 }
+</script>
 ```
 
 You can change the `options` after the component has been mounted by using `Object.assign()`:
