@@ -6576,8 +6576,14 @@ function _objectSpread2(target) {
 // EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
 var runtime = __webpack_require__("96cf");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
+var es_promise = __webpack_require__("e6cf");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
 var es_array_join = __webpack_require__("a15b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
+var es_object_assign = __webpack_require__("cca6");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -6964,14 +6970,8 @@ var es_string_link = __webpack_require__("9911");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
 var es_string_replace = __webpack_require__("5319");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
-var es_promise = __webpack_require__("e6cf");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.finally.js
 var es_promise_finally = __webpack_require__("a79d");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
-var es_object_assign = __webpack_require__("cca6");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/pug-plain-loader!./node_modules/pug-plain-loader??ref--14!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/comments/comments-form.vue?vue&type=template&id=22ba29f7&lang=pug
 
@@ -7149,6 +7149,8 @@ var icon_file = __webpack_require__("0928");
 var icon_file_default = /*#__PURE__*/__webpack_require__.n(icon_file);
 
 // CONCATENATED MODULE: ./src/components/comments/comments-form.js
+
+
 
 
 
@@ -8121,6 +8123,8 @@ var lodash_debounce = __webpack_require__("f7fe");
 var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce);
 
 // CONCATENATED MODULE: ./src/components/comments/comments.js
+
+
 
 
 
