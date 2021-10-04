@@ -181,8 +181,9 @@ You can change the behavior of the component using the options
 #### Files
 | Parameter | Type | Default | Description |
 | --- | :---: | --- | --- |
-| filesMaxCount | `Number` | Infinity | Maximum number of files to upload (нужно реализовать) |
+| filesMaxCount | `Number` | Infinity | Maximum number of files to upload |
 | validExtensions | `Array` | ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"] | Allowed file extensions |
+| isShowBtnUpload | `Boolean` | true | Show button to download files |
 
 #### Comments
 | Parameter | Type | Default | Description |
@@ -267,6 +268,7 @@ send: ({ url, params }) => {
 | btnAnswerShowAlways | `Boolean` | true | Use this option to show or hide the Reply to Comment button. This may be needed if you do not want to show the button when the user is not logged in. |
 | imgDefaultUser | `String` | image user | Default user avatar. |
 | isShowVote | `Boolean` | true | If true, like / dislike buttons are displayed |
+| isShowBtnEmoji | `Boolean` | true | Show button Emoji |
 | yourCssClass | `String` |  | You can add your css class to the parent tag |
 
 
@@ -282,6 +284,8 @@ send: ({ url, params }) => {
         validExtensions: ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"],
         emojiLilst: ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"],
         isScrollToComment: true,
+        isShowBtnUpload: true,
+        isShowBtnEmoji: true,
         text: {
           minLength: 0,
           maxLength: 1000,
