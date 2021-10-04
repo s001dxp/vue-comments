@@ -41,7 +41,10 @@ include /src/assets/pug/index.pug
         )
       // Панель с кнопками 
       +e.textarea-panel
-        +e.LABEL.textarea-panel-upload-file(@change="createFilePreview($refs.files.files)")
+        +e.LABEL.textarea-panel-upload-file(
+          @change="createFilePreview($refs.files.files)",
+          v-if="options.isShowBtnUpload"
+        )
           +e.SVG.textarea-panel-icon
             use(:xlink:href="`#vue-comments-symbol-icon-image`")
           +e.INPUT.textarea-panel-upload-file-input(
@@ -51,6 +54,7 @@ include /src/assets/pug/index.pug
             multiple
           )
         +e.textarea-panel-emoji-box(
+          v-if="options.isShowBtnEmoji",
           data-vue-comments-form-emoji-btn,
           @touchend="toggleEmojiList(this, $event)",
           @mouseenter="toggleEmojiList(this, $event, true)",

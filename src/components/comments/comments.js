@@ -86,6 +86,10 @@ export default {
         isScrollToComment: true,
         // Показывать кнопки для голосования
         isShowVote: true,
+        // Показывать кнопку для загрузки файлов
+        isShowBtnUpload: true,
+        // Показывать кнопку списка emoji
+        isShowBtnEmoji: true,
         text: {
           // Минимальная длина текста *
           minLength: 0,
@@ -375,7 +379,7 @@ export default {
       let deepExtend = (optionsInit, options) => {
         for (let item in options) {
           let cur = options[item];
-          if (typeof cur === "object" && cur !== null && cur !== Array.isArray(cur)) {
+          if (typeof cur === "object" && cur !== null && !Array.isArray(cur)) {
             deepExtend(optionsInit[item], options[item]);
           } else if (options[item] !== undefined) {
             optionsInit[item] = options[item];
