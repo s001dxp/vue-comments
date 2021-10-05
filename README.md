@@ -28,11 +28,11 @@
 <a name="install"></a>
 
 ```bash
-npm install @saschenko/vue-comments --save
+npm install @x-store/vue-comments --save
 ```
 or
 ```bash
-yarn add @saschenko/vue-comments
+yarn add @x-store/vue-comments
 ```
 
 ```js
