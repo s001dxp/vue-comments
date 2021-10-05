@@ -7441,7 +7441,7 @@ var icon_file_default = /*#__PURE__*/__webpack_require__.n(icon_file);
       }).then(function (comment) {
         try {
           var insertTo = _this2.options.parentIdStart == comment.parentId ? "before" : "after";
-          comment.userName = _this2.options.user.name;
+          comment.userName = comment.userName || _this2.options.user.name;
 
           _this2.clearForm();
 
@@ -9104,6 +9104,7 @@ var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce
       this.contextCommentsForm.text = text.slice(0, posCursor) + emoji + text.slice(posCursor, text.length);
       this.contextCommentsForm.posCursor = posCursor + emoji.length;
     },
+    // Установить начальные кординаты клика
     setMousedownCord: function setMousedownCord(event) {
       if (!build_default()()) {
         this.isHorizontalScroll = false;
