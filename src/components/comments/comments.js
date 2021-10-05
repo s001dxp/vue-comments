@@ -766,6 +766,7 @@ export default {
         text.slice(0, posCursor) + emoji + text.slice(posCursor, text.length);
       this.contextCommentsForm.posCursor = posCursor + emoji.length;
     },
+    // Установить начальные кординаты клика
     setMousedownCord(event) {
       if (!isTouchDevice()) {
         this.isHorizontalScroll = false;
