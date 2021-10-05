@@ -63,6 +63,13 @@ export default {
       isScrollDocument: false,
       // Контекст текущей формы - для того чтобы добавлять смайлы
       contextCommentsForm: null,
+      // Кординаты нажатия правой клавиши мыши в компоненте
+      mousedownCord: {
+        pageX: 0,
+        pageY: 0,
+      },
+      // Указывает на наличие горизонтального скрола
+      isHorizontalScroll: false,
       optionsInit: {
         // Кастомный css класс
         yourCssClass: "",
@@ -315,6 +322,7 @@ export default {
     document.addEventListener("touchmove", this.listeners["touchmove"]);
     document.addEventListener("scroll", this.listeners["scroll"]);
     window.addEventListener("resize", this.listeners["resize"]);
+    document.addEventListener("mouseup", this.setMousedownCord);
   },
   beforeUnmount() {
     document.removeEventListener("touchstart", this.listeners["touchstart"]);
@@ -323,6 +331,7 @@ export default {
     document.removeEventListener("touchmove", this.listeners["touchmove"]);
     document.removeEventListener("scroll", this.listeners["scroll"]);
     window.removeEventListener("resize", this.listeners["resize"]);
+    document.removeEventListener("mouseup", this.setMousedownCord);
   },
 
   watch: {
@@ -756,6 +765,46 @@ export default {
       this.contextCommentsForm.text =
         text.slice(0, posCursor) + emoji + text.slice(posCursor, text.length);
       this.contextCommentsForm.posCursor = posCursor + emoji.length;
+    },
+    setMousedownCord(event) {
+      if (!isTouchDevice()) {
+        this.isHorizontalScroll = false;
+        switch (event.type) {
+          case "mousedown":
+            this.mousedownCord = {
+              pageX: event.pageX,
+              pageY: event.pageY,
+            };
+            break;
+          default:
+            this.mousedownCord = {
+              pageX: 0,
+              pageY: 0,
+            };
+            break;
+        }
+      }
+    },
+    // Горизонтальный скролл
+    setHorizontalScroll(event) {
+      let { pageX } = this.mousedownCord;
+      let { scrollWidth, clientWidth, scrollLeft } = this.$refs.list;
+      let offsetX = event.pageX - pageX;
+      let maxOffsetX = scrollWidth - clientWidth;
+      if (scrollWidth > clientWidth && pageX && !isTouchDevice()) {
+        this.isHorizontalScroll = true;
+        if (offsetX < 0) {
+          // Скролл в право
+          offsetX = event.pageX - pageX < maxOffsetX ? event.pageX - pageX : maxOffsetX;
+        } else if (offsetX > 0) {
+          // Скролл в лево
+          offsetX = Math.abs(event.pageX - pageX) < scrollLeft ? event.pageX - pageX : 0;
+        }
+
+        this.$refs.list.scrollTo({
+          left: Math.abs(offsetX),
+        });
+      }
     },
   },
 };

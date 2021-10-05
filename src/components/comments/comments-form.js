@@ -56,11 +56,6 @@ export default {
         this.error = "";
       },
     },
-    // text: {
-    //   handler() {
-    //     this.setPosCursor();
-    //   },
-    // },
   },
   methods: {
     // Создание превью файла

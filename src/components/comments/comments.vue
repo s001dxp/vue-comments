@@ -21,7 +21,14 @@ include /src/assets/pug/index.pug
         ) {{ item }}
   +e.panel-form-add
     comments-form(v-if="optionsInit.formAddShowAlways || optionsInit.user.auth")
-  +e.list(v-if="mapItems[optionsInit.parentIdStart]")
+  +e.list(
+    v-if="mapItems[optionsInit.parentIdStart]",
+    ref="list",
+    @mousedown="setMousedownCord($event)",
+    @mousemove="setHorizontalScroll($event)",
+    @mouseleave="setMousedownCord($event)",
+    :class="{ 'comments__list--scroll': isHorizontalScroll }"
+  )
     +e.item(
       v-for="(commentId, i) in mapItems[optionsInit.parentIdStart].items",
       :key="commentId"
@@ -63,6 +70,17 @@ export default Comments;
     margin-bottom: 5px
   &__list
     overflow-x: auto
+    &--scroll
+      position: relative
+      &::before
+        cursor: pointer
+        content: ""
+        position: absolute
+        z-index: 1
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
   &__emoji
     width: 200px
     box-shadow: 0 0 5px rgba(0,0,0,0.5)
