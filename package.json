@@ -1,6 +1,6 @@
 {
   "name": "@x-store/vue-comments",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A comments component for Vue.js 3",
   "author": "Evgeniy Saschenko",
   "repository": "https://github.com/EvgeniySaschenko/vue-comments",
