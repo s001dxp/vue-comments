@@ -117,6 +117,7 @@ export default {
             files: [
               {
                 name: "image 1",
+                preview: "http://localhost:8888/images/comments/preview/1581_0.jpg",
                 src: "http://localhost:8888/images/comments/1581_0.jpg",
               },
             ],

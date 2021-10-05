@@ -59,7 +59,7 @@ include /src/assets/pug/index.pug
             img.comments-item__file-gallery(
               loading="lazy",
               @click="toggleGallery(true)",
-              :src="files[slideNum].type === 'icon' ? iconFile : files[slideNum].src",
+              :src="files[slideNum].type === 'icon' ? iconFile : !isOpenGallery ? files[slideNum].preview : files[slideNum].src",
               :alt="files[slideNum].name",
               :class="`comments-item__file-gallery-${files[slideNum].type}`"
             )
@@ -258,6 +258,10 @@ export default CommentsItem;
   &__user-name
     font-weight: 700
     margin-bottom: 5px
+    max-width: 195px
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
   &__file
     &-gallery
       display: flex
