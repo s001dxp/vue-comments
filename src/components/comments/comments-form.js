@@ -202,7 +202,7 @@ export default {
         .then((comment) => {
           try {
             let insertTo = this.options.parentIdStart == comment.parentId ? "before" : "after";
-            comment.userName = this.options.user.name;
+            comment.userName = comment.userName || this.options.user.name;
             this.clearForm();
             this.addCommentToList(comment, insertTo);
             if (this.toggleForm) {

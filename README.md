@@ -152,9 +152,7 @@ If initialization data needs to be received asynchronously, use `v-if` to displa
       Comments
     },
     async created() {
-      let response = await fetch("/api/comments/?parentId=0", {
-        headers: { Cookie: 'user...' },
-      });
+      let response = await fetch("/api/comments/?parentId=0&createUser=1");
       let comments = await response.json();
       this.comments = comments;
       this.isShow = true;
@@ -162,7 +160,11 @@ If initialization data needs to be received asynchronously, use `v-if` to displa
     data() {
       return {
         isShow: false,
-        comments: {}
+        comments: {},
+        user: {
+          auth: true,
+          img: "http://vue-comments.herokuapp.com/img/logo.82b9c7a5.png"
+        }
       }
     },
   }

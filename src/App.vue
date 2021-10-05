@@ -80,7 +80,7 @@ export default {
     },
     // Cообщение при действиях в комментариях
     messageComment(data) {
-      console.log("Demo events: " + data);
+      console.log("Demo events:", data);
     },
   },
 };
