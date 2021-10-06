@@ -13,6 +13,9 @@ include /src/assets/pug/index.pug
   form-add-user(@user-auth="userAuth($event)")
   +e.alert Heroky sometimes clears data
   br
+  +e.box-spiner(v-if="!isReady")
+    +b.spiner
+      +e.element
   comments(
     v-if="isReady",
     :options="options",
@@ -98,4 +101,40 @@ export default {
     text-align: center
     h1
       font-weight: 700
+  &__box-spiner
+    position: relative
+  .spiner
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background: rgba(65, 105, 225, .3)
+    z-index: 2
+    &__element
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
+      z-index: 2
+      display: inline-block
+      width: 40px
+      height: 40px
+      &:after
+        content: " "
+        display: block
+        width: 24px
+        height: 24px
+        margin: 3px
+        border-radius: 50%
+        border: 6px solid #fff
+        border-color: transparent rgba(0, 0, 255, .3) transparent rgba(0, 0, 255, .3)
+        animation: lds-dual-ring 1.2s linear infinite
+
+  @keyframes lds-dual-ring
+    0%
+      transform: rotate(0deg)
+
+    100%
+      transform: rotate(360deg)
 </style>
