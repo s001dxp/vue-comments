@@ -9,11 +9,12 @@
 
 **<a href="https://github.com/EvgeniySaschenko/comments-api-server">Example Back-End server</a>**
 
+
 ## Description
 <a name="description"></a>
 > The tree comment component for **Vue.js 3** **<a href="https://vue-comments.herokuapp.com/" target="_blank">Demo</a>**.<br>
 > I draw your attention to the fact that this component is not finished yet, its functionality can be changed, removed and supplemented.<br>
-> If you see an error, or you have any suggestions for improving or adding functionality, please create <a href="https://github.com/EvgeniySaschenko/vue-comments/issues">issues</a>
+> 👋 If you see an error, or you have suggestions for improving functionality or documentation, create <a href="https://github.com/EvgeniySaschenko/vue-comments/issues">issues</a>
 
 - Add / edit / delete comments.
 - Adding files. If there is more than one file - view in the form of a gallery.
@@ -21,7 +22,7 @@
 - Convert http / https to hyperlink.
 - Loading comments.
 - The ability to limit the display of text by the number of lines / characters.
-- Likes / Dislikes
+- Likes / Dislikes.
 - Adaptation for mobile devices.
 
 ## Install
@@ -269,7 +270,7 @@ send: ({ url, params }) => {
 | Parameter | Type | Default | Description |
 | --- | :---: | --- | --- |
 | parentIdStart | `Number` / `String` | 0 | This id is for `mapItems`, it describes the first level of comments. |
-| emojiLilst | `Array` | ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"] | List emoji |
+| emojiLilst | `Array` | ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😇", "😉", "😊", "🙂", "🙃", "😋", "😌", "😍", "🥳", "😘", "😗", "😚", "🤪", "😜", "😎", "😓", "👌", "👋", "👍", "👎"] | List emoji |
 | formAddShowAlways | `Boolean` | true | Using this parameter, you can show or hide the form for adding a comment. This may be needed if you do not want to show the form when the user is not logged in. |
 | btnAnswerShowAlways | `Boolean` | true | Use this option to show or hide the Reply to Comment button. This may be needed if you do not want to show the button when the user is not logged in. |
 | imgDefaultUser | `String` | image user | Default user avatar. |
@@ -288,7 +289,7 @@ send: ({ url, params }) => {
         filesMaxCount: Infinity,
         fileMaxSize: 2097152,
         validExtensions: ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"],
-        emojiLilst: ["😀","😃","😄","😁","😆","😅","😂","🤣","😇","😉","😊","🙂","🙃","😋","😌","😍","🥰","😘","😗","😙","😚","🤪","😜","😝","😛","🤑","😎"],
+        emojiLilst: ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😇", "😉", "😊", "🙂", "🙃", "😋", "😌", "😍", "🥳", "😘", "😗", "😚", "🤪", "😜", "😎", "😓", "👌", "👋", "👍", "👎"],
         isScrollToComment: true,
         isShowBtnUpload: true,
         isShowBtnEmoji: true,
