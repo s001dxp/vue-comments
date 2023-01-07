@@ -11,7 +11,7 @@ include /src/assets/pug/index.pug
   br
   br
   form-add-user(@user-auth="userAuth($event)")
-  +e.alert Heroky sometimes clears data
+
   br
   +e.box-spiner(v-if="!isReady")
     +b.spiner

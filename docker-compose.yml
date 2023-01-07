@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  front-end:
+    build: ./
+    command: npm run dev
+    container_name: vue-comments--front-end
+    ports:
+      - "8080:8080"
+      - "8888:8888"
+    stdin_open: true
+    tty: true
+    volumes: 
+      - ./src:/usr/src/app/vue-comments/src
