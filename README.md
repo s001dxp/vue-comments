@@ -497,7 +497,7 @@ Dev-server started in address http://localhost:8080/, api-sever started in addre
 docker compose --file docker-compose-npm.yml up && docker cp -a vue-comments--front-end:/usr/src/app/vue-comments/dist-demo ./  && docker cp -a vue-comments--front-end:/usr/src/app/vue-comments/dist  ./
 ```
 
-5. The created folder "dist" must be replaced with "https://github.com/EvgeniySaschenko/comments-api-server", in the folder "public" 
+5. The created folder "dist-demo" must be replaced with "https://github.com/EvgeniySaschenko/comments-api-server", in the folder "public" 
 
 6. Upload all changes to https://github.com/. "vue-comments" publish to "npm". "comments-api-server" upload to https://vue-comments.onrender.com/.
 
