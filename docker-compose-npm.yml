@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  front-end:
+    build: ./
+    command: npm run lib
+    container_name: vue-comments--front-end
