@@ -494,7 +494,7 @@ Dev-server started in address http://localhost:8080/, api-sever started in addre
 
 - Create "build files" in Docker (npm run build) and copy the files from Docker to a local computer
 ```bash
-docker compose --file docker-compose-npm.yml up && docker cp -a vue-comments--front-end:/usr/src/app/vue-comments/dist ./  && docker cp -a vue-comments--front-end:/usr/src/app/vue-comments/dist-lib  ./
+docker compose --file docker-compose-npm.yml up && docker cp -a vue-comments--front-end:/usr/src/app/vue-comments/dist-demo ./  && docker cp -a vue-comments--front-end:/usr/src/app/vue-comments/dist  ./
 ```
 
 5. The created folder "dist" must be replaced with "https://github.com/EvgeniySaschenko/comments-api-server", in the folder "public" 
