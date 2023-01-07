@@ -1,22 +1,22 @@
 {
   "name": "@x-store/vue-comments",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A comments component for Vue.js 3",
   "author": "Evgeniy Saschenko<evgeniy.saschenko@gmail.com>",
   "repository": "https://github.com/EvgeniySaschenko/vue-comments",
   "homepage": "https://vue-comments.onrender.com/",
-  "main": "dist-lib/vue-comments.umd.js",
-  "module": "dist-lib/vue-comments.esm.js",
-  "unpkg": "dist-lib/vue-comments.min.js",
+  "main": "dist/vue-comments.umd.js",
+  "module": "dist/vue-comments.esm.js",
+  "unpkg": "dist/vue-comments.min.js",
   "browser": {
     "./sfc": "src/components/comments/vue-comments.vue"
   },
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --dest=dist-demo",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --dest=dist-lib --target lib --name vue-comments src/lib.js && npm run build"
+    "lib": "vue-cli-service build --dest=dist --target lib --name vue-comments src/lib.js && npm run build"
   },
   "dependencies": {
     "core-js": "^3.6.5",
