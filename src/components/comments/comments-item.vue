@@ -14,9 +14,9 @@ include /src/assets/pug/index.pug
       +e.content(v-if="!isEdited")
         +e.panel-top
           // user name
-          +e.user-name(data-comments-item-user-name) 
+          +e.user-name(data-comments-item-user-name)
             span {{ comment.userName }}
-            +e.SPAN.answer-to(v-if="userNameAnswer") 
+            +e.SPAN.answer-to(v-if="userNameAnswer")
               +e.SVG.answer-to-icon
                 use(:xlink:href="`#vue-comments-symbol-icon-share`")
               +e.answer-to-user(@click="scrollToComment(comment.parentId)") @{{ userNameAnswer }}
@@ -56,13 +56,25 @@ include /src/assets/pug/index.pug
             use(:xlink:href="`#vue-comments-symbol-icon-closed`")
           // download
           +e.file-gallery-box-img
+            // icon
+            a(
+              download,
+              :href="files[slideNum].src",
+              v-if="files[slideNum].type === 'icon'",
+              :class="`comments-item__file-gallery-icon`"
+            )
+              svg
+                use(:xlink:href="`#vue-comments-symbol-icon-download`")
+            // img
             img.comments-item__file-gallery(
+              v-else,
               loading="lazy",
               @click="toggleGallery(true)",
-              :src="files[slideNum].type === 'icon' ? iconFile : !isOpenGallery ? files[slideNum].preview : files[slideNum].src",
+              :src="!isOpenGallery ? files[slideNum].preview : files[slideNum].src",
               :alt="files[slideNum].name",
-              :class="`comments-item__file-gallery-${files[slideNum].type}`"
+              :class="`comments-item__file-gallery-img`"
             )
+
             // prev
             +e.file-gallery-arrow--prev(
               v-if="files.length > 1",
@@ -356,8 +368,10 @@ export default CommentsItem;
         max-width: 100%
         max-height: 100%
       &-icon
-        width: 60px
-        height: 60px
+        svg
+          width: 40px !important
+          height: 40px !important
+          margin-bottom: 5px
       &-text
         font-size: 12px
   &__panel-top
