@@ -119,7 +119,7 @@ export default {
             files: [
               {
                 name: "image 1",
-                preview: "https://vue-comments.cyclic.app/images/comments/1832_0.jpg?sds=ss",
+                preview: "https://vue-comments.cyclic.app/images/comments/preview/1832_0.jpg?sds=ss",
                 src: "https://vue-comments.cyclic.app/images/comments/1832_0.jpg",
               },
             ],
