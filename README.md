@@ -4,7 +4,7 @@
 **<a href="#install">Install</a>** | 
 **<a href="#usage-example">Usage example</a>** | 
 **<a href="#options">Options</a>** | 
-**<a href="#events">Events</a>**
+**<a href="#events">Events</a>** | 
 **<a href="#development">Development</a>**
 
 
@@ -14,7 +14,7 @@
 
 ## Description
 <a name="description"></a>
-> The tree comment component for **Vue.js 3** **<a href="https://vue-comments.onrender.com/" target="_blank">Demo</a>**.<br>
+> The tree comment component for **Vue.js 3** **<a href="https://vue-comments.cyclic.app/" target="_blank">Demo</a>**.<br>
 > I draw your attention to the fact that this component is not finished yet, its functionality can be changed, removed and supplemented.
 
 - Add / edit / delete comments.
@@ -85,7 +85,7 @@ export default {
         user: {
           auth: true,
           name: "Jhon",
-          img: "https://vue-comments.onrender.com/img/logo.82b9c7a5.png"
+          img: "https://vue-comments.cyclic.app/img/logo.82b9c7a5.png"
         }
       },
       comments: {
@@ -107,20 +107,20 @@ export default {
             isManageEdit: false,
             parentId: 0,
             text: "text 😇😇😇😇",
-            userImg: "http://localhost:8888/images/users/6.jpg",
+            userImg: "https://vue-comments.cyclic.app/images/users/292.jpg",
             userName: "Jhon",
           },
           1550: {
             dateCreate: 1632329876,
             dateUpdate: 1632329889,
-            dislike: 2,
-            like: 0,
-            voteValue: -1,
+            dislike: 0,
+            like: 50,
+            voteValue: 1,
             files: [
               {
                 name: "image 1",
-                preview: "http://localhost:8888/images/comments/preview/1581_0.jpg",
-                src: "http://localhost:8888/images/comments/1581_0.jpg",
+                preview: "https://vue-comments.cyclic.app/images/comments/1832_0.jpg?sds=ss",
+                src: "https://vue-comments.cyclic.app/images/comments/1832_0.jpg",
               },
             ],
             id: 1550,
@@ -132,7 +132,7 @@ export default {
             userName: "Ivan",
           },
         },
-      },
+      }
     }
   },
 }
@@ -165,7 +165,7 @@ If initialization data needs to be received asynchronously, use `v-if` to displa
         comments: {},
         user: {
           auth: true,
-          img: "https://vue-comments.onrender.com/img/logo.82b9c7a5.png"
+          img: "https://vue-comments.cyclic.app/img/logo.82b9c7a5.png"
         }
       }
     },
@@ -499,7 +499,7 @@ docker compose --file docker-compose-npm.yml up && docker cp -a vue-comments--fr
 
 5. The created folder "dist-demo" must be replaced with "https://github.com/EvgeniySaschenko/comments-api-server", in the folder "public" 
 
-6. Upload all changes to https://github.com/. "vue-comments" publish to "npm". "comments-api-server" upload to https://vue-comments.onrender.com/.
+6. Upload all changes to https://github.com/. "vue-comments" publish to "npm". "comments-api-server" upload to https://vue-comments.cyclic.app/.
 
 #### Useful Commands
 - Copy file from local computer to Docker container

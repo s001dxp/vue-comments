@@ -1,6 +1,6 @@
 import CommentsItem from "@/components/comments/comments-item.vue";
 import regExp from "@/components/comments/reg-exp.js";
-import dataTest from "@/components/comments/test/comments-item.data.js";
+import dataTest from "@/components/comments/__tests__/comments-item.data.js";
 // import { mount } from "@vue/test-utils";
 
 // Текст комментария

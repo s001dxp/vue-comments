@@ -1,10 +1,10 @@
 {
   "name": "@x-store/vue-comments",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A comments component for Vue.js 3",
   "author": "Evgeniy Saschenko<evgeniy.saschenko@gmail.com>",
   "repository": "https://github.com/EvgeniySaschenko/vue-comments",
-  "homepage": "https://vue-comments.onrender.com/",
+  "homepage": "https://vue-comments.cyclic.app/",
   "main": "dist/vue-comments.umd.js",
   "module": "dist/vue-comments.esm.js",
   "unpkg": "dist/vue-comments.min.js",
@@ -90,7 +90,22 @@
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest",
     "transform": {
-      "^.+\\.vue$": "vue-jest"
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "globals": {
+      "vue-jest": {
+        "pug": {
+          "basedir": "./"
+        }
+      }
     }
   },
   "keywords": [
