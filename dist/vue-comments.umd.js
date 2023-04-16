@@ -395,17 +395,6 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
 
 /***/ }),
 
-/***/ "1a88":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_10_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_comments_item_vue_vue_type_style_index_0_id_0ac1e02b_lang_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("f1cf");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_10_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_comments_item_vue_vue_type_style_index_0_id_0ac1e02b_lang_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_10_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_comments_item_vue_vue_type_style_index_0_id_0ac1e02b_lang_sass__WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
 /***/ "1d80":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1051,6 +1040,13 @@ module.exports = function (error, C, stack, dropEntries) {
   }
 };
 
+
+/***/ }),
+
+/***/ "708e":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -2085,10 +2081,14 @@ module.exports = Array.isArray || function isArray(argument) {
 
 /***/ }),
 
-/***/ "f1cf":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "eb3c":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_10_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_comments_item_vue_vue_type_style_index_0_id_ec402a30_lang_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("708e");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_10_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_comments_item_vue_vue_type_style_index_0_id_ec402a30_lang_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_10_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_comments_item_vue_vue_type_style_index_0_id_ec402a30_lang_sass__WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
 
 /***/ }),
 
@@ -2624,15 +2624,15 @@ var es_error_cause = __webpack_require__("d9e2");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.push.js
 var es_array_push = __webpack_require__("14d9");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/pug-plain-loader!./node_modules/pug-plain-loader??ref--15!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/comments/comments-item.vue?vue&type=template&id=0ac1e02b&lang=pug
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/pug-plain-loader!./node_modules/pug-plain-loader??ref--15!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/comments/comments-item.vue?vue&type=template&id=ec402a30&lang=pug
 
-const comments_itemvue_type_template_id_0ac1e02b_lang_pug_hoisted_1 = {
+const comments_itemvue_type_template_id_ec402a30_lang_pug_hoisted_1 = {
   class: "comments-item__row-comment"
 };
-const comments_itemvue_type_template_id_0ac1e02b_lang_pug_hoisted_2 = {
+const comments_itemvue_type_template_id_ec402a30_lang_pug_hoisted_2 = {
   class: "comments-item__col-avatar"
 };
-const comments_itemvue_type_template_id_0ac1e02b_lang_pug_hoisted_3 = ["src"];
+const comments_itemvue_type_template_id_ec402a30_lang_pug_hoisted_3 = ["src"];
 const _hoisted_4 = {
   key: 0,
   class: "comments-item__content"
@@ -2688,115 +2688,120 @@ const _hoisted_19 = [_hoisted_18];
 const _hoisted_20 = {
   class: "comments-item__file-gallery-box-img"
 };
-const _hoisted_21 = ["src", "alt"];
+const _hoisted_21 = ["href"];
 const _hoisted_22 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("svg", null, [/*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("use", {
-  "xlink:href": `#vue-comments-symbol-icon-arrow-left`
+  "xlink:href": `#vue-comments-symbol-icon-download`
 })], -1);
 const _hoisted_23 = [_hoisted_22];
-const _hoisted_24 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("svg", null, [/*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("use", {
+const _hoisted_24 = ["src", "alt"];
+const _hoisted_25 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("svg", null, [/*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("use", {
+  "xlink:href": `#vue-comments-symbol-icon-arrow-left`
+})], -1);
+const _hoisted_26 = [_hoisted_25];
+const _hoisted_27 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("svg", null, [/*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("use", {
   "xlink:href": `#vue-comments-symbol-icon-arrow-right`
 })], -1);
-const _hoisted_25 = [_hoisted_24];
-const _hoisted_26 = ["href"];
-const _hoisted_27 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("br", null, null, -1);
-const _hoisted_28 = {
+const _hoisted_28 = [_hoisted_27];
+const _hoisted_29 = ["href"];
+const _hoisted_30 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("br", null, null, -1);
+const _hoisted_31 = {
   key: 1,
   class: "comments-item__file-gallery-count"
 };
-const _hoisted_29 = {
+const _hoisted_32 = {
   class: "comments-item__text-box"
 };
-const _hoisted_30 = ["innerHTML"];
-const _hoisted_31 = {
+const _hoisted_33 = ["innerHTML"];
+const _hoisted_34 = {
   key: 1,
   class: "comments-item__date-update"
 };
-const _hoisted_32 = {
+const _hoisted_35 = {
   key: 1,
   class: "comments-item__panel-bottom"
 };
-const _hoisted_33 = {
+const _hoisted_36 = {
   class: "comments-item__panel-bottom-col comments-item__panel-bottom-col--1"
 };
-const _hoisted_34 = {
+const _hoisted_37 = {
   class: "comments-item__date-create"
 };
-const _hoisted_35 = {
+const _hoisted_38 = {
   class: "comments-item__panel-bottom-col comments-item__panel-bottom-col--2"
 };
-const _hoisted_36 = {
+const _hoisted_39 = {
   key: 0,
   class: "comments-spiner"
 };
-const _hoisted_37 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
+const _hoisted_40 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
   class: "comments-spiner__element"
 }, null, -1);
-const _hoisted_38 = [_hoisted_37];
-const _hoisted_39 = {
+const _hoisted_41 = [_hoisted_40];
+const _hoisted_42 = {
   key: 1,
   class: "comments-item__vote"
 };
-const _hoisted_40 = {
+const _hoisted_43 = {
   key: 0,
   class: "comments-spiner"
 };
-const _hoisted_41 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
+const _hoisted_44 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
   class: "comments-spiner__element"
-}, null, -1);
-const _hoisted_42 = [_hoisted_41];
-const _hoisted_43 = {
-  class: "comments-item__vote-item"
-};
-const _hoisted_44 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("use", {
-  "xlink:href": `#vue-comments-symbol-icon-like`
 }, null, -1);
 const _hoisted_45 = [_hoisted_44];
 const _hoisted_46 = {
-  class: "comments-item__vote-count"
-};
-const _hoisted_47 = {
   class: "comments-item__vote-item"
 };
-const _hoisted_48 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("use", {
-  "xlink:href": `#vue-comments-symbol-icon-dislike`
+const _hoisted_47 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("use", {
+  "xlink:href": `#vue-comments-symbol-icon-like`
 }, null, -1);
-const _hoisted_49 = [_hoisted_48];
-const _hoisted_50 = {
+const _hoisted_48 = [_hoisted_47];
+const _hoisted_49 = {
   class: "comments-item__vote-count"
 };
-const _hoisted_51 = {
+const _hoisted_50 = {
+  class: "comments-item__vote-item"
+};
+const _hoisted_51 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("use", {
+  "xlink:href": `#vue-comments-symbol-icon-dislike`
+}, null, -1);
+const _hoisted_52 = [_hoisted_51];
+const _hoisted_53 = {
+  class: "comments-item__vote-count"
+};
+const _hoisted_54 = {
   key: 2,
   class: "comments-item__row-btn-more"
 };
-const _hoisted_52 = {
+const _hoisted_55 = {
   key: 0,
   class: "comments-spiner"
 };
-const _hoisted_53 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
+const _hoisted_56 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
   class: "comments-spiner__element"
 }, null, -1);
-const _hoisted_54 = [_hoisted_53];
-const _hoisted_55 = {
+const _hoisted_57 = [_hoisted_56];
+const _hoisted_58 = {
   class: "comments-item__panel-form-add"
 };
-const _hoisted_56 = {
+const _hoisted_59 = {
   key: 3,
   class: "comments-item__panel-bottom comments-item__panel-bottom--edited"
 };
-const _hoisted_57 = {
+const _hoisted_60 = {
   class: "comments-item__panel-bottom-col comments-item__panel-bottom-col--1"
 };
-const _hoisted_58 = {
+const _hoisted_61 = {
   class: "comments-item__date-create"
 };
-const _hoisted_59 = {
+const _hoisted_62 = {
   class: "comments-item__panel-bottom-col comments-item__panel-bottom-col--2"
 };
-const _hoisted_60 = {
+const _hoisted_63 = {
   key: 0,
   class: "comments-item__row-answer"
 };
-function comments_itemvue_type_template_id_0ac1e02b_lang_pug_render(_ctx, _cache, $props, $setup, $data, $options) {
+function comments_itemvue_type_template_id_ec402a30_lang_pug_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_comments_form = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("comments-form");
   const _component_comments_item = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("comments-item", true);
   return _ctx.isShow ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
@@ -2804,11 +2809,11 @@ function comments_itemvue_type_template_id_0ac1e02b_lang_pug_render(_ctx, _cache
     class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["comments-item", {
       'comments-item--delete': _ctx.mapItems[_ctx.comment.id].isDelete
     }])
-  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", comments_itemvue_type_template_id_0ac1e02b_lang_pug_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", comments_itemvue_type_template_id_0ac1e02b_lang_pug_hoisted_2, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("img", {
+  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", comments_itemvue_type_template_id_ec402a30_lang_pug_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", comments_itemvue_type_template_id_ec402a30_lang_pug_hoisted_2, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("img", {
     class: "comments-item__avatar-img",
     src: _ctx.comment.userImg || _ctx.options.imgDefaultUser,
     loading: "lazy"
-  }, null, 8, comments_itemvue_type_template_id_0ac1e02b_lang_pug_hoisted_3)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
+  }, null, 8, comments_itemvue_type_template_id_ec402a30_lang_pug_hoisted_3)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
     class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["comments-item__col-content", {
       'comments-item__col-content--form-show': _ctx.isFormShow
     }])
@@ -2843,71 +2848,77 @@ function comments_itemvue_type_template_id_0ac1e02b_lang_pug_render(_ctx, _cache
     key: 0,
     class: "comments-item__file-gallery-closed",
     onClick: _cache[6] || (_cache[6] = $event => _ctx.toggleGallery(false))
-  }, _hoisted_19)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_20, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("img", {
-    class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["comments-item__file-gallery", `comments-item__file-gallery-${_ctx.files[_ctx.slideNum].type}`]),
+  }, _hoisted_19)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_20, [_ctx.files[_ctx.slideNum].type === 'icon' ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("a", {
+    key: 0,
+    download: "",
+    href: _ctx.files[_ctx.slideNum].src,
+    class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(`comments-item__file-gallery-icon`)
+  }, _hoisted_23, 8, _hoisted_21)) : (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("img", {
+    key: 1,
+    class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["comments-item__file-gallery", `comments-item__file-gallery-img`]),
     loading: "lazy",
     onClick: _cache[7] || (_cache[7] = $event => _ctx.toggleGallery(true)),
-    src: _ctx.files[_ctx.slideNum].type === 'icon' ? _ctx.iconFile : !_ctx.isOpenGallery ? _ctx.files[_ctx.slideNum].preview : _ctx.files[_ctx.slideNum].src,
+    src: !_ctx.isOpenGallery ? _ctx.files[_ctx.slideNum].preview : _ctx.files[_ctx.slideNum].src,
     alt: _ctx.files[_ctx.slideNum].name
-  }, null, 10, _hoisted_21), _ctx.files.length > 1 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
-    key: 0,
+  }, null, 8, _hoisted_24)), _ctx.files.length > 1 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
+    key: 2,
     class: "comments-item__file-gallery-arrow comments-item__file-gallery-arrow--prev",
     onClick: _cache[8] || (_cache[8] = $event => _ctx.leafSlide(-1))
-  }, _hoisted_23)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.files.length > 1 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
-    key: 1,
+  }, _hoisted_26)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.files.length > 1 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
+    key: 3,
     class: "comments-item__file-gallery-arrow comments-item__file-gallery-arrow--next",
     onClick: _cache[9] || (_cache[9] = $event => _ctx.leafSlide(1))
-  }, _hoisted_25)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.files[_ctx.slideNum].type === 'icon' ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("a", {
-    key: 2,
+  }, _hoisted_28)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.files[_ctx.slideNum].type === 'icon' ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("a", {
+    key: 4,
     class: "comments-item__file-gallery-download",
     download: "download",
     href: _ctx.files[_ctx.slideNum].src
-  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnFileDownload), 1), _hoisted_27, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" " + Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.files[_ctx.slideNum].name), 1)], 8, _hoisted_26)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)]), _ctx.files.length > 1 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_28, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("b", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.slideNum + 1), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" из "), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("b", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.files.length), 1)])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_29, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
+  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnFileDownload), 1), _hoisted_30, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" " + Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.files[_ctx.slideNum].name), 1)], 8, _hoisted_29)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)]), _ctx.files.length > 1 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_31, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("b", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.slideNum + 1), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" из "), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("b", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.files.length), 1)])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_32, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
     class: "comments-item__text",
     style: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeStyle"])(_ctx.isTextBriefЕxpand ? {
       'line-clamp': _ctx.options.text.briefMaxLine
     } : {}),
     innerHTML: _ctx.isTextBriefЕxpand ? _ctx.text.brief : _ctx.text.all,
     ref: "text"
-  }, null, 12, _hoisted_30), _ctx.isTextBrief ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", {
+  }, null, 12, _hoisted_33), _ctx.isTextBrief ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", {
     key: 0,
     class: "comments-item__text-more",
     onClick: _cache[10] || (_cache[10] = $event => _ctx.toggleTextBrief(_ctx.comment.text))
-  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.isTextBriefЕxpand ? _ctx.options.translation.btnЕxpand : _ctx.options.translation.btnCollapse), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.comment.dateUpdate ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_31, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("b", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.dateEditedText), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" " + Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.formatDate(_ctx.comment.dateUpdate)), 1)])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !_ctx.isEdited ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_32, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_33, [_ctx.options.btnAnswerShowAlways || _ctx.options.user.auth ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.isTextBriefЕxpand ? _ctx.options.translation.btnЕxpand : _ctx.options.translation.btnCollapse), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.comment.dateUpdate ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_34, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("b", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.dateEditedText), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" " + Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.formatDate(_ctx.comment.dateUpdate)), 1)])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), !_ctx.isEdited ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_35, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_36, [_ctx.options.btnAnswerShowAlways || _ctx.options.user.auth ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
     key: 0,
     class: "comments-item__btn-ansfer",
     onClick: _cache[11] || (_cache[11] = $event => _ctx.toggleForm())
-  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnAnswer), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_34, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.formatDate(_ctx.comment.dateCreate)), 1)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_35, [_ctx.mapItems[_ctx.comment.id].quantity && (_ctx.mapItems[_ctx.comment.id].items.length == 0 || _ctx.options.list.secondShowStart == 0 && !_ctx.mapItems[_ctx.comment.id].qShowNext) ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("button", {
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnAnswer), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_37, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.formatDate(_ctx.comment.dateCreate)), 1)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_38, [_ctx.mapItems[_ctx.comment.id].quantity && (_ctx.mapItems[_ctx.comment.id].items.length == 0 || _ctx.options.list.secondShowStart == 0 && !_ctx.mapItems[_ctx.comment.id].qShowNext) ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("button", {
     key: 0,
     class: "comments-item__btn-more comments-item__btn-more--answers",
     onClick: _cache[12] || (_cache[12] = $event => _ctx.showComments({
       parentId: _ctx.comment.id,
       insertTo: 'after'
     }))
-  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnMoreAnswers), 1), _ctx.mapItems[_ctx.comment.id].isProcessing ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_36, _hoisted_38)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.options.isShowVote ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_39, [_ctx.isVoteSending ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_40, _hoisted_42)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_43, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("svg", {
+  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnMoreAnswers), 1), _ctx.mapItems[_ctx.comment.id].isProcessing ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_39, _hoisted_41)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.options.isShowVote ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_42, [_ctx.isVoteSending ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_43, _hoisted_45)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_46, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("svg", {
     class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["comments-item__vote-btn", {
       active: _ctx.comment.voteValue == 1
     }]),
     onClick: _cache[13] || (_cache[13] = $event => _ctx.sendVote(1, _ctx.comment))
-  }, _hoisted_45, 2)), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_46, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.comment.like), 1)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_47, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("svg", {
+  }, _hoisted_48, 2)), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_49, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.comment.like), 1)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_50, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("svg", {
     class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["comments-item__vote-btn", {
       active: _ctx.comment.voteValue == -1
     }]),
     onClick: _cache[14] || (_cache[14] = $event => _ctx.sendVote(-1, _ctx.comment))
-  }, _hoisted_49, 2)), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_50, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.comment.dislike), 1)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.mapItems[_ctx.comment.parentId].btnMoreNext == _ctx.comment.id && _ctx.mapItems[_ctx.comment.parentId].qShowBalance > 0 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_51, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", {
+  }, _hoisted_52, 2)), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_53, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.comment.dislike), 1)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.mapItems[_ctx.comment.parentId].btnMoreNext == _ctx.comment.id && _ctx.mapItems[_ctx.comment.parentId].qShowBalance > 0 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_54, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", {
     class: "comments-item__btn-more",
     onClick: _cache[15] || (_cache[15] = $event => _ctx.showComments({
       parentId: _ctx.comment.parentId,
       insertTo: 'after'
     }))
-  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnMore) + " (" + Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.mapItems[_ctx.comment.parentId].qShowBalance) + ")", 1), _ctx.mapItems[_ctx.comment.parentId].isProcessing ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_52, _hoisted_54)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_55, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_comments_form, {
+  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnMore) + " (" + Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.mapItems[_ctx.comment.parentId].qShowBalance) + ")", 1), _ctx.mapItems[_ctx.comment.parentId].isProcessing ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_55, _hoisted_57)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_58, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_comments_form, {
     comment: _ctx.comment,
     userNameAnswer: _ctx.comment.userName,
     isEdited: _ctx.isEdited
-  }, null, 8, ["comment", "userNameAnswer", "isEdited"])], 512), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.isFormShow]]), _ctx.isEdited ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_56, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_57, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_58, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.formatDate(_ctx.comment.dateCreate)), 1)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_59, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
+  }, null, 8, ["comment", "userNameAnswer", "isEdited"])], 512), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.isFormShow]]), _ctx.isEdited ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_59, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_60, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_61, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.formatDate(_ctx.comment.dateCreate)), 1)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", _hoisted_62, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", {
     class: "comments-item__btn-cancel-editing",
     onClick: _cache[16] || (_cache[16] = $event => _ctx.cancelEditing())
-  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnСancelEditing), 1)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2)]), _ctx.mapItems[_ctx.comment.id] ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_60, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderList"])(_ctx.mapItems[_ctx.comment.id].items, answerId => {
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.options.translation.btnСancelEditing), 1)])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2)]), _ctx.mapItems[_ctx.comment.id] ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_63, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderList"])(_ctx.mapItems[_ctx.comment.id].items, answerId => {
     return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(_component_comments_item, {
       userNameAnswer: _ctx.comment.userName,
       comments: _ctx.comments,
@@ -2918,7 +2929,7 @@ function comments_itemvue_type_template_id_0ac1e02b_lang_pug_render(_ctx, _cache
     }, null, 8, ["userNameAnswer", "comments", "mapItems", "widthResizeWindow", "comment"]);
   }), 128))])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true);
 }
-// CONCATENATED MODULE: ./src/components/comments/comments-item.vue?vue&type=template&id=0ac1e02b&lang=pug
+// CONCATENATED MODULE: ./src/components/comments/comments-item.vue?vue&type=template&id=ec402a30&lang=pug
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/pug-plain-loader!./node_modules/pug-plain-loader??ref--15!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/comments/comments-form.vue?vue&type=template&id=22ba29f7&lang=pug
 
@@ -3510,7 +3521,15 @@ var reg_exp_default = /*#__PURE__*/__webpack_require__.n(reg_exp);
     preparationDataFiles() {
       this.files = [];
       for (let file of this.comment.files) {
-        let extension = file.name.match(/[^.]+$/i)[0];
+        let partsStr = file.preview.split("?");
+        let extension;
+        if (partsStr.length > 1) {
+          // file-name.jpg?reset=v1
+          extension = partsStr[partsStr.length - 2].match(/[^.]+$/i)[0];
+        } else {
+          // file-name.jpg
+          extension = file.preview.match(/[^.]+$/i)[0];
+        }
         let item = {
           ...file,
           extension
@@ -3846,8 +3865,8 @@ var reg_exp_default = /*#__PURE__*/__webpack_require__.n(reg_exp);
 /* harmony default export */ var comments_itemvue_type_script_lang_js = (comments_item);
 // CONCATENATED MODULE: ./src/components/comments/comments-item.vue?vue&type=script&lang=js
  
-// EXTERNAL MODULE: ./src/components/comments/comments-item.vue?vue&type=style&index=0&id=0ac1e02b&lang=sass
-var comments_itemvue_type_style_index_0_id_0ac1e02b_lang_sass = __webpack_require__("1a88");
+// EXTERNAL MODULE: ./src/components/comments/comments-item.vue?vue&type=style&index=0&id=ec402a30&lang=sass
+var comments_itemvue_type_style_index_0_id_ec402a30_lang_sass = __webpack_require__("eb3c");
 
 // CONCATENATED MODULE: ./src/components/comments/comments-item.vue
 
@@ -3857,7 +3876,7 @@ var comments_itemvue_type_style_index_0_id_0ac1e02b_lang_sass = __webpack_requir
 
 
 
-const comments_item_exports_ = /*#__PURE__*/exportHelper_default()(comments_itemvue_type_script_lang_js, [['render',comments_itemvue_type_template_id_0ac1e02b_lang_pug_render]])
+const comments_item_exports_ = /*#__PURE__*/exportHelper_default()(comments_itemvue_type_script_lang_js, [['render',comments_itemvue_type_template_id_ec402a30_lang_pug_render]])
 
 /* harmony default export */ var comments_comments_item = (comments_item_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/comments/comments-svg-icons.vue?vue&type=template&id=0c4273c9
