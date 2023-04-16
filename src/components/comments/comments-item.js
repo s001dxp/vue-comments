@@ -126,7 +126,17 @@ export default {
     preparationDataFiles() {
       this.files = [];
       for (let file of this.comment.files) {
-        let extension = file.name.match(/[^.]+$/i)[0];
+        let partsStr = file.preview.split("?");
+        let extension;
+
+        if (partsStr.length > 1) {
+          // file-name.jpg?reset=v1
+          extension = partsStr[partsStr.length - 2].match(/[^.]+$/i)[0];
+        } else {
+          // file-name.jpg
+          extension = file.preview.match(/[^.]+$/i)[0];
+        }
+
         let item = { ...file, extension };
         if (this.options.imgExtensions[extension]) {
           item.type = "img";

@@ -67,6 +67,7 @@ export default {
     });
     let comments = await response.json();
     this.comments = comments;
+
     this.isReady = true;
   },
   methods: {
