@@ -129,14 +129,14 @@ include /src/assets/pug/index.pug
                 :class="{ active: comment.voteValue == 1 }"
               )
                 use(:xlink:href="`#vue-comments-symbol-icon-like`")
-              +e.vote-count {{ comment.like }}
+              +e.vote-count {{ comment.like || "" }}
             +e.vote-item
               +e.SVG.vote-btn(
                 @click="sendVote(-1, comment)",
                 :class="{ active: comment.voteValue == -1 }"
               )
                 use(:xlink:href="`#vue-comments-symbol-icon-dislike`")
-              +e.vote-count {{ comment.dislike }}
+              +e.vote-count {{ comment.dislike || "" }}
 
       // btn-more - кнопка показать еще
       +e.row-btn-more(
