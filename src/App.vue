@@ -22,6 +22,11 @@ include /src/assets/pug/index.pug
     :commentsData="comments",
     @message-comment="messageComment($event)"
   )
+
++b.popup-not-authorized(v-if="isShowPopupNotAuthorized")
+  +e.box
+    +e.content The user is not authorized. <br> Enter a name and add a user.
+    +e.BUTTON.btn(@click="isShowPopupNotAuthorized = false") OK
 </template>
 
 <script>
@@ -39,6 +44,7 @@ export default {
     return {
       isReady: false,
       comments: {},
+      isShowPopupNotAuthorized: false,
       options: {
         dataApi: {
           vote: {
@@ -85,12 +91,21 @@ export default {
     // Cообщение при действиях в комментариях
     messageComment(data) {
       console.log("Demo events:", data);
+
+      if (data.type === "user-no-auth") {
+        this.isShowPopupNotAuthorized = true;
+        window.scrollTo({
+          top: 100,
+          left: 100,
+          behavior: "smooth",
+        });
+      }
     },
   },
 };
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 .page
   margin: 0 auto 100px
   max-width: 700px
@@ -138,4 +153,29 @@ export default {
 
     100%
       transform: rotate(360deg)
+
+.popup-not-authorized
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100vh
+  width: 100%
+  position: fixed
+  z-index: 1000
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(255,255,255,.5)
+  &__box
+    background: #fff
+    width: 100%
+    max-width: 300px
+    border: 2px solid gray
+    margin: 10px
+    padding: 15px
+    text-align: center
+  &__content
+    font-size: 22px
+    margin-bottom: 20px
 </style>
