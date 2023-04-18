@@ -3,10 +3,10 @@ include /src/assets/pug/index.pug
 +b.form-add-user
   +e.form(v-if="isShowForm")
     b User name* (A-Z, 0-9)
-    div 
+    div
       +e.INPUT.field(v-model="userName")
     b Avatar user (jpg, png)
-    div 
+    div
       +e.INPUT.upload-file-input(type="file", ref="avatar", accept=".jpg,.png,.jpeg")
     br
     div
@@ -51,12 +51,12 @@ export default {
     async addUser() {
       this.userName = this.userName.trim();
       if (!/[A-Za-z-0-9]/.test(this.userName)) {
-        this.message = "The name can contain only Latin letters and numbers";
+        this.error = "The name can contain only Latin letters and numbers";
         return;
       }
 
       if (!this.userName) {
-        this.message = "Enter your username";
+        this.error = "Enter your username";
         return;
       }
       let { files } = this.$refs.avatar;
@@ -76,11 +76,8 @@ export default {
         if (user.id) {
           this.error = user.error;
           this.authUser();
-        } else {
-          this.error = user.error;
         }
       } catch (error) {
-        console.log(error);
         this.error = error.error;
       }
     },
