@@ -14,7 +14,7 @@
 
 ## Description
 <a name="description"></a>
-> The tree comment component for **Vue.js 3** **<a href="https://vue-comments.cyclic.app/" target="_blank">Demo</a>**.<br>
+> The tree comment component for **Vue.js 3** **<a href="https://vue-comments.onrender.com/" target="_blank">Demo</a>**.<br>
 > I draw your attention to the fact that this component is not finished yet, its functionality can be changed, removed and supplemented.
 
 - Add / edit / delete comments.
@@ -165,7 +165,7 @@ If initialization data needs to be received asynchronously, use `v-if` to displa
         comments: {},
         user: {
           auth: true,
-          img: "https://vue-comments.cyclic.app/img/logo.82b9c7a5.png"
+          img: "https://vue-comments.onrender.com/images/users/2.jpg"
         }
       }
     },
@@ -499,7 +499,7 @@ docker compose --file docker-compose-npm.yml up && docker cp -a vue-comments--fr
 
 5. The created folder "dist-demo" must be replaced with "https://github.com/EvgeniySaschenko/comments-api-server", in the folder "public" 
 
-6. Upload all changes to https://github.com/. "vue-comments" publish to "npm". "comments-api-server" upload to https://vue-comments.cyclic.app/.
+6. Upload all changes to https://github.com/. "vue-comments" publish to "npm". "comments-api-server" upload to https://vue-comments.onrender.com/.
 
 #### Useful Commands
 - Copy file from local computer to Docker container
