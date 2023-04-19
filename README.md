@@ -85,7 +85,7 @@ export default {
         user: {
           auth: true,
           name: "Jhon",
-          img: "https://vue-comments.cyclic.app/img/logo.82b9c7a5.png"
+          img: "https://evgeniysaschenko.github.io/vue-comments/user.jpg"
         }
       },
       comments: {
@@ -107,7 +107,7 @@ export default {
             isManageEdit: false,
             parentId: 0,
             text: "text 😇😇😇😇",
-            userImg: "https://vue-comments.cyclic.app/images/users/292.jpg",
+            userImg: "https://evgeniysaschenko.github.io/vue-comments/user.jpg",
             userName: "Jhon",
           },
           1550: {
@@ -119,8 +119,8 @@ export default {
             files: [
               {
                 name: "image 1",
-                preview: "https://vue-comments.cyclic.app/images/comments/preview/1832_0.jpg?sds=ss",
-                src: "https://vue-comments.cyclic.app/images/comments/1832_0.jpg",
+                preview: "https://evgeniysaschenko.github.io/vue-comments/preview.jpg",
+                src: "https://evgeniysaschenko.github.io/vue-comments/image.jpg",
               },
             ],
             id: 1550,
