@@ -168,7 +168,11 @@ export default {
           vote: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
@@ -183,7 +187,11 @@ export default {
           commentsListGet: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
@@ -197,7 +205,11 @@ export default {
           commentAdd: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
@@ -211,7 +223,11 @@ export default {
           commentEdit: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
@@ -225,7 +241,11 @@ export default {
           commentDelete: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },

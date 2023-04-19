@@ -12,6 +12,8 @@ include /src/assets/pug/index.pug
   br
   form-add-user(@user-auth="userAuth($event)")
 
+  +e.alert Server periodically resets data
+
   br
   +e.box-spiner(v-if="!isReady")
     +b.spiner
@@ -91,7 +93,7 @@ export default {
     // Cообщение при действиях в комментариях
     messageComment(data) {
       console.log("Demo events:", data);
-
+      if(data.sourceType === "form") return;
       if (data.type === "user-no-auth") {
         this.isShowPopupNotAuthorized = true;
         window.scrollTo({

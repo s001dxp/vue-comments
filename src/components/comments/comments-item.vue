@@ -12,6 +12,7 @@ include /src/assets/pug/index.pug
       )
     +e.col-content(:class="{ 'comments-item__col-content--form-show': isFormShow }")
       +e.content(v-if="!isEdited")
+        +e.error-text(v-if="error") {{ error }}
         +e.panel-top
           // user name
           +e.user-name(data-comments-item-user-name)
@@ -178,6 +179,9 @@ export default CommentsItem;
 @import "./variables.sass"
 .comments-item
   min-width: 280px
+  &__error-text
+    color: $red
+    margin-bottom: 5px
   &--delete
     // Скрываем частями чтобы оставалась кнопка "Show more"
     .comments-item
