@@ -72,27 +72,21 @@ export default {
           method: "POST",
           body: formData,
         });
+        if (!response.ok) throw await response.json();
         let user = await response.json();
         if (user.id) {
           this.error = user.error;
           this.authUser();
         }
       } catch (error) {
-        this.error = error.error;
+        console.log(error)
+        this.error = error?.error;
       }
     },
     // Выход
     exit() {
       $cookies.remove("user");
-      // this.isShowForm = true;
-      // this.userName = "";
-      // this.error = "";
-      // this.message = "";
-      // this.$emit("user-auth", {
-      //   auth: false,
-      // });
-      // eslint-disable-next-line no-self-assign
-      window.location.href = window.location.href;
+      window.location.reload();
     },
   },
 };
