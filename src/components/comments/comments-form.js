@@ -126,18 +126,19 @@ export default {
       this.files[num].isDelete = false;
     },
     // Если пользователь не автроизован, посылаем сообщение
-    checkAuth(event) {
+    checkAuth(event, sourceType) {
       if (!this.options.user.auth) {
         event.preventDefault();
         this.emitMessage({
           type: "user-no-auth",
           component: this,
-          sourceType: "form",
+          sourceType,
         });
       }
     },
     // Отправить сообщение на сервер
-    sendComment() {
+    sendComment(event) {
+      this.checkAuth(event, "form-send");
       let { user, filesMaxCount, translation, text } = this.options;
       let textContent = this.text.trim();
       let isFiles = false;

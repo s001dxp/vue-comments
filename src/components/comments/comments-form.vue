@@ -1,9 +1,9 @@
 <template lang="pug">
 include /src/assets/pug/index.pug
-+b.comments-form(@click="checkAuth($event)")
++b.comments-form
   +e.col-avatar(v-if="!isEdited")
     img.comments-form__avatar-img(:src="options.user.img")
-  +e.col-textarea
+  +e.col-textarea(@click="checkAuth($event, 'form')")
     +e.textarea(:class="[{ 'comments-form__textarea-error': error }]")
       +b.comments-spiner(v-if="isFormSending")
         +e.element
@@ -64,7 +64,7 @@ include /src/assets/pug/index.pug
             use(:xlink:href="`#vue-comments-symbol-icon-smile`")
     +e.message-file-params(v-if="options.translation.messageFileParams") {{ options.translation.messageFileParams }}
   +e.col-btn-send
-    +e.SVG.btn-send(@click="sendComment()")
+    +e.SVG.btn-send(@click="sendComment($event)")
       use(:xlink:href="`#vue-comments-symbol-icon-send`")
 </template>
 
