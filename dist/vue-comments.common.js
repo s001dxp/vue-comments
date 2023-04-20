@@ -3669,7 +3669,7 @@ var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce
             }) => {
               return fetch(url, params).then(response => {
                 if (!response.ok) {
-                  response.json().then(error => {
+                  return response.json().then(error => {
                     throw error === null || error === void 0 ? void 0 : error.error;
                   });
                 }
@@ -3691,7 +3691,7 @@ var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce
             }) => {
               return fetch(url, params).then(response => {
                 if (!response.ok) {
-                  response.json().then(error => {
+                  return response.json().then(error => {
                     throw error === null || error === void 0 ? void 0 : error.error;
                   });
                 }
@@ -3712,7 +3712,7 @@ var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce
             }) => {
               return fetch(url, params).then(response => {
                 if (!response.ok) {
-                  response.json().then(error => {
+                  return response.json().then(error => {
                     throw error === null || error === void 0 ? void 0 : error.error;
                   });
                 }
@@ -3733,7 +3733,7 @@ var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce
             }) => {
               return fetch(url, params).then(response => {
                 if (!response.ok) {
-                  response.json().then(error => {
+                  return response.json().then(error => {
                     throw error === null || error === void 0 ? void 0 : error.error;
                   });
                 }
@@ -3754,7 +3754,7 @@ var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce
             }) => {
               return fetch(url, params).then(response => {
                 if (!response.ok) {
-                  response.json().then(error => {
+                  return response.json().then(error => {
                     throw error === null || error === void 0 ? void 0 : error.error;
                   });
                 }

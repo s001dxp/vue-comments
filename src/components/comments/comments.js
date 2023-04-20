@@ -169,7 +169,7 @@ export default {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
                 if (!response.ok) {
-                  response.json().then((error)=> {
+                  return response.json().then((error)=> {
                     throw error?.error;
                   });
                 }
@@ -188,7 +188,7 @@ export default {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
                 if (!response.ok) {
-                  response.json().then((error)=> {
+                  return response.json().then((error)=> {
                     throw error?.error;
                   });
                 }
@@ -206,7 +206,7 @@ export default {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
                 if (!response.ok) {
-                  response.json().then((error)=> {
+                  return response.json().then((error)=> {
                     throw error?.error;
                   });
                 }
@@ -224,7 +224,7 @@ export default {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
                 if (!response.ok) {
-                  response.json().then((error)=> {
+                  return response.json().then((error)=> {
                     throw error?.error;
                   });
                 }
@@ -242,7 +242,7 @@ export default {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
                 if (!response.ok) {
-                  response.json().then((error)=> {
+                  return response.json().then((error)=> {
                     throw error?.error;
                   });
                 }

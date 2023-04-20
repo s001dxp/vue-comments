@@ -261,7 +261,11 @@ You can change the behavior of the component using the options
 ```js
 send: ({ url, params }) => {
   return fetch(url, params).then((response) => {
-    if (!response.ok) throw new Error(response);
+    if (!response.ok) {
+      return response.json().then((error)=> {
+        throw error?.error;
+      });
+    }
     return response.json();
   });
 }
@@ -339,7 +343,11 @@ send: ({ url, params }) => {
           vote: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  return response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
@@ -352,7 +360,11 @@ send: ({ url, params }) => {
           commentsListGet: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  return response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
@@ -365,7 +377,11 @@ send: ({ url, params }) => {
           commentAdd: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  return response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
@@ -378,7 +394,11 @@ send: ({ url, params }) => {
           commentEdit: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  return response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
@@ -391,7 +411,11 @@ send: ({ url, params }) => {
           commentDelete: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
-                if (!response.ok) throw new Error(response);
+                if (!response.ok) {
+                  return response.json().then((error)=> {
+                    throw error?.error;
+                  });
+                }
                 return response.json();
               });
             },
