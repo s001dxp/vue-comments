@@ -4,7 +4,7 @@
   "description": "A comments component for Vue.js 3",
   "author": "Evgeniy Saschenko<evgeniy.saschenko@gmail.com>",
   "repository": "https://github.com/EvgeniySaschenko/vue-comments",
-  "homepage": "https://vue-comments.onrender.com/",
+  "homepage": "http://185.233.39.167:8888",
   "main": "dist/vue-comments.umd.js",
   "module": "dist/vue-comments.esm.js",
   "unpkg": "dist/vue-comments.min.js",
