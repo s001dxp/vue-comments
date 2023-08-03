@@ -320,15 +320,16 @@ export default {
     };
 
     // Указывает на то что пользователь ведет пальцем по документу (нужно для определения причины скрола)
-    this.listeners["touchmove"] = () => {
+    this.listeners["touchmove"] = (event) => {
       this.isTouchmovieDocument = true;
     };
 
     // Блокируем случайные нажатия при скроле (например чтобы юзер случайно не поставил лайк)
-    this.listeners["scroll"] = () => {
+    this.listeners["scroll"] = (event) => {
       if (isTouchDevice() && this.isTouchmovieDocument) {
         this.isScrollDocument = true;
       }
+      this.toggleEmojiList(null, event, false);
     };
 
     // Проверяем документ на изменение размеров
@@ -750,6 +751,13 @@ export default {
     // Показать / Скрыть список Emoji
     // context - нужен для "addEmoji"
     toggleEmojiList(context, event, isShow = !this.emojiList.isShow) {
+      // При скроле
+      if (event.target === document) {
+        this.contextCommentsForm = null;
+        this.emojiList.isShow = false;
+        return;
+      }
+
       let { top, left } = event.target.getBoundingClientRect();
       if (!isTouchDevice()) {
         switch (event.type) {

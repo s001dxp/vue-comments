@@ -287,6 +287,12 @@ export default CommentsItem;
       text-align: center
       margin-bottom: 5px
       position: relative
+      -webkit-touch-callout: none
+      -webkit-user-select: none
+      -khtml-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      user-select: none
       &.active
         position: fixed
         top: 0
