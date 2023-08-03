@@ -59,7 +59,8 @@ export default {
   },
   methods: {
     // Создание превью файла
-    createFilePreview(files) {
+    createFilePreview($event, files) {
+      this.checkAuth($event, "form-btn-upload");
       this.error = "";
       let { validExtensions, fileMaxSize, translation } = this.options;
       for (let file of files) {

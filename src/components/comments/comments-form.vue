@@ -42,7 +42,8 @@ include /src/assets/pug/index.pug
       // Панель с кнопками 
       +e.textarea-panel
         +e.LABEL.textarea-panel-upload-file(
-          @change="createFilePreview($refs.files.files)",
+          @click="createFilePreview($event, $refs.files.files)",
+          @change="createFilePreview($event, $refs.files.files)",
           v-if="options.isShowBtnUpload"
         )
           +e.SVG.textarea-panel-icon
