@@ -10,9 +10,9 @@ include /src/assets/pug/index.pug
 
   br
   br
-  form-add-user(@user-auth="userAuth($event)")
+  // form-add-user(@user-auth="userAuth($event)")
 
-  +e.alert Server periodically resets data
+  +e.alert This demo only works in view mode, you cannot comment/like
 
   br
   +e.box-spiner(v-if="!isReady")
@@ -25,10 +25,10 @@ include /src/assets/pug/index.pug
     @message-comment="messageComment($event)"
   )
 
-+b.popup-not-authorized(v-if="isShowPopupNotAuthorized")
-  +e.box
-    +e.content The user is not authorized. <br> Enter a name and add a user.
-    +e.BUTTON.btn(@click="isShowPopupNotAuthorized = false") OK
+//- +b.popup-not-authorized(v-if="isShowPopupNotAuthorized")
+//-   +e.box
+//-     +e.content The user is not authorized. <br> Enter a name and add a user.
+//-     +e.BUTTON.btn(@click="isShowPopupNotAuthorized = false") OK
 </template>
 
 <script>
@@ -96,11 +96,11 @@ export default {
       if(data.sourceType === "form") return;
       if (data.type === "user-no-auth") {
         this.isShowPopupNotAuthorized = true;
-        window.scrollTo({
-          top: 100,
-          left: 100,
-          behavior: "smooth",
-        });
+        // window.scrollTo({
+        //   top: 100,
+        //   left: 100,
+        //   behavior: "smooth",
+        // });
       }
     },
   },
