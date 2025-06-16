@@ -38,7 +38,7 @@ yarn add @x-store/vue-comments
 ```
 
 ```js
-import Comments from '@x-store/vue-comments'
+import Comments from '@x-store/vue-comments/dist/vue-comments.umd.min.js'
 import '@x-store/vue-comments/dist/vue-comments.css'
 ```
 
@@ -55,7 +55,7 @@ import '@x-store/vue-comments/dist/vue-comments.css'
 ```js
 <Comments :options="options" :commentsData="comments" />
 
-import Comments from '@x-store/vue-comments'
+import Comments from '@x-store/vue-comments/dist/vue-comments.umd.min.js'
 import '@x-store/vue-comments/dist/vue-comments.css'
 
 export default {
