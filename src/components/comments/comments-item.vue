@@ -48,6 +48,7 @@
               </div>
             </div>
           </div>
+          <!-- File gallery and text content -->
           <div class="comments-item__file-gallery" v-if="files.length" :class="{ active: isOpenGallery }">
             <!-- closed -->
             <svg class="comments-item__file-gallery-closed" v-if="isOpenGallery" @click="toggleGallery(false)">
@@ -81,81 +82,347 @@
               <b>{{ slideNum + 1 }}</b> из <b>{{ files.length }}</b>
             </div>
           </div>
-          <!-- text -->
-          <div class="comments-item__text-box">
-            <div class="comments-item__text" :style="isTextBriefЕxpand ? { 'line-clamp': options.text.briefMaxLine } : {}" v-html="isTextBriefЕxpand ? text.brief : text.all" ref="text"></div>
-            <span class="comments-item__text-more" @click="toggleTextBrief(comment.text)" v-if="isTextBrief">{{ isTextBriefЕxpand ? options.translation.btnExpand : options.translation.btnCollapse }}</span>
-            <div class="comments-item__date-update" v-if="comment.dateUpdate">
-              <b>{{ options.translation.dateEditedText }}</b> {{ formatDate(comment.dateUpdate) }}
-            </div>
-          </div>
-        </div>
-        <!-- panel-bottom -->
-        <div class="comments-item__panel-bottom" v-if="!isEdited">
-          <div class="comments-item__panel-bottom-col--1">
-            <div class="comments-item__btn-ansfer" @click="toggleForm()" v-if="options.btnAnswerShowAlways || options.user.auth">{{ options.translation.btnAnswer }}</div>
-            <div class="comments-item__date-create">{{ formatDate(comment.dateCreate) }}</div>
-          </div>
-          <div class="comments-item__panel-bottom-col--2">
-            <!-- btn-more - button to show deeply nested comments (for which there is no id) / replies -->
-            <button class="comments-item__btn-more--answers" v-if="mapItems[comment.id].quantity && (mapItems[comment.id].items.length == 0 || (options.list.secondShowStart == 0 && !mapItems[comment.id].qShowNext))" @click="showComments({ parentId: comment.id, insertTo: 'after' })">
-              {{ options.translation.btnMoreAnswers }}
-              <div class="comments-spiner" v-if="mapItems[comment.id].isProcessing">
-                <div class="comments-spiner__element"></div>
-              </div>
+          <!-- Comment text -->
+          <div class="comments-item__text" ref="textRef">
+            <span v-html="isTextBriefExpand ? text.brief : text.all"></span>
+            <button
+              class="comments-item__btn-text-more"
+              v-if="isTextBrief"
+              @click="toggleTextBrief()"
+            >
+              {{ isTextBriefExpand ? options.translation.btnExpand : options.translation.btnCollapse }}
             </button>
-            <!-- like | dislike -->
+          </div>
+          <!-- Date and actions -->
+          <div class="comments-item__panel-bottom">
+            <div class="comments-item__date">{{ formatDate(comment.date) }}</div>
+            <div class="comments-item__date-edit" v-if="comment.dateEdit">
+              {{ options.translation.dateEditedText }} {{ formatDate(comment.dateEdit) }}
+            </div>
+            <!-- Vote buttons -->
             <div class="comments-item__vote" v-if="options.isShowVote">
               <div class="comments-spiner" v-if="isVoteSending">
                 <div class="comments-spiner__element"></div>
               </div>
-              <div class="comments-item__vote-item">
-                <svg class="comments-item__vote-btn" @click="sendVote(1, comment)" :class="{ active: comment.voteValue == 1 }">
-                  <use :xlink:href="`#vue-comments-symbol-icon-like`"></use>
-                </svg>
-                <div class="comments-item__vote-count">{{ comment.like || "" }}</div>
-              </div>
-              <div class="comments-item__vote-item">
-                <svg class="comments-item__vote-btn" @click="sendVote(-1, comment)" :class="{ active: comment.voteValue == -1 }">
-                  <use :xlink:href="`#vue-comments-symbol-icon-dislike`"></use>
-                </svg>
-                <div class="comments-item__vote-count">{{ comment.dislike || "" }}</div>
-              </div>
+              <button class="comments-item__vote-btn" @click="vote('like')" :class="{ active: comment.vote === 'like' }">
+                <svg><use :xlink:href="`#vue-comments-symbol-icon-like`"></use></svg>
+                <span v-if="comment.countLike">{{ comment.countLike }}</span>
+              </button>
+              <button class="comments-item__vote-btn" @click="vote('dislike')" :class="{ active: comment.vote === 'dislike' }">
+                <svg><use :xlink:href="`#vue-comments-symbol-icon-dislike`"></use></svg>
+                <span v-if="comment.countDislike">{{ comment.countDislike }}</span>
+              </button>
             </div>
+            <!-- Answer button -->
+            <button
+              class="comments-item__btn-answer"
+              v-if="options.btnAnswerShowAlways || options.user.auth"
+              @click="toggleForm()"
+            >
+              {{ options.translation.btnAnswer }}
+            </button>
           </div>
         </div>
-        <!-- btn-more - show more button -->
-        <div class="comments-item__row-btn-more" v-if="mapItems[comment.parentId].btnMoreNext == comment.id && mapItems[comment.parentId].qShowBalance > 0">
-          <button class="comments-item__btn-more" @click="showComments({ parentId: comment.parentId, insertTo: 'after' })">
-            {{ options.translation.btnMore }} ({{ mapItems[comment.parentId].qShowBalance }})
-            <div class="comments-spiner" v-if="mapItems[comment.parentId].isProcessing">
-              <div class="comments-spiner__element"></div>
-            </div>
-          </button>
-        </div>
-        <div class="comments-item__panel-form-add" v-show="isFormShow">
-          <comments-form :comment="comment" :userNameAnswer="comment.userName" :isEdited="isEdited"></comments-form>
-        </div>
-        <!-- panel-bottom in edit mode -->
-        <div class="comments-item__panel-bottom--edited" v-if="isEdited">
-          <div class="comments-item__panel-bottom-col--1">
-            <div class="comments-item__date-create">{{ formatDate(comment.dateCreate) }}</div>
-          </div>
-          <div class="comments-item__panel-bottom-col--2">
-            <div class="comments-item__btn-cancel-editing" @click="cancelEditing()">{{ options.translation.btnCancelEditing }}</div>
-          </div>
-        </div>
+        <!-- Edit form -->
+        <comments-form
+          v-if="isEdited"
+          :comment="comment"
+          :isEdited="true"
+        />
       </div>
     </div>
-    <div class="comments-item__row-answer" v-if="mapItems[comment.id]">
-      <comments-item :userNameAnswer="comment.userName" :comments="comments" :mapItems="mapItems" :widthResizeWindow="widthResizeWindow" v-for="answerId in mapItems[comment.id].items" :comment="comments[answerId]" :key="answerId"></comments-item>
+    <!-- Reply form -->
+    <div class="comments-item__form" v-if="isFormShow && !isEdited">
+      <comments-form
+        :comment="comment"
+        :userNameAnswer="comment.userName"
+      />
+    </div>
+    <!-- Nested comments -->
+    <div class="comments-item__nested" v-if="mapItems[comment.id] && mapItems[comment.id].items.length">
+      <comments-item
+        v-for="nestedCommentId in mapItems[comment.id].items"
+        :key="nestedCommentId"
+        :comment="comments[nestedCommentId]"
+        :comments="comments"
+        :mapItems="mapItems"
+        :widthResizeWindow="widthResizeWindow"
+        :userNameAnswer="getUserNameAnswer(nestedCommentId)"
+      />
     </div>
   </div>
 </template>
 
-<script>
-import CommentsItem from "./comments-item";
-export default CommentsItem;
+<script setup>
+import { ref, reactive, computed, inject, provide, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import CommentsForm from './comments-form.vue'
+import CommentsItem from './comments-item.vue'
+import iconFile from './img/icon-file.svg'
+import regExp from './reg-exp.js'
+
+// Props
+const props = defineProps({
+  comments: {
+    type: Object,
+    default: () => ({})
+  },
+  comment: {
+    type: Object,
+    default: () => ({})
+  },
+  mapItems: {
+    type: Object,
+    default: () => ({})
+  },
+  userNameAnswer: {
+    type: String,
+    default: ''
+  },
+  widthResizeWindow: {
+    type: Number,
+    default: 0
+  }
+})
+
+// Injected dependencies
+const options = inject('options')
+const emitMessage = inject('emitMessage')
+const addCommentVote = inject('addCommentVote')
+const preparationRequestData = inject('preparationRequestData')
+const deleteCommentToList = inject('deleteCommentToList')
+const showComments = inject('showComments')
+const setMapItemLinkComponent = inject('setMapItemLinkComponent')
+const scrollToComment = inject('scrollToComment')
+
+// Template refs
+const textRef = ref(null)
+
+// Reactive state
+const text = reactive({
+  brief: '',
+  all: ''
+})
+const isTextBrief = ref(false)
+const isTextBriefExpand = ref(true)
+const isFormShow = ref(false)
+const isEdited = ref(false)
+const files = ref([])
+const slideNum = ref(0)
+const isOpenGallery = ref(false)
+const listLinks = ref({})
+const listeners = ref({})
+const isVoteSending = ref(false)
+const isDeleteSending = ref(false)
+const isShowSettings = ref(false)
+const error = ref('')
+
+// Computed
+const isShow = computed(() => {
+  return props.mapItems[props.comment.parentId]?.show?.[props.comment.id] ?? true
+})
+
+// Methods
+const formatDate = (dateString) => {
+  if (!dateString) return ''
+
+  const date = new Date(dateString)
+  const now = new Date()
+  const diffTime = Math.abs(now - date)
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+  if (diffDays === 1) {
+    return options.translation.dateToday
+  } else if (diffDays === 2) {
+    return options.translation.dateYesterday
+  } else {
+    return date.toLocaleDateString()
+  }
+}
+
+const getUserNameAnswer = (commentId) => {
+  const comment = props.comments[commentId]
+  if (comment?.parentId && props.comments[comment.parentId]) {
+    return props.comments[comment.parentId].userName
+  }
+  return ''
+}
+
+const toggleForm = (show = null) => {
+  if (show !== null) {
+    isFormShow.value = show
+  } else {
+    isFormShow.value = !isFormShow.value
+  }
+
+  if (isFormShow.value) {
+    isEdited.value = false
+  }
+}
+
+const toggleEdited = (show = null) => {
+  if (show !== null) {
+    isEdited.value = show
+  } else {
+    isEdited.value = !isEdited.value
+  }
+
+  if (isEdited.value) {
+    isFormShow.value = false
+  }
+}
+
+const toggleSettings = () => {
+  isShowSettings.value = !isShowSettings.value
+}
+
+const toggleTextBrief = () => {
+  isTextBriefExpand.value = !isTextBriefExpand.value
+}
+
+const checkIsShowBtnTextMore = () => {
+  if (!textRef.value) return
+
+  nextTick(() => {
+    const element = textRef.value
+    const lineHeight = parseInt(getComputedStyle(element).lineHeight)
+    const maxLines = options.text.briefMaxLine
+    const maxHeight = lineHeight * maxLines
+
+    if (element.scrollHeight > maxHeight || props.comment.text.length > options.text.briefMaxLength) {
+      isTextBrief.value = true
+      if (props.comment.text.length > options.text.briefMaxLength) {
+        text.brief = props.comment.text.substring(0, options.text.briefMaxLength) + '...'
+      } else {
+        text.brief = props.comment.text
+      }
+      text.all = props.comment.text
+    } else {
+      isTextBrief.value = false
+      text.all = props.comment.text
+      text.brief = props.comment.text
+    }
+  })
+}
+
+const vote = async (type) => {
+  if (!options.user.auth || isVoteSending.value) return
+
+  isVoteSending.value = true
+  error.value = ''
+
+  try {
+    const { url, params, send, typeData } = options.dataApi.vote
+    const data = preparationRequestData({
+      data: {
+        commentId: props.comment.id,
+        vote: type
+      },
+      url,
+      params,
+      typeData
+    })
+
+    const response = await send(data)
+    addCommentVote(props.comment.id, response)
+
+    emitMessage({
+      type: 'vote',
+      data: response,
+      sourceType: 'vote-btn'
+    })
+  } catch (err) {
+    error.value = options.translation.errorVoteSend
+    emitMessage({
+      type: 'vote-error',
+      error: err,
+      sourceType: 'vote-btn'
+    })
+  } finally {
+    isVoteSending.value = false
+  }
+}
+
+const deleteMessage = async (comment) => {
+  if (!comment.isManageDelete || isDeleteSending.value) return
+
+  isDeleteSending.value = true
+  error.value = ''
+
+  try {
+    await options.deleteCommentBefore()
+
+    const { url, params, send, typeData } = options.dataApi.commentDelete
+    const data = preparationRequestData({
+      data: { id: comment.id },
+      url,
+      params,
+      typeData
+    })
+
+    await send(data)
+    deleteCommentToList(comment.id)
+
+    await options.deleteCommentAfter()
+
+    emitMessage({
+      type: 'comment-delete',
+      data: { id: comment.id },
+      sourceType: 'settings'
+    })
+  } catch (err) {
+    error.value = options.translation.errorUnexpected
+    emitMessage({
+      type: 'comment-delete-error',
+      error: err,
+      sourceType: 'settings'
+    })
+  } finally {
+    isDeleteSending.value = false
+    isShowSettings.value = false
+  }
+}
+
+const initFiles = () => {
+  if (props.comment.files && props.comment.files.length) {
+    files.value = [...props.comment.files]
+  } else {
+    files.value = []
+  }
+}
+
+// Provide methods for child components
+provide('toggleForm', toggleForm)
+
+// Lifecycle
+onMounted(() => {
+  checkIsShowBtnTextMore()
+  initFiles()
+
+  // Set initial text
+  text.all = props.comment.text || ''
+  text.brief = props.comment.text || ''
+})
+
+onBeforeUnmount(() => {
+  // Clean up any listeners if needed
+})
+
+// Watchers
+watch(() => props.widthResizeWindow, () => {
+  checkIsShowBtnTextMore()
+})
+
+watch(isShow, () => {
+  nextTick(() => {
+    checkIsShowBtnTextMore()
+  })
+})
+
+watch(() => props.comment.text, (newText) => {
+  text.all = newText || ''
+  text.brief = newText || ''
+  checkIsShowBtnTextMore()
+}, { immediate: true })
 </script>
 
 <style lang="scss">

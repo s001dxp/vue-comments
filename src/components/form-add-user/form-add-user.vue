@@ -7,7 +7,12 @@
       </div>
       <b>Avatar user (jpg, png)</b>
       <div>
-        <input class="form-add-user__upload-file-input" type="file" ref="avatar" accept=".jpg,.png,.jpeg">
+        <input
+          class="form-add-user__upload-file-input"
+          type="file"
+          ref="avatar"
+          accept=".jpg,.png,.jpeg"
+        />
       </div>
       <br>
       <div>

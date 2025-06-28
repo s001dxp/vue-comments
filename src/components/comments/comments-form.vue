@@ -1,7 +1,7 @@
 <template>
   <div class="comments-form">
     <div class="comments-form__col-avatar" v-if="!isEdited">
-      <img class="comments-form__avatar-img" :src="options.user.img">
+      <img class="comments-form__avatar-img" :src="options.user.img" alt="user avatar image" />
     </div>
     <div class="comments-form__col-textarea" @click="checkAuth($event, 'form')">
       <div class="comments-form__textarea" :class="[{ 'comments-form__textarea-error': error }]">
@@ -16,34 +16,89 @@
           <div class="comments-form__textarea-error-text" v-if="error">{{ error }}</div>
           <!-- Files -->
           <div class="comments-form__file-list" v-if="files.length">
-            <div class="comments-form__file-item" v-for="(file, index) in files" :key="index" :class="file.isDelete ? 'comments-form__file-item--delete' : ''">
-              <span class="comments-form__file-btn-delete" @click="deleteFile(index)" :title="options.translation.fileDelete"></span>
-              <span class="comments-form__file-btn-restore" @click="restoreFile(index)" v-if="file.isDelete">{{ options.translation.fileRestore }}</span>
+            <div
+              class="comments-form__file-item"
+              v-for="(file, index) in files"
+              :key="index"
+              :class="file.isDelete ? 'comments-form__file-item--delete' : ''"
+            >
+              <span
+                class="comments-form__file-btn-delete"
+                @click="deleteFile(index)"
+                :title="options.translation.fileDelete"
+              />
+              <span
+                class="comments-form__file-btn-restore"
+                @click="restoreFile(index)"
+                v-if="file.isDelete"
+              >
+                {{ options.translation.fileRestore }}
+              </span>
               <div class="comments-form__file-preview">
-                <img class="comments-form__file-preview" :src="options.imgExtensions[file.extension] ? file.src : iconFile" :alt="file.name" :class="`comments-form__file-preview${options.imgExtensions[file.extension] ? '-img' : '-icon'}`">
-                <div class="comments-form__file-preview-text" v-if="!options.imgExtensions[file.extension]">{{ file.name }}</div>
+                <img
+                  class="comments-form__file-preview"
+                  :src="options.imgExtensions[file.extension] ? file.src : iconFile"
+                  :alt="file.name"
+                  :class="`comments-form__file-preview${options.imgExtensions[file.extension] ? '-img' : '-icon'}`"
+                >
+                <div
+                  class="comments-form__file-preview-text"
+                  v-if="!options.imgExtensions[file.extension]"
+                >
+                  {{ file.name }}
+                </div>
               </div>
             </div>
           </div>
           <!-- Text field -->
-          <textarea class="comments-form__message" @input="getPosCursor()" @click="getPosCursor()" :placeholder="options.translation.formPlaceholder" ref="text" v-model="text"></textarea>
+          <textarea
+            class="comments-form__message"
+            @input="getPosCursor()"
+            @click="getPosCursor()"
+            :placeholder="options.translation.formPlaceholder"
+            ref="textRef"
+            v-model="text"
+          />
         </div>
         <!-- Panel with buttons -->
         <div class="comments-form__textarea-panel">
-          <label class="comments-form__textarea-panel-upload-file" @click="createFilePreview($event, $refs.files.files)" @change="createFilePreview($event, $refs.files.files)" v-if="options.isShowBtnUpload">
+          <label
+            class="comments-form__textarea-panel-upload-file"
+            @click="createFilePreview($event, $refs.files.files)"
+            @change="createFilePreview($event, $refs.files.files)"
+            v-if="options.isShowBtnUpload"
+          >
             <svg class="comments-form__textarea-panel-icon">
               <use :xlink:href="`#vue-comments-symbol-icon-image`"></use>
             </svg>
-            <input class="comments-form__textarea-panel-upload-file-input" type="file" ref="files" :accept="options.validExtensions.str" multiple>
+            <input
+              class="comments-form__textarea-panel-upload-file-input"
+              type="file"
+              ref="filesRef"
+              :accept="options.validExtensions.str"
+              multiple
+            >
           </label>
-          <div class="comments-form__textarea-panel-emoji-box" v-if="options.isShowBtnEmoji" data-vue-comments-form-emoji-btn @touchend="toggleEmojiList(this, $event)" @mouseenter="toggleEmojiList(this, $event, true)" @mouseleave="toggleEmojiList(null, $event, false)">
+          <div
+            class="comments-form__textarea-panel-emoji-box"
+            v-if="options.isShowBtnEmoji"
+            data-vue-comments-form-emoji-btn
+            @touchend="toggleEmojiList(this, $event)"
+            @mouseenter="toggleEmojiList(this, $event, true)"
+            @mouseleave="toggleEmojiList(null, $event, false)"
+          >
             <svg class="comments-form__textarea-panel-icon">
               <use :xlink:href="`#vue-comments-symbol-icon-smile`"></use>
             </svg>
           </div>
         </div>
       </div>
-      <div class="comments-form__message-file-params" v-if="options.translation.messageFileParams">{{ options.translation.messageFileParams }}</div>
+      <div
+        class="comments-form__message-file-params"
+        v-if="options.translation.messageFileParams"
+      >
+        {{ options.translation.messageFileParams }}
+      </div>
     </div>
     <div class="comments-form__col-btn-send">
       <svg class="comments-form__btn-send" @click="sendComment($event)">
@@ -53,9 +108,249 @@
   </div>
 </template>
 
-<script>
-import CommentsForm from "./comments-form";
-export default CommentsForm;
+<script setup>
+import {inject, nextTick, ref, watch} from 'vue'
+import {useFileUpload} from '@/composables/useComments'
+import iconFile from './img/icon-file.svg'
+
+// Props
+const props = defineProps({
+  comment: {
+    type: Object,
+    default: () => ({})
+  },
+  isEdited: {
+    type: Boolean,
+    default: false
+  },
+  userNameAnswer: {
+    type: String,
+    default: ''
+  }
+})
+
+// Injected dependencies
+const options = inject('options')
+const preparationRequestData = inject('preparationRequestData')
+const addCommentToList = inject('addCommentToList')
+const editCommentToList = inject('editCommentToList')
+const emitMessage = inject('emitMessage')
+const toggleForm = inject('toggleForm')
+const toggleEmojiList = inject('toggleEmojiList')
+const addEmoji = inject('addEmoji')
+
+// Template refs
+const textRef = ref(null)
+const filesRef = ref(null)
+
+// Reactive state
+const text = ref('')
+const error = ref('')
+const isFormSending = ref(false)
+const posCursor = ref(0)
+
+// Use composables
+const { files, createFilePreview, deleteFile, restoreFile, clearFiles } = useFileUpload()
+
+// Methods
+const getExtension = (name) => {
+  const match = name.match(/[^.]+$/i)
+  return match ? match[0] : ''
+}
+
+const createFileList = (dataFiles) => {
+  const fileList = []
+  for (const item of dataFiles) {
+    fileList.push({
+      src: item.src,
+      extension: getExtension(item.src),
+      name: item.name,
+      isDelete: false
+    })
+  }
+  return fileList
+}
+
+const getPosCursor = () => {
+  if (textRef.value) {
+    posCursor.value = textRef.value.selectionStart
+  }
+}
+
+const checkAuth = (event, sourceType) => {
+  if (!options.user.auth) {
+    event.preventDefault()
+    emitMessage({
+      type: 'user-no-auth',
+      component: 'comments-form',
+      sourceType
+    })
+  }
+}
+
+const clearForm = () => {
+  text.value = ''
+  clearFiles()
+  error.value = ''
+}
+
+const addEmojiToText = (emoji) => {
+  if (textRef.value) {
+    const start = textRef.value.selectionStart
+    const end = textRef.value.selectionEnd
+	text.value = text.value.substring(0, start) + emoji + text.value.substring(end)
+
+    nextTick(() => {
+      const newPosition = start + emoji.length
+      textRef.value.setSelectionRange(newPosition, newPosition)
+      textRef.value.focus()
+    })
+  }
+}
+
+const sendComment = async (event) => {
+  checkAuth(event, 'form-send')
+
+  const { user, filesMaxCount, translation, text: textOptions } = options
+  const textContent = text.value.trim()
+  let isFiles = false
+  let countFiles = 0
+
+  if (files.value.length) {
+    for (const file of files.value) {
+      if (!file.isDelete) {
+        countFiles++
+        isFiles = true
+      }
+    }
+  }
+
+  // Validation
+  if (countFiles > filesMaxCount) {
+    error.value = translation.errorFileMaxCount
+    return
+  }
+
+  if (textContent.length < textOptions.minLength || textContent.length > textOptions.maxLength) {
+    error.value = translation.errorTextLength
+    return
+  }
+
+  if ((!isFiles && !textContent) || !user.auth) return
+
+  isFormSending.value = true
+  error.value = ''
+
+  try {
+    if (!props.isEdited) {
+      await addComment(textContent)
+    } else {
+      await editComment(textContent)
+    }
+  } catch (err) {
+    error.value = err.message || options.translation.errorFormSend
+  } finally {
+    isFormSending.value = false
+  }
+}
+
+const addComment = async (textContent) => {
+  const { url, params, send, typeData } = options.dataApi.commentAdd
+  const fileList = []
+
+  if (files.value.length) {
+    for (const file of files.value) {
+      if (!file.isDelete && file.file) {
+        fileList.push(file.file)
+      }
+    }
+  }
+
+  const data = preparationRequestData({
+    data: {
+      text: textContent,
+      parentId: props.comment.id || 0,
+      files: fileList
+    },
+    url,
+    params,
+    typeData
+  })
+
+  try {
+    const response = await send(data)
+    addCommentToList(response)
+    clearForm()
+    emitMessage({
+      type: 'comment-add',
+      data: response,
+      sourceType: 'form'
+    })
+  } catch (error) {
+    throw new Error(error || options.translation.errorFormSend)
+  }
+}
+
+const editComment = async (textContent) => {
+  const { url, params, send, typeData } = options.dataApi.commentEdit
+  const fileList = []
+
+  if (files.value.length) {
+    for (const file of files.value) {
+      if (!file.isDelete) {
+        if (file.file) {
+          fileList.push(file.file)
+        } else {
+          fileList.push({
+            src: file.src,
+            name: file.name
+          })
+        }
+      }
+    }
+  }
+
+  const data = preparationRequestData({
+    data: {
+      text: textContent,
+      id: props.comment.id,
+      files: fileList
+    },
+    url,
+    params,
+    typeData
+  })
+
+  try {
+    const response = await send(data)
+    editCommentToList(props.comment.id, response)
+    if (toggleForm) toggleForm(false)
+    emitMessage({
+      type: 'comment-edit',
+      data: response,
+      sourceType: 'form'
+    })
+  } catch (error) {
+    throw new Error(error || options.translation.errorFormSend)
+  }
+}
+
+// Watchers
+watch(() => props.isEdited, (newValue) => {
+  if (newValue) {
+    files.value = createFileList(props.comment.files || [])
+    text.value = props.comment.text || ''
+  } else {
+    clearForm()
+  }
+  error.value = ''
+}, { immediate: true })
+
+// Expose methods for parent components
+defineExpose({
+  addEmojiToText,
+  clearForm
+})
 </script>
 
 <style lang="scss">
@@ -108,144 +403,120 @@ export default CommentsForm;
     transform: translate(-50%, -50%);
   }
   &__textarea {
-    display: flex;
-    min-height: $height-textarea;
-    border-radius: 30px;
-    border: 1px solid $gray-border;
-    padding: 5px;
-    // overflow: hidden;
+    border: 1px solid $gray-light;
+    border-radius: 20px;
     position: relative;
+    &-error {
+      border-color: $red;
+    }
     &-content {
-      width: 100%;
-      max-height: 200px;
-      overflow: hidden auto;
-      margin: 0 8px;
+      padding: 10px 15px;
+    }
+    &-error-text {
+      color: $red;
+      font-size: 12px;
+      margin-bottom: 5px;
     }
     &-panel {
       display: flex;
-      align-items: flex-end;
-      margin-bottom: 10px;
-      margin-left: 5px;
-      @media (max-width: $point-sm) {
-        flex-direction: column;
-        justify-content: flex-end;
-        margin: 5px;
-      }
-      &-emoji-box {
-        position: relative;
-        margin-right: 5px;
-        @media (max-width: $point-sm) {
-          margin-top: 10px;
-        }
-      }
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 15px;
+      border-top: 1px solid $gray-light;
       &-upload-file {
+        cursor: pointer;
         display: flex;
-        margin-right: 5px;
+        align-items: center;
         &-input {
           display: none;
         }
       }
-      &-icon {
+      &-emoji-box {
         cursor: pointer;
         display: flex;
+        align-items: center;
       }
-    }
-    &-error {
-      &-text {
-        color: $red;
+      &-icon {
+        height: 16px;
+        width: 16px;
+        fill: $gray;
+        &:hover {
+          fill: $blue;
+        }
       }
     }
   }
   &__message {
     width: 100%;
-    resize: vertical;
-    border: 0;
-    padding: 5px;
-    min-height: $height-textarea - 10px;
-    outline: 0;
-    outline-offset: 0;
+    border: none;
+    outline: none;
+    resize: none;
+    min-height: $height-textarea;
     font-family: inherit;
-    overflow: visible;
-    @media (max-width: $point-sm) {
-      min-height: 70px;
-    }
+    font-size: 14px;
+    line-height: 1.4;
     &::placeholder {
-      color: rgba(0,0,0,0.5);
-      position: relative;
-      top: 5px;
-      font-family: inherit;
-      top: -1px;
+      color: $gray;
+    }
+  }
+  &__message-file-params {
+    font-size: 12px;
+    color: $gray;
+    margin-top: 5px;
+  }
+  &__btn-send {
+    cursor: pointer;
+    margin-left: 10px;
+    fill: $blue;
+    height: 24px;
+    width: 24px;
+    &:hover {
+      fill: darken($blue, 10%);
     }
   }
   &__file {
     &-list {
       display: flex;
       flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
     }
     &-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 140px;
-      max-height: 140px;
-      overflow: hidden;
       position: relative;
-      border-radius: 10px;
-      margin: 3px;
+      border: 1px solid $gray-light;
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
       &--delete {
-        &::before {
-          position: absolute;
-          z-index: 1;
-          height: 100%;
-          width: 100%;
-          content: "";
-          background-color: rgba($red, .7);
+        opacity: 0.5;
+        .comments-form__file-btn-delete {
+          display: none;
         }
       }
     }
-    &-preview {
-      text-align: center;
-      padding: 10px;
-      &-img {
-        width: 100%;
-      }
-      &-icon {
-        width: 60px;
-        height: 60px;
-      }
-      &-name {
-        font-size: 12px;
-      }
-    }
-    &-btn-restore {
-      position: absolute;
-      display: inline-block;
-      padding: 10px;
-      border: 1px solid #fff;
-      color: #fff;
-      text-transform: uppercase;
-      z-index: 2;
-      cursor: pointer;
-    }
     &-btn-delete {
       position: absolute;
-      right: 3px;
-      top: 3px;
-      display: flex;
-      height: 17px;
-      width: 17px;
-      background-color: #fff;
+      top: -5px;
+      right: -5px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      overflow: hidden;
+      background: $red;
       cursor: pointer;
-      &::before, &::after {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &::before,
+      &::after {
+        content: '';
         position: absolute;
-        left: 7px;
-        top: 2px;
-        content: ' ';
-        height: 13px;
-        width: 3px;
-        background-color: #000;
+        width: 10px;
+        height: 2px;
+        background: white;
+        border-radius: 1px;
       }
       &::before {
         transform: rotate(45deg);
@@ -254,27 +525,34 @@ export default CommentsForm;
         transform: rotate(-45deg);
       }
     }
-  }
-  &__btn-send {
-    height: 22px !important;
-    width: 22px !important;
-    margin-bottom: 15px;
-    margin-left: 5px;
-    cursor: pointer;
-  }
-  &__message-file-params {
-    text-align: center;
-    font-size: 10px;
-    color: $gray;
-    padding: 5px;
-  }
-}
-@keyframes animateEmojiList {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+    &-btn-restore {
+      color: $blue;
+      cursor: pointer;
+      font-size: 12px;
+      text-decoration: underline;
+      margin-top: 5px;
+    }
+    &-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &-img {
+        max-width: 60px;
+        max-height: 60px;
+        border-radius: 4px;
+      }
+      &-icon {
+        width: 40px;
+        height: 40px;
+      }
+      &-text {
+        font-size: 10px;
+        text-align: center;
+        margin-top: 5px;
+        word-break: break-all;
+        max-width: 80px;
+      }
+    }
   }
 }
 </style>

@@ -4,7 +4,7 @@
     data-vue-comments
     :class="{ 'comments--lock': isScrollDocument, [optionsInit.yourCssClass]: optionsInit.yourCssClass }"
   >
-    <comments-svg-icons></comments-svg-icons>
+    <comments-svg-icons />
     <!-- Emoji -->
     <transition name="fade">
       <div
@@ -29,12 +29,12 @@
     <div class="comments__panel-form-add">
       <comments-form
         v-if="optionsInit.formAddShowAlways || optionsInit.user.auth"
-      ></comments-form>
+      />
     </div>
     <div
       class="comments__list"
       v-if="mapItems[optionsInit.parentIdStart]"
-      ref="list"
+      ref="listRef"
       @mousedown="setMousedownCord($event)"
       @mousemove="setHorizontalScroll($event)"
       @mouseleave="setMousedownCord($event)"
@@ -50,15 +50,429 @@
           :comments="comments"
           :mapItems="mapItems"
           :widthResizeWindow="widthResizeWindow"
-        ></comments-item>
+        />
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import Comments from "./comments";
-export default Comments;
+<script setup>
+import { ref, reactive, provide, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import { debounce } from 'lodash-es'
+import isTouchDevice from 'is-touch-device'
+import CommentsItem from './comments-item.vue'
+import CommentsForm from './comments-form.vue'
+import CommentsSvgIcons from './comments-svg-icons.vue'
+import imgDefaultUser from './img/default-user.png'
+import imgExtensions from './data/img-extensions.json'
+import emojiLilst from './data/emoji.json'
+import { useCommentsStore } from '@/store'
+
+// Props
+const props = defineProps({
+  commentsData: {
+    type: Object,
+    default: () => ({})
+  },
+  options: {
+    type: Object,
+    default: () => ({})
+  }
+})
+
+// Emits
+const emit = defineEmits(['message-comment'])
+
+// Store
+const store = useCommentsStore()
+
+// Template refs
+const listRef = ref(null)
+
+// Reactive state
+const emojiList = reactive({
+  isShow: false,
+  top: 0,
+  left: 0
+})
+
+const widthResizeWindow = ref(0)
+const isTouchmovieDocument = ref(false)
+const isScrollDocument = ref(false)
+const contextCommentsForm = ref(null)
+const mousedownCord = reactive({
+  pageX: 0,
+  pageY: 0
+})
+const isHorizontalScroll = ref(false)
+
+const comments = ref({})
+const mapItems = ref({})
+const newCommentsIds = ref({})
+const listeners = ref({})
+
+// Default options
+const optionsInit = reactive({
+  yourCssClass: '',
+  parentIdStart: 0,
+  filesMaxCount: Infinity,
+  fileMaxSize: 2097152,
+  validExtensions: {
+    default: ['jpg', 'png', 'jpeg', 'gif', 'svg', 'webp'],
+    items: {},
+    str: ''
+  },
+  imgExtensions,
+  emojiLilst,
+  isScrollToComment: true,
+  isShowVote: true,
+  isShowBtnUpload: true,
+  isShowBtnEmoji: true,
+  text: {
+    minLength: 0,
+    maxLength: 1000,
+    briefMaxLength: 150,
+    briefMaxLine: 4
+  },
+  list: {
+    mainShowStart: 5,
+    secondShowStart: 1,
+    mainShow: 5,
+    secondShow: 3
+  },
+  translation: {
+    btnAnswer: 'Answer',
+    btnExpand: 'More',
+    btnCollapse: 'Collapse',
+    btnFileDownload: 'Download',
+    formPlaceholder: 'Add a comment',
+    fileDelete: 'Delete',
+    fileRestore: 'Restore',
+    dateToday: 'Today',
+    dateYesterday: 'Yesterday',
+    settingsDelete: 'Delete',
+    settingsEdit: 'Edit',
+    dateEditedText: 'Edited:',
+    btnCancelEditing: 'Cancel editing',
+    btnMore: 'Show more',
+    btnMoreAnswers: 'Show answers',
+    formAnswerTo: 'Answer to',
+    messageFileParams: 'Maximum file size 2 Mb, supported extensions: jpg, png, jpeg, gif, svg, webp',
+    errorVoteSend: 'Error sending vote',
+    errorFormSend: 'Error form send',
+    errorUnexpected: 'Unexpected error',
+    errorGetComments: 'Error get comments',
+    errorFileExtension: 'Error file extension',
+    errorFileSize: 'Error file size',
+    errorFileMaxCount: 'Error file limit exceeded',
+    errorTextLength: 'The length of the text must be between 0 and 1000 characters'
+  },
+  dataApi: {
+    vote: {
+      send: ({ url, params }) => {
+        return fetch(url, params).then(response => {
+          if (!response.ok) {
+            return response.json().then(error => {
+              throw error?.error
+            })
+          }
+          return response.json()
+        })
+      },
+      url: '/',
+      params: { method: 'POST' },
+      typeData: ''
+    },
+    commentsListGet: {
+      send: ({ url, params }) => {
+        return fetch(url, params).then(response => {
+          if (!response.ok) {
+            return response.json().then(error => {
+              throw error?.error
+            })
+          }
+          return response.json()
+        })
+      },
+      url: '/',
+      params: { method: 'GET' },
+      typeData: 'query'
+    },
+    commentAdd: {
+      send: ({ url, params }) => {
+        return fetch(url, params).then(response => {
+          if (!response.ok) {
+            return response.json().then(error => {
+              throw error?.error
+            })
+          }
+          return response.json()
+        })
+      },
+      url: '/',
+      params: { method: 'POST' },
+      typeData: ''
+    },
+    commentEdit: {
+      send: ({ url, params }) => {
+        return fetch(url, params).then(response => {
+          if (!response.ok) {
+            return response.json().then(error => {
+              throw error?.error
+            })
+          }
+          return response.json()
+        })
+      },
+      url: '/',
+      params: { method: 'PUT' },
+      typeData: ''
+    },
+    commentDelete: {
+      send: ({ url, params }) => {
+        return fetch(url, params).then(response => {
+          if (!response.ok) {
+            return response.json().then(error => {
+              throw error?.error
+            })
+          }
+          return response.json()
+        })
+      },
+      url: '/',
+      params: { method: 'DELETE' },
+      typeData: ''
+    }
+  },
+  user: {
+    name: 'User Name',
+    img: imgDefaultUser,
+    auth: false
+  },
+  formAddShowAlways: true,
+  btnAnswerShowAlways: true,
+  imgDefaultUser,
+  deleteCommentBefore: () => Promise.resolve(),
+  deleteCommentAfter: () => Promise.resolve()
+})
+
+// Methods
+const initData = (commentsData) => {
+  const { items = {}, mapItems: newMapItems = {} } = commentsData
+  comments.value = { ...items }
+
+  if (!newMapItems[optionsInit.parentIdStart]) {
+    newMapItems[optionsInit.parentIdStart] = {
+      quantity: 0,
+      items: []
+    }
+  }
+  setMapItems(newMapItems, 'after')
+}
+
+const initOptions = (options) => {
+  // Merge options with defaults
+  Object.keys(options).forEach(key => {
+    if (typeof options[key] === 'object' && !Array.isArray(options[key])) {
+      Object.assign(optionsInit[key], options[key])
+    } else {
+      optionsInit[key] = options[key]
+    }
+  })
+
+  // Create valid extensions
+  const validExtensions = options.validExtensions || optionsInit.validExtensions.default
+  const itemsValidExtensions = {}
+
+  for (const item of validExtensions) {
+    itemsValidExtensions[item] = item
+  }
+
+  optionsInit.validExtensions.items = itemsValidExtensions
+  optionsInit.validExtensions.str = validExtensions.join(', ')
+}
+
+const setMapItems = (newMapItems, type = 'before') => {
+  mapItems.value = { ...newMapItems }
+}
+
+const toggleEmojiList = (element, event, show = null) => {
+  if (show === false || (show === null && emojiList.isShow)) {
+    emojiList.isShow = false
+    return
+  }
+
+  if (element && event) {
+    const rect = element.getBoundingClientRect()
+    emojiList.top = rect.bottom + window.scrollY
+    emojiList.left = rect.left + window.scrollX
+    emojiList.isShow = true
+  }
+}
+
+const addEmoji = (emoji) => {
+  if (contextCommentsForm.value) {
+    contextCommentsForm.value.addEmojiToText(emoji)
+  }
+  emojiList.isShow = false
+}
+
+const setMousedownCord = (event) => {
+  if (event.type === 'mousedown') {
+    mousedownCord.pageX = event.pageX
+    mousedownCord.pageY = event.pageY
+  } else {
+    mousedownCord.pageX = 0
+    mousedownCord.pageY = 0
+  }
+}
+
+const setHorizontalScroll = (event) => {
+  if (mousedownCord.pageX && Math.abs(event.pageX - mousedownCord.pageX) > 10) {
+    isHorizontalScroll.value = true
+  } else {
+    isHorizontalScroll.value = false
+  }
+}
+
+const addCommentToList = (comment) => {
+  comments.value[comment.id] = comment
+  store.addComment(comment)
+}
+
+const editCommentToList = (id, updates) => {
+  if (comments.value[id]) {
+    Object.assign(comments.value[id], updates)
+    store.updateComment(id, updates)
+  }
+}
+
+const deleteCommentToList = (id) => {
+  delete comments.value[id]
+  store.deleteComment(id)
+}
+
+const preparationRequestData = (data) => {
+  // Implementation for preparing request data
+  return data
+}
+
+const emitMessage = (data) => {
+  emit('message-comment', data)
+}
+
+const addCommentVote = (commentId, vote) => {
+  if (comments.value[commentId]) {
+    comments.value[commentId].vote = vote
+  }
+}
+
+const createListCommentsShow = () => {
+  // Implementation for creating comments list show
+}
+
+const showComments = () => {
+  // Implementation for showing comments
+}
+
+const setMapItemLinkComponent = () => {
+  // Implementation for setting map item link component
+}
+
+const scrollToComment = (commentId) => {
+  nextTick(() => {
+    const element = document.querySelector(`[data-comment-id="${commentId}"]`)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  })
+}
+
+// Provide methods to child components
+provide('addCommentToList', addCommentToList)
+provide('editCommentToList', editCommentToList)
+provide('deleteCommentToList', deleteCommentToList)
+provide('preparationRequestData', preparationRequestData)
+provide('emitMessage', emitMessage)
+provide('addCommentVote', addCommentVote)
+provide('options', optionsInit)
+provide('createListCommentsShow', createListCommentsShow)
+provide('showComments', showComments)
+provide('setMapItemLinkComponent', setMapItemLinkComponent)
+provide('scrollToComment', scrollToComment)
+provide('toggleEmojiList', toggleEmojiList)
+provide('addEmoji', addEmoji)
+
+// Lifecycle hooks
+onMounted(() => {
+  // Hide emojis when clicking on another element
+  listeners.value.touchstart = (event) => {
+    if (
+      !event.target.closest('[data-vue-comments-form-emoji-btn]') &&
+      !event.target.closest('[data-vue-comments-emoji-list]')
+    ) {
+      emojiList.isShow = false
+    }
+  }
+
+  listeners.value.touchend = () => {
+    if (isTouchDevice()) {
+      isScrollDocument.value = false
+      isTouchmovieDocument.value = false
+    }
+  }
+
+  listeners.value.touchcancel = () => {
+    if (isTouchDevice()) {
+      isScrollDocument.value = false
+      isTouchmovieDocument.value = false
+    }
+  }
+
+  listeners.value.touchmove = () => {
+    isTouchmovieDocument.value = true
+  }
+
+  listeners.value.scroll = () => {
+    if (isTouchDevice() && isTouchmovieDocument.value) {
+      isScrollDocument.value = true
+    }
+    toggleEmojiList(null, event, false)
+  }
+
+  listeners.value.resize = debounce(() => {
+    widthResizeWindow.value = window.innerWidth
+  }, 500)
+
+  // Add event listeners
+  document.addEventListener('touchstart', listeners.value.touchstart)
+  document.addEventListener('touchend', listeners.value.touchend)
+  document.addEventListener('touchcancel', listeners.value.touchcancel)
+  document.addEventListener('touchmove', listeners.value.touchmove)
+  document.addEventListener('scroll', listeners.value.scroll)
+  window.addEventListener('resize', listeners.value.resize)
+  document.addEventListener('mouseup', setMousedownCord)
+})
+
+onBeforeUnmount(() => {
+  // Remove event listeners
+  document.removeEventListener('touchstart', listeners.value.touchstart)
+  document.removeEventListener('touchend', listeners.value.touchend)
+  document.removeEventListener('touchcancel', listeners.value.touchcancel)
+  document.removeEventListener('touchmove', listeners.value.touchmove)
+  document.removeEventListener('scroll', listeners.value.scroll)
+  window.removeEventListener('resize', listeners.value.resize)
+  document.removeEventListener('mouseup', setMousedownCord)
+})
+
+// Watchers
+watch(() => props.options, (newOptions) => {
+  initOptions(newOptions)
+}, { deep: true, immediate: true })
+
+watch(() => props.commentsData, (newData) => {
+  initData(newData)
+}, { immediate: true })
 </script>
 
 <style lang="scss">

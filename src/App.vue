@@ -20,93 +20,82 @@
       v-if="isReady"
       :options="options"
       :commentsData="comments"
-      @message-comment="messageComment($event)"
-    ></comments>
+      @message-comment="messageComment"
+    />
   </div>
-  <!--
-  <div class="popup-not-authorized" v-if="isShowPopupNotAuthorized">
-    <div class="popup-not-authorized__box">
-      <div class="popup-not-authorized__content">The user is not authorized. <br> Enter a name and add a user.</div>
-      <button class="popup-not-authorized__btn btn" @click="isShowPopupNotAuthorized = false">OK</button>
-    </div>
-  </div>
-  -->
 </template>
 
-<script>
-import Comments from "@/components/comments/comments.vue";
-import FormAddUser from "@/components/form-add-user/form-add-user.vue";
-import $cookies from "vue-cookies";
+<script setup>
+import { ref, onMounted } from 'vue'
+import Comments from "@/components/comments/comments.vue"
+import FormAddUser from "@/components/form-add-user/form-add-user.vue"
+import { useCommentsStore } from "@/store"
+import $cookies from "vue-cookies"
 
-export default {
-  name: "Page",
-  components: {
-    Comments,
-    FormAddUser,
-  },
-  data() {
-    return {
-      isReady: false,
-      comments: {},
-      isShowPopupNotAuthorized: false,
-      options: {
-        dataApi: {
-          vote: {
-            url: "/api/comments/vote/",
-          },
-          commentAdd: {
-            url: "/api/comments/",
-          },
-          commentDelete: {
-            url: "/api/comments/",
-          },
-          commentEdit: {
-            url: "/api/comments/",
-          },
-          commentsListGet: {
-            url: "/api/comments/",
-          },
-        },
-      },
-    };
-  },
+// Store
+const store = useCommentsStore()
 
-  async created() {
-    let response = await fetch("/api/comments/?parentId=0", {
+// Reactive state
+const isReady = ref(false)
+const comments = ref({})
+const isShowPopupNotAuthorized = ref(false)
+
+const options = ref({
+  dataApi: {
+    vote: {
+      url: "/api/comments/vote/",
+    },
+    commentAdd: {
+      url: "/api/comments/",
+    },
+    commentDelete: {
+      url: "/api/comments/",
+    },
+    commentEdit: {
+      url: "/api/comments/",
+    },
+    commentsListGet: {
+      url: "/api/comments/",
+    },
+  },
+})
+
+// Methods
+const userAuth = (data) => {
+  const { name = "", img = "", auth = false } = data
+  Object.assign(options.value, {
+    user: {
+      name,
+      img,
+      auth,
+    },
+  })
+  store.setUser({ name, img, auth })
+}
+
+const messageComment = (data) => {
+  console.log("Demo events:", data)
+  if (data.sourceType === "form") return
+  if (data.type === "user-no-auth") {
+    isShowPopupNotAuthorized.value = true
+  }
+}
+
+// Lifecycle
+onMounted(async () => {
+  try {
+    const response = await fetch("/api/comments/?parentId=0", {
       headers: { Cookie: $cookies.get("user") },
-    });
-    let comments = await response.json();
-    this.comments = comments;
-
-    this.isReady = true;
-  },
-  methods: {
-    // User authorization
-    userAuth(data) {
-      let { name = "", img = "", auth = false } = data;
-      Object.assign(this.options, {
-        user: {
-          name,
-          img,
-          auth,
-        },
-      });
-    },
-    // Message during actions in comments
-    messageComment(data) {
-      console.log("Demo events:", data);
-      if(data.sourceType === "form") return;
-      if (data.type === "user-no-auth") {
-        this.isShowPopupNotAuthorized = true;
-        // window.scrollTo({
-        //   top: 100,
-        //   left: 100,
-        //   behavior: "smooth",
-        // });
-      }
-    },
-  },
-};
+    })
+    const commentsData = await response.json()
+    comments.value = commentsData
+    store.setComments(commentsData)
+  } catch (error) {
+    console.error("Failed to load comments:", error)
+  } finally {
+    isReady.value = true
+  }
+})
 </script>
 
 <style lang="scss" scoped>
