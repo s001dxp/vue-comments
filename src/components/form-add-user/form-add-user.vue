@@ -1,20 +1,25 @@
-<template lang="pug">
-include /src/assets/pug/index.pug
-+b.form-add-user
-  +e.form(v-if="isShowForm")
-    b User name* (A-Z, 0-9)
-    div
-      +e.INPUT.field(v-model="userName")
-    b Avatar user (jpg, png)
-    div
-      +e.INPUT.upload-file-input(type="file", ref="avatar", accept=".jpg,.png,.jpeg")
-    br
-    div
-      +e.BUTTON.btn(@click="addUser()") Add user
-  +e.message
-    +e.message {{ message }}
-    +e.error {{ error }}
-    +e.BUTTON.btn.exit(@click="exit()", v-if="!isShowForm") Exit
+<template>
+  <div class="form-add-user">
+    <div class="form-add-user__form" v-if="isShowForm">
+      <b>User name* (A-Z, 0-9)</b>
+      <div>
+        <input class="form-add-user__field" v-model="userName">
+      </div>
+      <b>Avatar user (jpg, png)</b>
+      <div>
+        <input class="form-add-user__upload-file-input" type="file" ref="avatar" accept=".jpg,.png,.jpeg">
+      </div>
+      <br>
+      <div>
+        <button class="form-add-user__btn btn" @click="addUser()">Add user</button>
+      </div>
+    </div>
+    <div class="form-add-user__message">
+      <div class="form-add-user__message">{{ message }}</div>
+      <div class="form-add-user__error">{{ error }}</div>
+      <button class="form-add-user__btn btn exit" @click="exit()" v-if="!isShowForm">Exit</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -34,7 +39,7 @@ export default {
     this.authUser();
   },
   methods: {
-    // Добавить на сайте
+    // Add to site
     authUser() {
       let user = $cookies.get("user");
       if (user) {
@@ -47,7 +52,7 @@ export default {
         this.isShowForm = true;
       }
     },
-    // Добавить пользователя в БД
+    // Add user to DB
     async addUser() {
       this.userName = this.userName.trim();
       if (!/[A-Za-z-0-9]/.test(this.userName)) {
@@ -83,7 +88,7 @@ export default {
         this.error = error?.error;
       }
     },
-    // Выход
+    // Exit
     exit() {
       $cookies.remove("user");
       window.location.reload();
@@ -92,11 +97,13 @@ export default {
 };
 </script>
 
-<style lang="sass">
-.form-add-user
-  text-align: center
-  margin-bottom: 20px
-  &__message
-    text-transform: uppercase
-    font-size: 20px
+<style lang="scss">
+.form-add-user {
+  text-align: center;
+  margin-bottom: 20px;
+  &__message {
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+}
 </style>

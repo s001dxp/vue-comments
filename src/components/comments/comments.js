@@ -32,14 +32,14 @@ export default {
     };
   },
   props: {
-    // Список комментариев
+    // Comments list
     commentsData: {
       type: Object,
       default() {
         return {};
       },
     },
-    // Индивидуальные настройки
+    // Individual settings
     options: {
       type: Object,
       default() {
@@ -49,110 +49,110 @@ export default {
   },
   data() {
     return {
-      // Смайлики
+      // Emojis
       emojiList: {
         isShow: false,
         top: 0,
         left: 0,
       },
-      // Указывает на то что изменились размеры документа
+      // Indicates that the document dimensions have changed
       widthResizeWindow: 0,
-      // Указывает на то что пользователь ведет пальцем по документу
+      // Indicates that the user is dragging their finger across the document
       isTouchmovieDocument: false,
-      // Указывает на то что документ скролится - для блокироки случайных нажатий на мобильном
+      // Indicates that the document is scrolling - to block accidental clicks on mobile
       isScrollDocument: false,
-      // Контекст текущей формы - для того чтобы добавлять смайлы
+      // Context of the current form - for adding emojis
       contextCommentsForm: null,
-      // Кординаты нажатия правой клавиши мыши в компоненте
+      // Coordinates of the right mouse button click in the component
       mousedownCord: {
         pageX: 0,
         pageY: 0,
       },
-      // Указывает на наличие горизонтального скрола
+      // Indicates the presence of a horizontal scroll
       isHorizontalScroll: false,
       optionsInit: {
-        // Кастомный css класс
+        // Custom css class
         yourCssClass: "",
-        // Нндификатор первого предка в "mapItems" - с которого начнёт строится список
+        // Identifier of the first ancestor in "mapItems" - from which the list will start building
         parentIdStart: 0,
-        // Максимальное количество файлов
+        // Maximum number of files
         filesMaxCount: Infinity,
-        // Максимальный размер файла
+        // Maximum file size
         fileMaxSize: 2097152,
-        // Допустимые расшырения файлов - передвать как массив
+        // Allowed file extensions - pass as an array
         validExtensions: {
           default: ["jpg", "png", "jpeg", "jpeg", "gif", "svg", "wbpp"],
           items: {},
           str: "",
         },
-        // Расшырения рактинок (нужны для превью чтобы понимать где картинка, а где файл)
+        // Image extensions (needed for preview to understand where the image is and where the file is)
         imgExtensions,
         // emoji
         emojiLilst,
-        // Проскролить к добавленному комментарию
+        // Scroll to the added comment
         isScrollToComment: true,
-        // Показывать кнопки для голосования
+        // Show voting buttons
         isShowVote: true,
-        // Показывать кнопку для загрузки файлов
+        // Show file upload button
         isShowBtnUpload: true,
-        // Показывать кнопку списка emoji
+        // Show emoji list button
         isShowBtnEmoji: true,
         text: {
-          // Минимальная длина текста *
+          // Minimum text length *
           minLength: 0,
-          // Максимальная длина текста *
+          // Maximum text length *
           maxLength: 1000,
-          // Длина текста после которой добавляется кнопка "Еще"
+          // Text length after which the "More" button is added
           briefMaxLength: 150,
-          // Максимальное количество переносов строк которых добавляется кнопка "Еще". Значения "none" и "число больше 0"
+          // Maximum number of line breaks after which the "More" button is added. Values "none" and "number greater than 0"
           briefMaxLine: 4,
         },
         list: {
-          // Кочичество комментриев в главном списка до появления "Показать еще"
+          // Number of comments in the main list before "Show more" appears
           mainShowStart: 5,
-          // Кочичество комментриев во вложенном списке до появления "Показать еще"
+          // Number of comments in the nested list before "Show more" appears
           secondShowStart: 1,
-          // Количество items которые будут показаны после нажатия на "Показать еще", если Infinity то будут отображены все доступные
+          // Number of items that will be shown after clicking "Show more", if Infinity then all available will be displayed
           mainShow: 5,
           secondShow: 3,
         },
         translation: {
-          // Кнопка ответить
+          // Reply button
           btnAnswer: "Answer",
-          // Кнопка развернуть текст
-          btnЕxpand: "More",
-          // Кнопка свернуть текст
+          // Expand text button
+          btnExpand: "More",
+          // Collapse text button
           btnCollapse: "Collapse",
-          // Кнопка скачать файл
+          // Download file button
           btnFileDownload: "Download",
-          // Плейсхолдер формы
+          // Form placeholder
           formPlaceholder: "Add a comment",
-          // Удалить файл
+          // Delete file
           fileDelete: "Delete",
-          // Востановить файл
+          // Restore file
           fileRestore: "Restore",
-          // Текст сегодняшней даты "Сегодня"
+          // Text for today's date "Today"
           dateToday: "Today",
-          // Текст вчерашней даты "Вчера"
+          // Text for yesterday's date "Yesterday"
           dateYesterday: "Yesterday",
-          // Текст настройки удалить
+          // Settings text delete
           settingsDelete: "Delete",
-          // Текст настройки редактировать
+          // Settings text edit
           settingsEdit: "Edit",
-          // Текст перед датой редактирования
+          // Text before the edit date
           dateEditedText: "Edited:",
-          // Кнопка отменть редактирование
-          btnСancelEditing: "Сancel editing",
-          // Кнопка показать больше
+          // Cancel editing button
+          btnCancelEditing: "Cancel editing",
+          // Show more button
           btnMore: "Show more",
-          // Кнопка показать ответы
+          // Show replies button
           btnMoreAnswers: "Show answers",
-          // Фраза в форме при ответе на комментарий
+          // Phrase in the form when replying to a comment
           formAnswerTo: "Answer to",
-          // Сообщение о максимальном размере файлв и поддержываемых расшырениях
+          // Message about maximum file size and supported extensions
           messageFileParams:
             "Maximum file size 2 Mb, supported extentions: jpg, png, jpeg, jpeg, gif, svg, wbpp",
-          // Ошибки
+          // Errors
           errorVoteSend: "Error sending vote",
           errorFormSend: "Error form send",
           errorUnexpected: "Unexpected error",
@@ -164,7 +164,7 @@ export default {
         },
 
         dataApi: {
-          // Лайки
+          // Likes
           vote: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
@@ -180,10 +180,10 @@ export default {
             params: {
               method: "POST",
             },
-            // Тип передаваемых данных по умолчанию "form-data", может быть "json" или параметрами запроса "query"
+            // Default data type is "form-data", can be "json" or request parameters "query"
             typeData: "",
           },
-          // Получить комментрарии
+          // Get comments
           commentsListGet: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
@@ -201,7 +201,7 @@ export default {
             },
             typeData: "query",
           },
-          // Добавить комментрарий
+          // Add comment
           commentAdd: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
@@ -219,7 +219,7 @@ export default {
             },
             typeData: "",
           },
-          // Редактировать комментрарий
+          // Edit comment
           commentEdit: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
@@ -237,7 +237,7 @@ export default {
             },
             typeData: "",
           },
-          // Редактировать комментрарий
+          // Edit comment
           commentDelete: {
             send: ({ url, params }) => {
               return fetch(url, params).then((response) => {
@@ -257,44 +257,44 @@ export default {
           },
         },
         user: {
-          // Имя пользователя по умолчанию
+          // Default username
           name: "User Name",
-          // Аватарка по умолчанию
+          // Default avatar
           img: imgDefaultUser,
-          // Позволяет писать комментарии если "true" (указывает на то что пользователь авторизован)
+          // Allows writing comments if "true" (indicates that the user is authorized)
           auth: false,
         },
-        // Отображать главную форму добаления комменрарие - если пользователь не авторизован
+        // Display the main comment adding form - if the user is not authorized
         formAddShowAlways: true,
-        // Отображать кнопку "Ответить" - если пользователь не авторизован
+        // Display the "Reply" button - if the user is not authorized
         btnAnswerShowAlways: true,
-        // Аватар по умолчанию
+        // Default avatar
         imgDefaultUser,
-        // Действие преред удалением комментария - после вызова resolve(), комментарий будет удалён
+        // Action before deleting a comment - after calling resolve(), the comment will be deleted
         deleteCommentBefore: () => {
           return new Promise((resolve, reject) => {
             resolve();
           });
         },
-        // Действие после удаления комментария - после вызова resolve(), будет совершено действие
+        // Action after deleting a comment - after calling resolve(), the action will be performed
         deleteCommentAfter: () => {
           return new Promise((resolve, reject) => {
             resolve();
           });
         },
       },
-      // Список комментариев (чтобы можно было мутировать)
+      // List of comments (so they can be mutated)
       comments: {},
-      // Структура описывающая вложенность и отношение комментариев
+      // Structure describing the nesting and relationship of comments
       mapItems: {},
-      // Слушатели
+      // Listeners
       listeners: {},
-      // Комментарии этого пользователя в данной сессии (может понадобится чтобы их отфильтровал бекенд)
+      // Comments from this user in the current session (may be needed for backend filtering)
       newCommentsIds: {},
     };
   },
   mounted() {
-    // Скрываем смайлы при клике по другому элементу
+    // Hide emojis when clicking on another element
     this.listeners["touchstart"] = (event) => {
       if (
         !event.target.closest("[data-vue-comments-form-emoji-btn]") &&
@@ -304,7 +304,7 @@ export default {
       }
     };
 
-    // Событие указывает на то что пользователь не скролит документ
+    // Event indicates that the user is not scrolling the document
     this.listeners["touchend"] = () => {
       if (isTouchDevice()) {
         this.isScrollDocument = false;
@@ -319,20 +319,20 @@ export default {
       }
     };
 
-    // Указывает на то что пользователь ведет пальцем по документу (нужно для определения причины скрола)
-    this.listeners["touchmove"] = (event) => {
+    // Indicates that the user is dragging their finger across the document (needed to determine the cause of scrolling)
+    this.listeners["touchmove"] = (_event) => {
       this.isTouchmovieDocument = true;
     };
 
-    // Блокируем случайные нажатия при скроле (например чтобы юзер случайно не поставил лайк)
-    this.listeners["scroll"] = (event) => {
+    // Block accidental clicks during scrolling (e.g., so the user doesn't accidentally like something)
+    this.listeners["scroll"] = (_event) => {
       if (isTouchDevice() && this.isTouchmovieDocument) {
         this.isScrollDocument = true;
       }
-      this.toggleEmojiList(null, event, false);
+      this.toggleEmojiList(null, _event, false);
     };
 
-    // Проверяем документ на изменение размеров
+    // Check document for size changes
     this.listeners["resize"] = debounce(() => {
       this.widthResizeWindow = window.innerWidth;
     }, 500);
@@ -363,7 +363,7 @@ export default {
         this.initOptions(this.options);
       },
     },
-    // Должен стоять 2-м - чтобы стачала обработались options
+    // Should be second - so that options are processed first
     commentsData: {
       immediate: true,
       handler() {
@@ -373,7 +373,7 @@ export default {
   },
 
   methods: {
-    // Инициализация данных
+    // Data initialization
     initData(commentsData) {
       let { items = {}, mapItems = {} } = commentsData;
       this.comments = { ...items };
@@ -386,9 +386,9 @@ export default {
       }
       this.setMapItems(mapItems, "after");
     },
-    // Инициализация опций
+    // Options initialization
     initOptions(options) {
-      // Создать объект с допустимыми расшырениями
+      // Create an object with allowed extensions
       let createValidExtensions = () => {
         let { validExtensions } = options;
 
@@ -405,53 +405,53 @@ export default {
         };
       };
 
-      // Object.assign - заменяет вложенные объекты
-      let deepExtend = (optionsInit, options) => {
-        for (let item in options) {
-          let cur = options[item];
+      // Object.assign - replaces nested objects
+      let deepExtend = (optionsInit, currentOptions) => {
+        for (let item in currentOptions) {
+          let cur = currentOptions[item];
           if (typeof cur === "object" && cur !== null && !Array.isArray(cur)) {
-            deepExtend(optionsInit[item], options[item]);
-          } else if (options[item] !== undefined) {
-            optionsInit[item] = options[item];
+            deepExtend(optionsInit[item], cur);
+          } else if (currentOptions[item] !== undefined) {
+            optionsInit[item] = currentOptions[item];
           }
         }
       };
 
       deepExtend(this.optionsInit, options);
 
-      // Если пользователь разлогинился, или если пользователь авторизован но нет аватара - ставим дефолтный аватар
+      // If the user logged out, or if the user is authorized but has no avatar - set the default avatar
       if (options.user && (!options.user.auth || (options.user.auth && !options.user.img))) {
         this.optionsInit.user.img = this.optionsInit.imgDefaultUser;
       }
       Object.assign(this.optionsInit.validExtensions, createValidExtensions());
     },
-    // Добавить пункты в карту
+    // Add items to the map
     setMapItems(mapItems, insertTo, checkUnique = false) {
       let isNewList = false;
       for (let parentId in mapItems) {
         if (!(parentId in this.mapItems)) {
           isNewList = true;
           this.mapItems[parentId] = {
-            // Выполняется запрос на сервер
+            // Request is being made to the server
             isProcessing: false,
-            // Количество потомков
+            // Number of descendants
             quantity: mapItems[parentId].quantity,
-            // id потомков
+            // IDs of descendants
             items: [],
-            // id комментария в котором отображается кнопка "Показать больше"
+            // ID of the comment where the "Show more" button is displayed
             btnMoreNext: null,
-            // Количество отображённых потомков
+            // Number of displayed descendants
             qShowBalance: 0,
             qShowNext: 0,
-            // id отображённых потомков
+            // IDs of displayed descendants
             show: {},
-            // id удалённых потомков (нужно при нажатии на кнопку показать больше)
+            // IDs of deleted descendants (needed when clicking the "Show more" button)
             delete: [],
-            // Указывает на то что этот комментарий удалён
+            // Indicates that this comment is deleted
             isDelete: false,
           };
         }
-        // Проверка нужна потому что в списке может присутсвовать комментрарий, который был добавлен пользоветелем только что (связано с особенностью выборки на backend)
+        // This check is needed because the list may contain a comment that was just added by the user (due to backend selection specifics)
         if (checkUnique) {
           let uniqueMap = [];
           for (let item of mapItems[parentId].items) {
@@ -462,18 +462,18 @@ export default {
           mapItems[parentId].items = uniqueMap;
         }
 
-        // Устанавливаем количество
+        // Set the quantity
         if (mapItems[parentId].quantity) {
           this.mapItems[parentId].quantity = mapItems[parentId].quantity;
         }
 
-        if (insertTo == "before") {
+        if (insertTo === "before") {
           this.mapItems[parentId].items = [
             ...mapItems[parentId].items,
             ...this.mapItems[parentId].items,
           ];
           this.setMapItemsBefore({ quantityShow: mapItems[parentId].items.length, parentId });
-        } else if (insertTo == "after") {
+        } else if (insertTo === "after") {
           this.mapItems[parentId].items = [
             ...this.mapItems[parentId].items,
             ...mapItems[parentId].items,
@@ -483,26 +483,26 @@ export default {
         }
       }
     },
-    // Показать нижние комментарии
+    // Show bottom comments
     setMapItemsAfter({ quantityShow, parentId }) {
       let idShow = this.mapItems[parentId].btnMoreNext;
-      // Показать конкретный комментарий
+      // Show a specific comment
       for (let i = quantityShow.current; quantityShow.next > i; i++) {
         let item = this.mapItems[this.mapItems[parentId].items[i]];
         this.mapItems[parentId].show[this.mapItems[parentId].items[i]] = true;
-        // Чтобы кнопка не стала после комментария который только что добален
+        // So that the button does not appear after a comment that has just been added
         if (!(item && item.isNew)) {
           idShow = this.mapItems[parentId].items[i];
         }
       }
-      // Показать кнопку
+      // Show the button
       this.mapItems[parentId].btnMoreNext = idShow;
       this.mapItems[parentId].qShowNext = quantityShow.next;
       this.mapItems[parentId].qShowBalance = this.mapItems[parentId].quantity - quantityShow.next;
     },
-    // Показать верхние комментарии
+    // Show top comments
     setMapItemsBefore({ quantityShow, parentId }) {
-      // Показать конкретный комментарий
+      // Show a specific comment
       for (let i = 0; quantityShow > i; i++) {
         let idShow = this.mapItems[parentId].items[i];
         this.mapItems[parentId].show[idShow] = true;
@@ -511,24 +511,24 @@ export default {
       this.mapItems[parentId].qShowBalance =
         this.mapItems[parentId].quantity - this.mapItems[parentId].qShowNext;
     },
-    // Добавить ссылку на компонент для MapItem
+    // Add a link to the component for MapItem
     setMapItemLinkComponent(commentId, component) {
       this.mapItems[commentId].component = component;
     },
-    // Определяем количество элементов которые нужно отобразить
+    // Determine the number of elements to display
     calcItemsShow({ isNewList = false, parentId }) {
       let shiftQShowNext;
       let { qShowNext } = this.mapItems[parentId];
       let { mainShowStart, secondShowStart, mainShow, secondShow } = this.optionsInit.list;
 
       if (isNewList) {
-        let shift = this.optionsInit.parentIdStart == parentId ? mainShowStart : secondShowStart;
+        let shift = this.optionsInit.parentIdStart === parentId ? mainShowStart : secondShowStart;
         shiftQShowNext =
           this.mapItems[parentId].quantity >= shift
             ? shift
             : shift - (shift - this.mapItems[parentId].quantity);
       } else {
-        let step = this.optionsInit.parentIdStart == parentId ? mainShow : secondShow;
+        let step = this.optionsInit.parentIdStart === parentId ? mainShow : secondShow;
         let stepMax = qShowNext + step;
         shiftQShowNext =
           this.mapItems[parentId].quantity >= stepMax
@@ -536,7 +536,7 @@ export default {
             : stepMax - (stepMax - this.mapItems[parentId].quantity);
       }
 
-      // Для вложенных комментариев id которых еще нет (3-й уровень вложенности в запросе)
+      // For nested comments whose IDs are not yet available (3rd level of nesting in the request)
 
       if (!this.mapItems[parentId].items.length) {
         qShowNext = 0;
@@ -548,7 +548,7 @@ export default {
         next: shiftQShowNext,
       };
     },
-    // Подгрузить комментарии
+    // Load comments
     async getComments({ parentId, firstId, lastId, insertTo }) {
       let { url, params, send, typeData } = this.optionsInit.dataApi.commentsListGet;
 
@@ -567,11 +567,9 @@ export default {
         typeData,
       });
 
-      let response = await send({ url: data.url, params: data.params });
-
-      return response;
+      return send({ url: data.url, params: data.params });
     },
-    // Показать комментарии
+    // Show comments
     async showComments({ parentId, insertTo }) {
       let currentState = this.mapItems[parentId];
       let itemsLength = currentState.items.length;
@@ -588,10 +586,10 @@ export default {
         parentId,
         mapItems: this.mapItems,
       });
-      // Если загруженных комментариев недостатчно, делаем запрос на бекенд
-      // itemsLength == 0 && currentState.quantity > 0 - это для глубоко вложенных - для которых нет id
-      if (quantityShow.next > itemsLength || (itemsLength == 0 && currentState.quantity > 0)) {
-        // Последний или первый id
+      // If there are not enough loaded comments, make a request to the backend
+      // itemsLength == 0 && currentState.quantity > 0 - this is for deeply nested comments - for which there is no id
+      if (quantityShow.next > itemsLength || (itemsLength === 0 && currentState.quantity > 0)) {
+        // Last or first id
         if (itemsLength > 0) {
           firstId = currentState.items[0];
           for (let i = itemsLength - 1; i > 0; i--) {
@@ -607,10 +605,10 @@ export default {
 
         let { mapItems, items } = await this.getComments({ firstId, lastId, parentId, insertTo });
         try {
-          // Учитывает удалённые комментарии
+          // Takes into account deleted comments
           mapItems[parentId].quantity =
             mapItems[parentId].quantity + this.mapItems[parentId].delete.length;
-          // Параметр "true" указывает что нужно будет проверять сущетвует ли уже такой комментрарий
+          // The "true" parameter indicates that it will be necessary to check if such a comment already exists
           this.setMapItems(mapItems, insertTo, true);
           this.addCommentsListToList(items);
         } catch (error) {
@@ -625,19 +623,19 @@ export default {
         type: "comments-show",
         component: this,
         sourceType: "btn-more",
-        сurentItem: currentState,
+        currentItem: currentState,
         error: this.error,
       });
 
       currentState.isProcessing = false;
     },
-    // Добавить cписок комментариев (которые получены с бекенда) в общий список
+    // Add a list of comments (received from the backend) to the general list
     addCommentsListToList(items) {
       Object.assign(this.comments, items);
     },
-    // Добавить новый коментарий (который написал этот пользователь) в общий список
+    // Add a new comment (written by this user) to the general list
     addCommentToList(comment, insertTo) {
-      // Создаём для данного комментария mapItems
+      // Create mapItems for this comment
       this.setMapItems(
         {
           [comment.id]: {
@@ -647,9 +645,9 @@ export default {
         },
         insertTo
       );
-      // isNew не будет использоватся в качестве lastId
+      // isNew will not be used as lastId
       this.mapItems[comment.id].isNew = true;
-      // Добавляем его в mapItems предка
+      // Add it to the parent's mapItems
       let mapItems = {
         [comment.parentId]: {
           items: [comment.id],
@@ -663,13 +661,13 @@ export default {
       });
 
       this.mapItems[comment.parentId].show[comment.id] = true;
-      // Скролим к добавленному комментарию
-      if (insertTo == "after" && this.optionsInit.isScrollToComment) {
+      // Scroll to the added comment
+      if (insertTo === "after" && this.optionsInit.isScrollToComment) {
         this.$nextTick(() => {
           this.scrollToComment(comment.id);
         });
       }
-      // ID комментариев которые добавил этот пользователь
+      // IDs of comments added by this user
       if (!this.newCommentsIds[comment.parentId]) {
         this.newCommentsIds[comment.parentId] = [];
       }
@@ -677,31 +675,31 @@ export default {
 
       return comment;
     },
-    // Редактировать комментарий
+    // Edit comment
     editCommentToList(response) {
       Object.assign(this.comments[response.id], response);
       return this.comments[response.id];
     },
-    // Удалить комментарий
+    // Delete comment
     async deleteCommentToList({ commentId, parentId }) {
       await this.optionsInit.deleteCommentBefore();
       this.mapItems[commentId].isDelete = true;
       this.mapItems[parentId].delete.push(commentId);
       await this.optionsInit.deleteCommentAfter();
     },
-    // Скролим к комментарию
+    // Scroll to comment
     scrollToComment(commentId) {
       let element = this.mapItems[commentId].component.$el;
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     },
-    // Добавить / убрать лайк
+    // Add / remove like
     addCommentVote(voteData) {
       Object.assign(this.comments[voteData.id], voteData);
       return this.comments[voteData.id];
     },
-    // Подготовить данные для отправки
+    // Prepare data for sending
     preparationRequestData({ data = {}, url, params = {}, typeData }) {
       switch (typeData) {
         case "json": {
@@ -736,10 +734,10 @@ export default {
         url,
       };
     },
-    // Создать событие на компоненте
-    emitMessage({ type = "", sourceType = "", component = null, сurentItem = null, error = null }) {
+    // Create an event on the component
+    emitMessage({ type = "", sourceType = "", component = null, currentItem = null, error = null }) {
       this.$emit("message-comment", {
-        сurentItem,
+        currentItem,
         items: this.comments,
         mapItems: this.mapItems,
         component,
@@ -748,10 +746,10 @@ export default {
         sourceType,
       });
     },
-    // Показать / Скрыть список Emoji
-    // context - нужен для "addEmoji"
+    // Show / Hide Emoji list
+    // context - needed for \"addEmoji\"
     toggleEmojiList(context, event, isShow = !this.emojiList.isShow) {
-      // При скроле
+      // When scrolling
       if (event.target === document) {
         this.contextCommentsForm = null;
         this.emojiList.isShow = false;
@@ -787,14 +785,14 @@ export default {
       this.emojiList.top = top + 34;
       this.emojiList.left = left - 146;
     },
-    // Добаввить Emoji в текстовое поле
+    // Add Emoji to the text field
     addEmoji(emoji) {
       let { text, posCursor } = this.contextCommentsForm;
       this.contextCommentsForm.text =
         text.slice(0, posCursor) + emoji + text.slice(posCursor, text.length);
       this.contextCommentsForm.posCursor = posCursor + emoji.length;
     },
-    // Установить начальные кординаты клика
+    // Set initial click coordinates
     setMousedownCord(event) {
       if (!isTouchDevice()) {
         this.isHorizontalScroll = false;
@@ -814,7 +812,7 @@ export default {
         }
       }
     },
-    // Горизонтальный скролл
+    // Horizontal scroll
     setHorizontalScroll(event) {
       let { pageX } = this.mousedownCord;
       let { scrollWidth, clientWidth, scrollLeft } = this.$refs.list;
@@ -823,10 +821,10 @@ export default {
       if (scrollWidth > clientWidth && pageX && !isTouchDevice()) {
         this.isHorizontalScroll = true;
         if (offsetX < 0) {
-          // Скролл в право
+          // Scroll right
           offsetX = event.pageX - pageX < maxOffsetX ? event.pageX - pageX : maxOffsetX;
         } else if (offsetX > 0) {
-          // Скролл в лево
+          // Scroll left
           offsetX = Math.abs(event.pageX - pageX) < scrollLeft ? event.pageX - pageX : 0;
         }
 

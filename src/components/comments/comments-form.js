@@ -35,9 +35,9 @@ export default {
       iconFile,
       accept: "",
       error: "",
-      // Указывает на то что в данный момент выполняется отправка формы
+      // Indicates that the form is currently being submitted
       isFormSending: false,
-      // Позиция курсора
+      // Cursor position
       posCursor: 0,
     };
   },
@@ -45,12 +45,12 @@ export default {
     isEdited: {
       immediate: true,
       handler() {
-        // При редактировании
+        // When editing
         if (this.isEdited) {
           this.files = this.createFileList(this.comment.files);
           this.text = this.comment.text;
         } else {
-          // Если нажать кнопку отмена
+          // If the cancel button is pressed
           this.clearForm();
         }
         this.error = "";
@@ -58,7 +58,7 @@ export default {
     },
   },
   methods: {
-    // Создание превью файла
+    // Create file preview
     createFilePreview($event, files) {
       this.checkAuth($event, "form-btn-upload");
       this.error = "";
@@ -82,7 +82,7 @@ export default {
           isDelete: false,
         };
 
-        // Изображения
+        // Images
         if (this.options.imgExtensions[extensionFile]) {
           let reader = new FileReader();
           reader.readAsDataURL(file);
@@ -96,12 +96,12 @@ export default {
             this.files.push(infoPreview);
           };
         } else {
-          // Остальные файлы
+          // Other files
           this.files.push(infoPreview);
         }
       }
     },
-    // Список файлов на основе ссылок
+    // File list based on links
     createFileList(dataFiles) {
       let files = [];
       for (let item of dataFiles) {
@@ -114,19 +114,19 @@ export default {
       }
       return files;
     },
-    // Получить расшырение файла
+    // Get file extension
     getExtension(name) {
       return name.match(/[^.]+$/i)[0];
     },
-    // Удалить файл
+    // Delete file
     deleteFile(num) {
       this.files[num].isDelete = true;
     },
-    // Востановить файл
+    // Restore file
     restoreFile(num) {
       this.files[num].isDelete = false;
     },
-    // Если пользователь не автроизован, посылаем сообщение
+    // If the user is not authorized, send a message
     checkAuth(event, sourceType) {
       if (!this.options.user.auth) {
         event.preventDefault();
@@ -137,7 +137,7 @@ export default {
         });
       }
     },
-    // Отправить сообщение на сервер
+    // Send message to server
     sendComment(event) {
       this.checkAuth(event, "form-send");
       let { user, filesMaxCount, translation, text } = this.options;
@@ -146,7 +146,7 @@ export default {
       let coutFiles = 0;
       if (this.files.length) {
         for (let file of this.files) {
-          // Проверяем наличие файлов
+          // Check for files
           if (!file.isDelete) {
             coutFiles++;
             isFiles = true;
@@ -154,13 +154,13 @@ export default {
         }
       }
 
-      // Если количество файлов превышает допустимое, возвращаем ошибку
+      // If the number of files exceeds the allowed limit, return an error
       if (coutFiles > filesMaxCount) {
         this.error = translation.errorFileMaxCount;
         return;
       }
 
-      // Если длина текста не соответсвует условию, возвращаем ошибку
+      // If the text length does not meet the condition, return an error
       if (textContent.length < text.minLength || textContent.length > text.maxLength) {
         this.error = translation.errorTextLength;
         return;
@@ -176,7 +176,7 @@ export default {
         this.editComment(textContent);
       }
     },
-    // Добавить комментарий
+    // Add comment
     addComment(text) {
       let { url, params, send, typeData } = this.options.dataApi.commentAdd;
       let files = [];
@@ -229,7 +229,7 @@ export default {
           this.isFormSending = false;
         });
     },
-    // Редактировать комментарий
+    // Edit comment
     editComment(text) {
       let { url, params, send, typeData } = this.options.dataApi.commentEdit;
       let files = [];
@@ -237,11 +237,11 @@ export default {
 
       if (this.files.length) {
         for (let file of this.files) {
-          // Новые файлы
+          // New files
           if (file.file && !file.isDelete) {
             files.push(file.file);
           }
-          // Информация об уже загруженных файлах
+          // Information about already uploaded files
           if (!file.file) {
             uploadedFiles.push(file);
           }
@@ -287,7 +287,7 @@ export default {
           this.isFormSending = false;
         });
     },
-    // Очистить форму
+    // Clear form
     clearForm() {
       this.text = "";
       this.files = [];
@@ -296,7 +296,7 @@ export default {
         this.$refs.text.style.height = "auto";
       }
     },
-    // Получить позицию курсора (нужно для вставки emoji)
+    // Get cursor position (needed for inserting emoji)
     getPosCursor() {
       this.posCursor = this.$refs.text.selectionEnd;
     },

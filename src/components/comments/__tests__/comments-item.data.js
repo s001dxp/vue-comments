@@ -1,7 +1,7 @@
 let preparationText = [
-  // Без текста
+  // Without text
   {
-    name: "Пустая строка",
+    name: "Empty string",
     items: [
       {
         text: "",
@@ -65,9 +65,9 @@ let preparationText = [
       },
     ],
   },
-  // Текст без пеносов: параметры "none" / минимальные
+  // Text without newlines: "none" / minimal parameters
   {
-    name: 'Текст без пеносов: параметры "none" / минимальные',
+    name: 'Text without newlines: "none" / minimal parameters',
     items: [
       {
         text: "t",
@@ -119,9 +119,9 @@ let preparationText = [
       },
     ],
   },
-  // Текст с пеносами: параметры "none" / минимальные
+  // Text with newlines: "none" / minimal parameters
   {
-    name: 'Текст с пеносами: параметры "none" / минимальные',
+    name: 'Text with newlines: "none" / minimal parameters',
     items: [
       {
         text: "t\nt",
@@ -185,9 +185,9 @@ let preparationText = [
       },
     ],
   },
-  // Текст без пеносов: параметры "none" / максимальные
+  // Text without newlines: "none" / maximal parameters
   {
-    name: 'Текст без пеносов: параметры "none" / максимальные',
+    name: 'Text without newlines: "none" / maximal parameters',
     items: [
       {
         text: "text123",
@@ -227,9 +227,9 @@ let preparationText = [
       },
     ],
   },
-  // Текст с переносами: параметры "none" / максимальные
+  // Text with newlines: "none" / maximal parameters
   {
-    name: 'Текст без пеносов: параметры "none" / максимальные',
+    name: 'Text without newlines: "none" / maximal parameters',
     items: [
       {
         text: "text123\ntext123",
@@ -269,9 +269,9 @@ let preparationText = [
       },
     ],
   },
-  // Средние занчания
+  // Average values
   {
-    name: "Текс без переноса строк и с переносом: средние значения",
+    name: "Text without and with newlines: average values",
     items: [
       {
         text: "text123",
@@ -323,9 +323,9 @@ let preparationText = [
       },
     ],
   },
-  // Текст с ссылками
+  // Text with links
   {
-    name: "Текст с ссылками",
+    name: "Text with links",
     items: [
       {
         text: "https://www.youtube.com/ text123",

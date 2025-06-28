@@ -25,13 +25,13 @@ export default {
     };
   },
   watch: {
-    // При изменении размеров окна
+    // When window dimensions change
     widthResizeWindow: {
       handler() {
         this.checkIsShowBntTextMore();
       },
     },
-    // Указывает на то отображён ли комментарий
+    // Indicates whether the comment is displayed
     isShow: {
       handler() {
         this.$nextTick(() => {
@@ -75,34 +75,34 @@ export default {
   },
   data() {
     return {
-      // Отображаемый текст
+      // Displayed text
       text: {
         brief: "",
         all: "",
       },
-      // Показать кнопку Еще
+      // Show More button
       isTextBrief: false,
-      // Переключатель кнопок Еще / Свернуть
+      // Toggle More / Collapse buttons
       isTextBriefЕxpand: true,
-      // Показать / скрыть форму добавления вопроса
+      // Show / hide add question form
       isFormShow: false,
       iconFile,
       files: [],
-      // Номер текущего слайда
+      // Current slide number
       slideNum: 0,
-      // Открыть галлерею
+      // Open gallery
       isOpenGallery: false,
-      // Cписок ссылок в тексте
+      // List of links in the text
       listLinks: {},
-      // Слушетели событий
+      // Event listeners
       listeners: {},
-      // Указывает на то что на сервер в данный ммомент отправляется лайк
+      // Indicates that a like is currently being sent to the server
       isVoteSending: false,
-      // Указывает на то что на сервер отправляется запрос на удаление комментария
+      // Indicates that a request to delete a comment is being sent to the server
       isDeleteSending: false,
-      // Указывает на то что в данный момент комментарий находится в состояниии редактирования
+      // Indicates that the comment is currently being edited
       isEdited: false,
-      // Показать список настроек: Редактировать / удалить
+      // Show settings list: Edit / Delete
       isShowSettings: false,
       error: "",
     };
@@ -147,12 +147,12 @@ export default {
         this.files.push(item);
       }
     },
-    // Плдготовка текста
+    // Text preparation
     preparationText(text, maxLength, regExp) {
       let listLinks = this.createTextListLinks(text, regExp.link);
       let isTextBriefLength = this.checkTextBriefMaxLength(text, maxLength);
       let textBrief = this.cropText(text, maxLength);
-      // isTextBrief - на этапе монтирования будет checkTextBriefMaxLine
+      // isTextBrief - will be checkTextBriefMaxLine at the mounting stage
       this.isTextBrief = isTextBriefLength;
       this.text.all = this.convertTxtToHtml(text, listLinks, regExp.link);
       this.text.brief = this.convertTxtToHtml(textBrief, listLinks, regExp.link);
@@ -165,17 +165,17 @@ export default {
         isTextBrief: this.isTextBrief,
       };
     },
-    // Проверяем нужно ли скрывать текст по длине строки
+    // Check if text needs to be hidden by string length
     checkTextBriefMaxLength(text, maxLength) {
       if (maxLength === "none") return false;
       return text.length > maxLength;
     },
-    // Проверяем высоту после того как элемент примоттирован
+    // Check height after element is mounted
     checkTextBriefMaxLine(maxLine, scrollHeight, clientHeight) {
       if (maxLine === "none") return false;
       return scrollHeight > clientHeight;
     },
-    // Проверка нужно ли отображать кнопку "Показать больше" для текста
+    // Check if the "Show more" button for text needs to be displayed
     checkIsShowBntTextMore() {
       let { briefMaxLength, briefMaxLine } = this.options.text;
       let { text: textComment } = this.comment;
@@ -191,7 +191,7 @@ export default {
       return this.isTextBrief;
     },
 
-    // Создать список ссылок которые есть в тексте
+    // Create a list of links present in the text
     createTextListLinks(text, regExp) {
       let counerLinks = 0;
       let listLinks = {};
@@ -201,7 +201,7 @@ export default {
       });
       return { count: counerLinks, items: listLinks };
     },
-    // Преобразовать текст в HTML
+    // Convert text to HTML
     convertTxtToHtml(text, listLinks, regExp) {
       let counter = 0;
       if (listLinks.count) {
@@ -212,16 +212,16 @@ export default {
       }
       return text.replace(/\n/g, "<br/>");
     },
-    // Обрезаем текст
+    // Crop text
     cropText(text, maxLength) {
       if (text === "" || maxLength === "none" || text.length <= maxLength) return text;
       return text.length <= maxLength ? text : text.slice(0, maxLength) + "...";
     },
-    // Свернуть / развернуть текст
+    // Collapse / expand text
     toggleTextBrief() {
       this.isTextBriefЕxpand = !this.isTextBriefЕxpand;
     },
-    // Сочитать количество лайков / дизлайков
+    // Calculate the number of likes / dislikes
     calculateVoteCount(comment, voteValue) {
       let isLike, isDislike, like, dislike;
       voteValue = +voteValue;
@@ -241,7 +241,7 @@ export default {
       }
       return { like, dislike, voteValue };
     },
-    // Отправка лайка на сервер
+    // Send like to server
     sendVote(voteValue, comment) {
       if (this.isVoteSending) return;
       this.error = "";
@@ -299,7 +299,7 @@ export default {
         });
       }
     },
-    // Удалить комментарий
+    // Delete comment
     deleteMessage(comment) {
       if (!comment.isManageDelete && this.isDeleteSending) return;
 
@@ -344,7 +344,7 @@ export default {
           this.isDeleteSending = false;
         });
     },
-    // Листть слайдер
+    // Scroll slider
     leafSlide(direction) {
       // next
       if (direction === 1) {
@@ -363,12 +363,12 @@ export default {
         }
       }
     },
-    // Открыть / Закрыть галлерею
+    // Open / Close gallery
     toggleGallery(isOpenGallery = !this.isOpenGallery) {
       this.isOpenGallery = isOpenGallery;
       this.toggleScroll(isOpenGallery);
     },
-    // Блокировать / разблокировать скролл
+    // Lock / unlock scroll
     toggleScroll(isLock) {
       let overflow = "auto";
       if (isLock) {
@@ -376,7 +376,7 @@ export default {
       }
       document.querySelector("body").style.overflow = overflow;
     },
-    // Форматировать дату
+    // Format date
     formatDate(commentTimestamp) {
       let { translation } = this.options;
       let commentMs = commentTimestamp * 1000;
@@ -393,42 +393,42 @@ export default {
       let strDate = `${("0" + day).slice(-2)}.${("0" + month).slice(-2)}.${("0" + year).slice(-2)}`;
 
       if (curentMs - commentMs < dayMs) {
-        // Сегодня | Вчера
+        // Today | Yesterday
         if (curentHours >= commentHours) {
           return `${translation.dateToday} ${strTime}`;
         } else {
           return `${translation.dateYesterday} ${strTime}`;
         }
       } else if (curentMs - commentMs < dayMs * 2) {
-        // Вчера | позавчера
+        // Yesterday | day before yesterday
         if (curentHours >= commentHours) {
           return `${translation.dateYesterday} ${strTime}`;
         } else {
           return strDate;
         }
       } else {
-        // Раньше
+        // Earlier
         return strDate;
       }
     },
-    // Список настроек: показать / скрыть
+    // Settings list: show / hide
     toggleSettings(isShowSettings = !this.isShowSettings) {
       this.isShowSettings = isShowSettings;
     },
-    // Переключить форму в режим для редактирования комментраия
+    // Switch form to comment editing mode
     toggleEdited(isEdited = !this.isEdited) {
       this.isEdited = isEdited;
       this.$nextTick(() => {
         this.checkIsShowBntTextMore();
       });
     },
-    // Показать / скрыть форму для добавления вопрса
+    // Show / hide form for adding a question
     toggleForm(isFormShow = !this.isFormShow) {
       if (this.options.user.auth) {
         this.isFormShow = isFormShow;
-        // При скрытии формы
+        // When hiding the form
         if (!isFormShow) {
-          // Нужно потому что на "settings" срабатывает "click" и "mouseleave"
+          // Needed because "click" and "mouseleave" trigger on "settings"
           this.toggleSettings(false);
           if (this.isEdited) {
             this.init();
@@ -443,7 +443,7 @@ export default {
         });
       }
     },
-    // Отменить редактирование
+    // Cancel editing
     cancelEditing() {
       this.toggleForm();
     },
