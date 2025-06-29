@@ -30,7 +30,6 @@ import { ref, onMounted } from 'vue'
 import Comments from "@/components/comments/comments.vue"
 import FormAddUser from "@/components/form-add-user/form-add-user.vue"
 import { useCommentsStore } from "@/store"
-import $cookies from "vue-cookies"
 
 // Store
 const store = useCommentsStore()
@@ -41,21 +40,63 @@ const comments = ref({})
 const isShowPopupNotAuthorized = ref(false)
 
 const options = ref({
+  // Enable voting functionality
+  isShowVote: true,
+  user: {
+    name: 'Demo User',
+    img: 'https://via.placeholder.com/32x32',
+    auth: true // Enable user authentication for demo
+  },
   dataApi: {
     vote: {
       url: "/api/comments/vote/",
+      send: (requestData) => {
+        // Mock vote API call for demo
+        console.log('Demo vote:', requestData)
+        // Extract vote type from the request data
+        const voteType = requestData.data?.vote || requestData.vote || 'like'
+        const commentId = requestData.data?.commentId || requestData.commentId
+        console.log(`Processing vote: ${voteType} for comment ${commentId}`)
+        return Promise.resolve({ success: true, vote: voteType, commentId })
+      },
+      params: { method: 'POST' },
+      typeData: ''
     },
     commentAdd: {
       url: "/api/comments/",
+      send: (requestData) => {
+        console.log('Demo add comment:', requestData)
+        return Promise.resolve({ id: Date.now(), ...requestData.data })
+      },
+      params: { method: 'POST' },
+      typeData: ''
     },
     commentDelete: {
       url: "/api/comments/",
+      send: (requestData) => {
+        console.log('Demo delete comment:', requestData)
+        return Promise.resolve({ success: true })
+      },
+      params: { method: 'DELETE' },
+      typeData: ''
     },
     commentEdit: {
       url: "/api/comments/",
+      send: (requestData) => {
+        console.log('Demo edit comment:', requestData)
+        return Promise.resolve({ success: true, ...requestData.data })
+      },
+      params: { method: 'PUT' },
+      typeData: ''
     },
     commentsListGet: {
       url: "/api/comments/",
+      send: (requestData) => {
+        console.log('Demo get comments:', requestData)
+        return Promise.resolve({ items: {}, mapItems: {} })
+      },
+      params: { method: 'GET' },
+      typeData: 'query'
     },
   },
 })
@@ -81,17 +122,70 @@ const messageComment = (data) => {
   }
 }
 
-// Lifecycle
+// Lifecycle - Load demo data or set ready state
 onMounted(async () => {
   try {
-    const response = await fetch("/api/comments/?parentId=0", {
-      headers: { Cookie: $cookies.get("user") },
-    })
-    const commentsData = await response.json()
-    comments.value = commentsData
-    store.setComments(commentsData)
+    // For demo purposes, we'll create some mock data
+    // In a real app, you'd fetch from your API
+    const mockComments = {
+      items: {
+        1: {
+          id: 1,
+          parentId: 0,
+          text: "This is a demo comment! The Vue Comments component has been successfully modernized to Vue 3 with Composition API.",
+          userName: "Demo User",
+          userImg: "https://via.placeholder.com/32x32",
+          date: new Date().toISOString(),
+          vote: null,
+          countLike: 3,
+          countDislike: 0,
+          isManageEdit: false,
+          isManageDelete: false,
+          files: []
+        },
+        2: {
+          id: 2,
+          parentId: 1,
+          text: "Great work on the modernization! 🎉",
+          userName: "Another User",
+          userImg: "https://via.placeholder.com/32x32",
+          date: new Date().toISOString(),
+          vote: null,
+          countLike: 1,
+          countDislike: 0,
+          isManageEdit: false,
+          isManageDelete: false,
+          files: []
+        }
+      },
+      mapItems: {
+        0: {
+          quantity: 1,
+          items: [1],
+          show: { 1: true }
+        },
+        1: {
+          quantity: 1,
+          items: [2],
+          show: { 2: true },
+          isDelete: false
+        },
+        // Add missing mapItems entries for each comment
+        2: {
+          quantity: 0,
+          items: [],
+          show: {},
+          isDelete: false
+        }
+      }
+    }
+
+    comments.value = mockComments
+    store.setComments(mockComments)
   } catch (error) {
     console.error("Failed to load comments:", error)
+    // Even if there's an error, show the component
+    comments.value = { items: {}, mapItems: { 0: { quantity: 0, items: [], show: {} } } }
   } finally {
     isReady.value = true
   }

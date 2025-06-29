@@ -303,10 +303,14 @@ const toggleEmojiList = (element, event, show = null) => {
   }
 
   if (element && event) {
-    const rect = element.getBoundingClientRect()
-    emojiList.top = rect.bottom + window.scrollY
-    emojiList.left = rect.left + window.scrollX
-    emojiList.isShow = true
+    // Ensure we have a valid DOM element
+    const domElement = element.value || element
+    if (domElement && typeof domElement.getBoundingClientRect === 'function') {
+      const rect = domElement.getBoundingClientRect()
+      emojiList.top = rect.bottom + window.scrollY
+      emojiList.left = rect.left + window.scrollX
+      emojiList.isShow = true
+    }
   }
 }
 
@@ -476,7 +480,7 @@ watch(() => props.commentsData, (newData) => {
 </script>
 
 <style lang="scss">
-@import "./variables.scss";
+@use "./variables.scss" as *;
 .comments {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #fff;

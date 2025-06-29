@@ -18,32 +18,50 @@ export default defineConfig(({ mode }) => {
           }
         }
       }),
-      legacy({
-        targets: ['defaults', 'not IE 11']
-      })
+      // Only add legacy plugin for demo builds, not library builds
+      ...(isLib
+        ? []
+        : [
+            legacy({
+              targets: ['defaults', 'not IE 11']
+            })
+          ])
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler' // Use modern Sass API to avoid deprecation warnings
+        }
+      }
+    },
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src')
       }
     },
-    build: isLib ? {
-      lib: {
-        entry: resolve(__dirname, 'src/lib.js'),
-        name: 'VueComments',
-        fileName: (format) => `vue-comments.${format}.js`
-      },
-      rollupOptions: {
-        external: ['vue'],
-        output: {
-          globals: {
-            vue: 'Vue'
-          }
+    build: isLib
+      ? {
+          lib: {
+            entry: resolve(__dirname, 'src/lib.js'),
+            name: 'VueComments',
+            fileName: format => `vue-comments.${format}.js`,
+            formats: ['es', 'umd']
+          },
+          rollupOptions: {
+            external: ['vue', 'pinia'],
+            output: {
+              globals: {
+                vue: 'Vue',
+                pinia: 'Pinia'
+              }
+            }
+          },
+          // Ensure we output to the correct directory for library builds
+          outDir: 'dist'
         }
-      }
-    } : {
-      outDir: 'dist-demo'
-    },
+      : {
+          outDir: 'dist-demo'
+        },
     server: {
       port: 8080,
       open: true

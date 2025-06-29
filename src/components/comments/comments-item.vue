@@ -1,5 +1,5 @@
 <template>
-  <div class="comments-item" v-if="isShow" :class="{ 'comments-item--delete': mapItems[comment.id].isDelete }">
+  <div class="comments-item" v-if="isShow" :class="{ 'comments-item--delete': comment?.isDelete || mapItems[comment.id]?.isDelete }">
     <div class="comments-item__row-comment">
       <div class="comments-item__col-avatar">
         <img class="comments-item__avatar-img" :src="comment.userImg || options.imgDefaultUser" loading="lazy">
@@ -123,6 +123,7 @@
             </button>
           </div>
         </div>
+
         <!-- Edit form -->
         <comments-form
           v-if="isEdited"
@@ -157,8 +158,6 @@
 import { ref, reactive, computed, inject, provide, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import CommentsForm from './comments-form.vue'
 import CommentsItem from './comments-item.vue'
-import iconFile from './img/icon-file.svg'
-import regExp from './reg-exp.js'
 
 // Props
 const props = defineProps({
@@ -426,7 +425,7 @@ watch(() => props.comment.text, (newText) => {
 </script>
 
 <style lang="scss">
-@import "./variables.scss";
+@use "./variables.scss" as *;
 .comments-item {
   min-width: 280px;
   &__error-text {

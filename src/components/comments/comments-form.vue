@@ -64,8 +64,8 @@
         <div class="comments-form__textarea-panel">
           <label
             class="comments-form__textarea-panel-upload-file"
-            @click="createFilePreview($event, $refs.files.files)"
-            @change="createFilePreview($event, $refs.files.files)"
+            @click="createFilePreview($event, filesRef?.files)"
+            @change="createFilePreview($event, filesRef?.files)"
             v-if="options.isShowBtnUpload"
           >
             <svg class="comments-form__textarea-panel-icon">
@@ -83,8 +83,9 @@
             class="comments-form__textarea-panel-emoji-box"
             v-if="options.isShowBtnEmoji"
             data-vue-comments-form-emoji-btn
-            @touchend="toggleEmojiList(this, $event)"
-            @mouseenter="toggleEmojiList(this, $event, true)"
+            ref="emojiButtonRef"
+            @touchend="toggleEmojiList(emojiButtonRef, $event)"
+            @mouseenter="toggleEmojiList(emojiButtonRef, $event, true)"
             @mouseleave="toggleEmojiList(null, $event, false)"
           >
             <svg class="comments-form__textarea-panel-icon">
@@ -135,13 +136,14 @@ const preparationRequestData = inject('preparationRequestData')
 const addCommentToList = inject('addCommentToList')
 const editCommentToList = inject('editCommentToList')
 const emitMessage = inject('emitMessage')
-const toggleForm = inject('toggleForm')
+const toggleForm = inject('toggleForm', null) // Make optional with default null
 const toggleEmojiList = inject('toggleEmojiList')
 const addEmoji = inject('addEmoji')
 
 // Template refs
 const textRef = ref(null)
 const filesRef = ref(null)
+const emojiButtonRef = ref(null)
 
 // Reactive state
 const text = ref('')
@@ -312,8 +314,8 @@ const editComment = async (textContent) => {
 
   const data = preparationRequestData({
     data: {
-      text: textContent,
       id: props.comment.id,
+      text: textContent,
       files: fileList
     },
     url,
@@ -354,7 +356,8 @@ defineExpose({
 </script>
 
 <style lang="scss">
-@import "./variables.scss";
+@use "sass:color";
+@use "./variables.scss" as *;
 .comments-form {
   $height-textarea: 50px;
 
@@ -403,7 +406,7 @@ defineExpose({
     transform: translate(-50%, -50%);
   }
   &__textarea {
-    border: 1px solid $gray-light;
+    border: 1px solid $light-gray;
     border-radius: 20px;
     position: relative;
     &-error {
@@ -422,7 +425,7 @@ defineExpose({
       align-items: center;
       justify-content: space-between;
       padding: 5px 15px;
-      border-top: 1px solid $gray-light;
+      border-top: 1px solid $light-gray;
       &-upload-file {
         cursor: pointer;
         display: flex;
@@ -471,7 +474,7 @@ defineExpose({
     height: 24px;
     width: 24px;
     &:hover {
-      fill: darken($blue, 10%);
+      fill: color.adjust($blue, $lightness: -10%);
     }
   }
   &__file {
@@ -483,7 +486,7 @@ defineExpose({
     }
     &-item {
       position: relative;
-      border: 1px solid $gray-light;
+      border: 1px solid $light-gray;
       border-radius: 8px;
       padding: 8px;
       display: flex;
